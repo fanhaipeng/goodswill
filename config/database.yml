@@ -12,7 +12,7 @@ development:
   database: goodswill_development
   pool: 5
   username: root
-  password:
+  password: '123'
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -35,5 +35,5 @@ production:
   database: goodswill_production
   pool: 5
   username: root
-  password:
+  password: 
   host: localhost
