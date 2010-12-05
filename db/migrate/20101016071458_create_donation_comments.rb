@@ -1,6 +1,6 @@
 class CreateDonationComments < ActiveRecord::Migration
   def self.up
-    create_table (:donation_comments, :options => 'CHARSET=utf8') do |t|
+    create_table (:donation_comments, :options => 'CHARSET=utf8 ENGINE=InnoDB') do |t|
       t.integer :donation_id, :null => false
       t.string :comment, :null => false, :limit => 500
       t.timestamps

@@ -1,6 +1,6 @@
 class CreateDonations < ActiveRecord::Migration
   def self.up
-    create_table (:donations, :options => 'CHARSET=utf8') do |t|
+    create_table (:donations, :options => 'CHARSET=utf8 ENGINE=InnoDB') do |t|
       t.string :phone, :limit => 20, :null => false
       t.string :address, :limit => 20, :null => false 
       t.string :email, :limit => 50, :null => false

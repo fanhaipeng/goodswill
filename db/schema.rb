@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016075201) do
+ActiveRecord::Schema.define(:version => 20101205151822) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "receiver_id", :null => false
@@ -19,10 +19,15 @@ ActiveRecord::Schema.define(:version => 20101016075201) do
     t.datetime "updated_at"
   end
 
+  add_index "deliveries", ["receiver_id"], :name => "delivery_receiver_foreign_key"
+
   create_table "deliveries_images", :id => false, :force => true do |t|
     t.integer "delivery_id", :null => false
     t.integer "image_id",    :null => false
   end
+
+  add_index "deliveries_images", ["delivery_id"], :name => "join_delivery_image_foreign_key"
+  add_index "deliveries_images", ["image_id"], :name => "join_image_delivery_foreign_key"
 
   create_table "donation_comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -30,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20101016075201) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "donation_comments", ["donation_id"], :name => "comment_donation_foreign_key"
 
   create_table "donations", :force => true do |t|
     t.string   "phone",      :limit => 20,                    :null => false
@@ -46,6 +53,9 @@ ActiveRecord::Schema.define(:version => 20101016075201) do
     t.integer "donation_id", :null => false
     t.integer "image_id",    :null => false
   end
+
+  add_index "donations_images", ["donation_id"], :name => "join_donation_image_foreign_key"
+  add_index "donations_images", ["image_id"], :name => "join_image_donation_foreign_key"
 
   create_table "images", :force => true do |t|
     t.string   "type",                            :null => false
@@ -65,6 +75,9 @@ ActiveRecord::Schema.define(:version => 20101016075201) do
     t.datetime "updated_at"
   end
 
+  add_index "items", ["delivery_id"], :name => "item_delivery_foreign_key"
+  add_index "items", ["donation_id"], :name => "item_donation_foreign_key"
+
   create_table "news", :force => true do |t|
     t.string   "title",      :limit => 200, :null => false
     t.text     "content",                   :null => false
@@ -76,6 +89,9 @@ ActiveRecord::Schema.define(:version => 20101016075201) do
     t.integer "news_id",  :null => false
     t.integer "image_id", :null => false
   end
+
+  add_index "news_images", ["image_id"], :name => "join_image_news_foreign_key"
+  add_index "news_images", ["news_id"], :name => "join_news_image_foreign_key"
 
   create_table "receivers", :force => true do |t|
     t.string   "name",         :limit => 50,                     :null => false

@@ -1,6 +1,6 @@
 class CreateDeliveries < ActiveRecord::Migration
   def self.up
-    create_table (:deliveries, :options => 'CHARSET=utf8') do |t|
+    create_table (:deliveries, :options => 'CHARSET=utf8 ENGINE=InnoDB') do |t|
       t.integer :receiver_id, :null => false
       t.text :summary, :null => false
       t.timestamps
