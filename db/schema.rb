@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205150853) do
+ActiveRecord::Schema.define(:version => 20101205151333) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "receiver_id", :null => false
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20101205150853) do
     t.integer "delivery_id", :null => false
     t.integer "image_id",    :null => false
   end
+
+  add_index "deliveries_images", ["delivery_id"], :name => "join_delivery_image_foreign_key"
+  add_index "deliveries_images", ["image_id"], :name => "join_image_delivery_foreign_key"
 
   create_table "donation_comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
