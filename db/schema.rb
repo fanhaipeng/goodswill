@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205140817) do
+ActiveRecord::Schema.define(:version => 20101205141336) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "receiver_id", :null => false
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20101205140817) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "donation_comments", ["donation_id"], :name => "comment_donation_foreign_key"
 
   create_table "donations", :force => true do |t|
     t.string   "phone",      :limit => 20,                    :null => false
