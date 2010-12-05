@@ -1,6 +1,6 @@
 class CreateReceivers < ActiveRecord::Migration
   def self.up
-    create_table (:receivers, :options => 'CHARSET=utf8') do |t|
+    create_table (:receivers, :options => 'CHARSET=utf8 ENGINE=InnoDB') do |t|
       t.string :name, :limit => 50, :null => false
       t.text :introduction, :null => false
       t.string :address, :limit => 200

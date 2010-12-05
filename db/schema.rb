@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205141336) do
+ActiveRecord::Schema.define(:version => 20101205150853) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "receiver_id", :null => false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20101205141336) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "deliveries", ["receiver_id"], :name => "delivery_receiver_foreign_key"
 
   create_table "deliveries_images", :id => false, :force => true do |t|
     t.integer "delivery_id", :null => false
@@ -48,6 +50,9 @@ ActiveRecord::Schema.define(:version => 20101205141336) do
     t.integer "donation_id", :null => false
     t.integer "image_id",    :null => false
   end
+
+  add_index "donations_images", ["donation_id"], :name => "join_donation_image_foreign_key"
+  add_index "donations_images", ["image_id"], :name => "join_image_donation_foreign_key"
 
   create_table "images", :force => true do |t|
     t.string   "type",                            :null => false

@@ -4,7 +4,7 @@ class AddCommentDonationForeignKey < ActiveRecord::Migration
       ALTER TABLE donation_comments
         ADD CONSTRAINT comment_donation_foreign_key
         FOREIGN KEY (donation_id)
-        REFERENCES donation_comments(id)
+        REFERENCES donations(id)
         ON DELETE RESTRICT
         ON UPDATE RESTRICT
     }
@@ -12,7 +12,7 @@ class AddCommentDonationForeignKey < ActiveRecord::Migration
 
   def self.down
     execute %{
-      ALTER TABLE expense_tags DROP FOREIGN KEY comment_donation_foreign_key
+      ALTER TABLE donation_comments DROP FOREIGN KEY comment_donation_foreign_key
     }
   end
 end

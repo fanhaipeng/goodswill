@@ -12,7 +12,7 @@ class AddItemDonationForeignKey < ActiveRecord::Migration
 
   def self.down
     execute %{
-      ALTER TABLE expense_tags DROP FOREIGN KEY item_donation_foreign_key
+      ALTER TABLE items DROP FOREIGN KEY item_donation_foreign_key
     }
   end
 end

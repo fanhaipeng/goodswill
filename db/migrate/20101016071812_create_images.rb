@@ -1,6 +1,6 @@
 class CreateImages < ActiveRecord::Migration
   def self.up
-    create_table (:images, :options => 'CHARSET=utf8') do |t| 
+    create_table (:images, :options => 'CHARSET=utf8 ENGINE=InnoDB') do |t| 
       t.string :type, :null => false
       t.binary :data, :limit => 1.megabyte, :null => false
       t.string :description, :limit => 100
