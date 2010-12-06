@@ -55,4 +55,14 @@ Goodswill::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  match '/donation/index' => 'donation#index'
+  match '/donation' => 'donation#index'
+
+  match 'donation/new' => 'donation#new'
+  match 'donation/create' => 'donation#create', :via => :post
+
+  match 'donation/edit/:id' => 'donation#edit'
+  match 'donation/update/:id' => 'donation#update', :via => :put
+  match 'donation/show/:id' => 'donation#show'
 end
