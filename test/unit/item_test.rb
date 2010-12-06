@@ -38,4 +38,26 @@ class ItemTest < ActiveSupport::TestCase
     item.status =4 
     assert item.valid?
   end
+
+  test "item belongs to a donation" do
+    item = Item.new(
+      :donation_id => 0,
+      :category => 'clothe',
+      :quantity => 1)
+    assert item.valid?
+
+    item.donation = Donation.new
+    assert item.donation
+  end
+
+  test "item belongs to a delivery" do
+    item = Item.new(
+      :donation_id => 0,
+      :category => 'clothe',
+      :quantity => 1)
+    assert item.valid?
+
+    item.delivery = Delivery.new
+    assert item.delivery
+  end
 end
