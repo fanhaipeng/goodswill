@@ -25,7 +25,7 @@ test:
   database: goodswill_test
   pool: 5
   username: root
-  password: 123
+  password: '123'
   host: localhost
 
 production:
