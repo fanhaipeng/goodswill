@@ -1,3 +1,5 @@
 class DonationComment < ActiveRecord::Base
-  validates_presence_of :donation_id, :comment
+  belongs_to :donation
+
+  validates_presence_of :donation, :comment
 end
