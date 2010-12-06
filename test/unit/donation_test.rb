@@ -83,4 +83,31 @@ class DonationTest < ActiveSupport::TestCase
     donation.email = 'goodswill@live.com'
     assert donation.valid?
   end
+
+  test "donation has many items" do
+    donation = create_valid_donation
+    assert donation.items
+  end
+
+  test "donation has many comments" do
+    donation = create_valid_donation
+    assert donation.donation_comments
+  end
+
+  test "donation has many images" do
+    donation = create_valid_donation
+    assert donation.images
+  end
+
+private
+
+  def create_valid_donation
+    donation = Donation.new(
+      :address => 'any address',
+      :phone => '010-59173532',
+      :email => 'goodswill@live.com',
+      :name => 'Haipeng Fan')
+    assert donation.valid?
+    donation
+  end
 end

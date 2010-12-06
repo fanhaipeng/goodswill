@@ -1,4 +1,8 @@
 class Donation < ActiveRecord::Base
+  has_many :items
+  has_many :donation_comments
+  has_and_belongs_to_many :images
+
   validates_presence_of :phone, :address, :email, :name
   validates_format_of :phone, 
                       :with => /^1\d{10}$|^\d{2,4}-\d{7,8}$/,
