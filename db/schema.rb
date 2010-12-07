@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101206072819) do
+ActiveRecord::Schema.define(:version => 20101207192755) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "receiver_id", :null => false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20101206072819) do
 
   create_table "items", :force => true do |t|
     t.integer  "donation_id",                              :null => false
-    t.integer  "delivery_id",                              :null => false
+    t.integer  "delivery_id"
     t.string   "category",    :limit => 20,                :null => false
     t.integer  "quantity",                                 :null => false
     t.integer  "status",                    :default => 0
