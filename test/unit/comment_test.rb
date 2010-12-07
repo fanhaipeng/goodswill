@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class DonationCommentTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   test "fields must not be blank" do
-    comment = DonationComment.new
+    comment = Comment.new
     assert !comment.valid?
     assert comment.errors[:donation].any?
     assert comment.errors[:comment].any?
   end
 
   test "donation_comment belongs to a donation" do
-    comment = DonationComment.new(:comment => "any text")
+    comment = Comment.new(:comment => "any text")
     comment.donation = Donation.new(
       :address => 'any address',
       :phone => '010-59173532',

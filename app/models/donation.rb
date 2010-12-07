@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
   has_many :items
-  has_many :donation_comments
+  has_many :comments
   has_and_belongs_to_many :images
 
   accepts_nested_attributes_for :items, :allow_destroy => true

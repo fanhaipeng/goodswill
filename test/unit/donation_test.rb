@@ -91,7 +91,7 @@ class DonationTest < ActiveSupport::TestCase
 
   test "donation has many comments" do
     donation = create_valid_donation
-    assert donation.donation_comments
+    assert donation.comments
   end
 
   test "donation has many images" do
