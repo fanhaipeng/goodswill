@@ -1,0 +1,30 @@
+<h2> New donation </h2>
+<div>
+  <% if @donation.errors.any?      %> 
+    <div   id=" error_explanation"> 
+    <h2><%=   pluralize(@donation.errors.count,        " error")   %> 
+      prohibited this donation from being saved:</h2> 
+    <ul> 
+      <%  @donation.errors.full_messages.each do |msg|  %> 
+      <li><%=   msg  %></li> 
+      <%  end %> 
+    </ul> 
+    </div> 
+  <%  end %> 
+
+  <%= form_for @donation do |f| %>
+    Phone: <%= f.text_field :phone %> <br/>
+    Address: <%= f.text_area :address %> <br/>
+    Email: <%= f.email_field :email %> <br/>
+    Name: <%= f.text_field :name %> <br/>
+    Track?: <%= f.check_box :track %> <br/>
+
+    <%= f.fields_for :items  do |i| %>
+      Category<%= i.text_field :category %>
+      Quantity<%= i.number_field :quantity %>
+      <br/>
+    <% end %>
+    <br/>
+    <%= submit_tag %>
+  <% end %>
+</div>

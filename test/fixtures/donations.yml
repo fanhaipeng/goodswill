@@ -4,8 +4,19 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+donation_one: 
+  id: 1
+  phone: 010-58963532 
+  address: '1F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
+  email: 'goodswill@live.com'
+  name: 'Haipeng Fan'
+  track: false
+
+donation_two: 
+  id: 2
+  phone: 13812345678
+  address: '3F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
+  email: 'weiwu@microsoft.com'
+  name: 'Wei Wu'
+  track: true
+

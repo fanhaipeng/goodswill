@@ -3,9 +3,27 @@
 # This model initially had no columns defined.  If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+item_one: 
+  id: 1
+  category: 'category one'
+  quantity: 2
+  status: 0
+
+item_two:
+  id: 2
+  category: 'category two'
+  quantity: 3
+  status: 0
+
+item_three: 
+  id: 3
+  category: 'category three'
+  quantity: 12
+  status: 0
+
+item_four:
+  id: 4
+  category: 'category four'
+  quantity: 8
+  status: 0

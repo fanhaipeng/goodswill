@@ -21,11 +21,11 @@ class AddJoinNewsImageForeignKey < ActiveRecord::Migration
 
   def self.down
     execute %{
-      ALTER TABLE news_images DROP FOREIGN KEY join_news_image_foreign_key
+      ALTER TABLE news_images DROP FOREIGN KEY join_image_news_foreign_key
     }
 
     execute %{
-      ALTER TABLE news_images DROP FOREIGN KEY join_image_news_foreign_key
+      ALTER TABLE news_images DROP FOREIGN KEY join_news_image_foreign_key
     }
   end
 end
