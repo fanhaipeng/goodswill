@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
+
+  fixtures :donations
+
   test "fields must not be blank except deliveryid and status" do
     item = Item.new
     assert !item.valid?
@@ -11,7 +14,7 @@ class ItemTest < ActiveSupport::TestCase
 
   test "default status should be submitted" do
     item = Item.new(
-      :donation_id => 0,
+      :donation => donations(:donation_one),
       :category => 'clothe',
       :quantity => 1)
 

@@ -1,7 +1,26 @@
 class CommentsController < ApplicationController
   def create
+    @comment = Comment.new(params[:comment])
+    @donation = Donation.find_by_id(params[:donation_id])
+    @comment.donation = @donation
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to donations_path }
+      end
+    end
   end
 
   def destroy
+    @donation = Donation.find_by_id(params[:donation_id])
+    @comment = Comment.find_by_id(params[:id])
+    respond_to do |format|
+      if @comment.donation_id != @donation.id
+        # TODO: set errors to @comment
+        format.html { redirect_to donations_path }
+      else
+        @comment.destroy
+        format.html { redirect_to donations_path }
+      end
+    end
   end
 end
