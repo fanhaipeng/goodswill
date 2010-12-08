@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
   belongs_to :donation
   belongs_to :delivery
 
-  validates_presence_of :donation_id, :category, :quantity
+  validates_presence_of :category, :quantity
   validates_numericality_of :status, 
                             :greater_than_or_equal_to => SUBMITTED,
                             :less_than_or_equal_to => WITHDRAWN

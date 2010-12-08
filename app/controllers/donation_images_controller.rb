@@ -9,6 +9,8 @@ class DonationImagesController < ApplicationController
     respond_to do |format|
       if @image.save
         @donation.images << @image
+      else
+        flash[:image_error] = @image.errors.full_messages.to_s
       end
       format.html { redirect_to donation_path(@donation)}
     end

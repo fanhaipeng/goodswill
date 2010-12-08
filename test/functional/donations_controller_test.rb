@@ -16,16 +16,41 @@ class DonationsControllerTest < ActionController::TestCase
 
   test "create donation should be ok" do
     assert_difference('Donation.count') do
-      post :create, :donation =>
-      { :phone => '13811111111',
-        :address => 'any address',
-        :email => 'goodswill@live.com',
-        :name => 'any name',
-        :track => false,
-        :items => [ items(:item_one), items(:item_two)]
-      }
+      assert_difference('Item.count', 2) do
+        post :create, :donation =>
+        { :phone => '13811111111',
+          :address => 'any address',
+          :email => 'goodswill@live.com',
+          :name => 'any name',
+          :track => false,
+          :items_attributes => 
+          { 
+            "0" => { :category => 'one', :quantity => 12 },
+            "1" => {:category => 'two', :quantity => 2 }
+          }
+        }
+      end
     end
-    # TODO: assert difference for Item.count
+  end
+
+  test "blank items should be ignored" do
+    assert_difference('Donation.count') do
+      assert_difference('Item.count', 2) do
+        post :create, :donation =>
+        { :phone => '13822222222',
+          :address => 'any address',
+          :email => 'goodswill@live.com',
+          :name => 'any name',
+          :track => false,
+          :items_attributes => 
+          { 
+            "0" => {:category => nil, :quantity => nil}, 
+            "1" => {:category => 'two', :quantity => 20},
+            "2" => {:category => 'three', :quantity => 3} 
+          }
+        }
+        end
+    end
   end
 
   test "edit donation should be ok" do
@@ -45,6 +70,11 @@ class DonationsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:donation)
     assert assigns(:donation).items
+  end
+
+  test "404 should return when donation is not found" do
+    get :show, :id => 9999
+    assert_response :missing
   end
 
   test "delete donation should be ok" do

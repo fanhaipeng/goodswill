@@ -13,7 +13,7 @@ class DonationsController < ApplicationController
     @donation = Donation.new(params[:donation])
     respond_to do |format|
       if @donation.save
-        format.html { redirect_to donations_path }
+        format.html { redirect_to donation_path(@donation) }
       else
         format.html { render :action => 'new' }
       end
@@ -38,6 +38,9 @@ class DonationsController < ApplicationController
 
   def show
     @donation = Donation.find_by_id(params[:id])
+    if not @donation
+      render 'public/404.html', :status => 404
+    end
   end
 
   def destroy

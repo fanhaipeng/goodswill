@@ -6,7 +6,7 @@
       prohibited this donation from being saved:</h2> 
     <ul> 
       <%  @donation.errors.full_messages.each do |msg|  %> 
-      <li><%=   msg  %></li> 
+      <li><%= msg  %></li> 
       <%  end %> 
     </ul> 
     </div> 
@@ -17,6 +17,7 @@
     Address: <%= f.text_area :address %> <br/>
     Email: <%= f.email_field :email %> <br/>
     Name: <%= f.text_field :name %> <br/>
+    Details: <%= f.text_area :details %> <br/>
     Track?: <%= f.check_box :track %> <br/>
 
     <%= f.fields_for :items  do |i| %>

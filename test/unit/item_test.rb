@@ -7,7 +7,6 @@ class ItemTest < ActiveSupport::TestCase
   test "fields must not be blank except deliveryid and status" do
     item = Item.new
     assert !item.valid?
-    assert item.errors[:donation_id].any?
     assert item.errors[:category].any?
     assert item.errors[:quantity].any?
   end
