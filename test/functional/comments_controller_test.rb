@@ -17,4 +17,11 @@ class CommentsControllerTest < ActionController::TestCase
     end
   end
 
+  test "comment can't be deleted if it doesn't belong to the donation" do
+    assert_no_difference("Comment.count") do
+      delete :destroy, :donation_id => donations(:donation_two), :id => comments(:comment_one).to_param
+    end
+    assert assigns(:comment).errors[:donation_id]
+  end
+
 end

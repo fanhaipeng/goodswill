@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.donation_id != @donation.id
         # TODO: set errors to @comment
+        @comment.errors.add(:donation_id, 'this comment does not belong to the donation, you can''t delete it')
         format.html { redirect_to donations_path }
       else
         @comment.destroy
