@@ -61,4 +61,8 @@ Goodswill::Application.routes.draw do
   resources :donations do
     resources :comments
   end
+
+  resources :donations do
+    resources :images, :controller => 'donation_images'
+  end
 end
