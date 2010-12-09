@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
 
   attr_accessor :image_data
 
-  def before_validation
+  def self.before_validation
     if image_data
       self.data = image_data.read
       self.image_type = self.image_data.content_type.chomp
