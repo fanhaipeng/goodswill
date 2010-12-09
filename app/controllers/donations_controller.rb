@@ -29,7 +29,7 @@ class DonationsController < ApplicationController
 
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
-        format.html { redirect_to donations_path }
+        format.html { redirect_to donation_path(@donation) }
       else
         format.html { render :action => 'edit' }
       end

@@ -6,12 +6,14 @@
 
 item_one: 
   id: 1
+  donation_id: 1
   category: 'category one'
   quantity: 2
   status: 0
 
 item_two:
   id: 2
+  donation_id: 1
   category: 'category two'
   quantity: 3
   status: 0
