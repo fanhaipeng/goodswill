@@ -24,6 +24,6 @@ class NewsImagesControllerTest < ActionController::TestCase
     assert_difference("Image.count", -1) do
       delete :destroy, :news_id => news(:news_one), :id => images(:image_one)
     end
-    assert_redirected_to news_index_path
+    assert_redirected_to news_path(news(:news_one))
   end
 end

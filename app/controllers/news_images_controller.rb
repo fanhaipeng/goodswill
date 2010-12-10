@@ -32,7 +32,7 @@ class NewsImagesController < ApplicationController
     @img.destroy
     
     respond_to do |format|
-      format.html { redirect_to news_index_path }
+      format.html { redirect_to news_path(@news) }
     end
   end
 end

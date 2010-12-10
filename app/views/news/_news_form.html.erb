@@ -1,0 +1,7 @@
+<div id="news_form">
+  <%= form_for @news do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content %>
+    <%= submit_tag "Create News" %>
+  <% end %>
+</div>
