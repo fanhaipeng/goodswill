@@ -12,6 +12,7 @@ class DonationImagesControllerTest < ActionController::TestCase
                        :data => [0xa, 0xb], 
                        :description => 'any text' }
     end
+    assert_redirected_to donation_path(donations(:donation))
     assert assigns(:donation)
   end
 
