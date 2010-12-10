@@ -8,7 +8,7 @@ class DonationImagesControllerTest < ActionController::TestCase
   test "create image for donation should be ok" do
     assert_difference("Image.count") do
       post :create, :donation_id => donations(:donation_one), 
-           :image => { :image_type => Image::JPEG, 
+           :image => { :image_type => 'image/jpeg', 
                        :data => [0xa, 0xb], 
                        :description => 'any text' }
     end

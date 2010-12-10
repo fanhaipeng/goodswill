@@ -13,4 +13,5 @@ class Item < ActiveRecord::Base
   validates_numericality_of :status, 
                             :greater_than_or_equal_to => SUBMITTED,
                             :less_than_or_equal_to => WITHDRAWN
+
 end

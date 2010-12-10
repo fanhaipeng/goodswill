@@ -11,20 +11,27 @@
     </div> 
   <%  end %> 
 
-  <%= form_for @donation do |f| %>
-    Phone: <%= f.text_field :phone %> <br/>
-    Address: <%= f.text_area :address %> <br/>
-    Email: <%= f.email_field :email %> <br/>
-    Name: <%= f.text_field :name %> <br/>
-    Details: <%= f.text_area :details %> <br/>
-    Track?: <%= f.check_box :track %> <br/>
-
-    <%= f.fields_for :items  do |i| %>
-      Category<%= i.text_field :category %>
-      Quantity<%= i.number_field :quantity %>
+    <%= form_for @donation do |f| %>
+      Phone: <%= f.text_field :phone %> <br/>
+      Address: <%= f.text_area :address %> <br/>
+      Email: <%= f.email_field :email %> <br/>
+      Name: <%= f.text_field :name %> <br/>
+      Details: <%= f.text_area :details %> <br/>
+      Track?: <%= f.check_box :track %> <br/>
+  
+  <div id="donation_items">
+      <%= f.fields_for :items  do |i| %>
+      <div class="donation_item">
+        Category<%= i.text_field :category %>
+        Quantity<%= i.number_field :quantity %>
+        <%= raw remove_link_unless_new_record(i) %>
+        <br/>
+      </div>
+      <% end %>
+  </div>
       <br/>
+      <%= add_item_link "Add an item", f %> 
+      <%= submit_tag %>
     <% end %>
-    <br/>
-    <%= submit_tag %>
-  <% end %>
+  <p>
 </div>

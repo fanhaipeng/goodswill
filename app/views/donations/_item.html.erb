@@ -1,0 +1,7 @@
+<div class="donation_item">
+  <%= df.fields_for :items, item do |i| %>
+    Category<%= i.text_field :category %>
+    Quantity<%= i.number_field :quantity %>
+    <%= link_to_function "[-]", "$(this).up('.donation_item').remove()" %>
+  <% end %>
+</div>

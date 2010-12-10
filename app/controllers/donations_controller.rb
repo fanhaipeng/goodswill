@@ -5,8 +5,6 @@ class DonationsController < ApplicationController
   def new
     @donation = Donation.new
     @donation.items.build
-    @donation.items.build
-    @donation.items.build
   end
 
   def create
