@@ -1,0 +1,2 @@
+class NewsImagesController < ApplicationController
+end

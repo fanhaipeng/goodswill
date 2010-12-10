@@ -65,4 +65,10 @@ Goodswill::Application.routes.draw do
   resources :donations do
     resources :images, :controller => 'donation_images'
   end
+
+  resources :news
+
+  resources :donations do
+    resources :images, :controller => 'news_images'
+  end
 end
