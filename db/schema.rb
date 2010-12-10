@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210120457) do
+ActiveRecord::Schema.define(:version => 20101210230938) do
 
   create_table "comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -96,13 +96,13 @@ ActiveRecord::Schema.define(:version => 20101210120457) do
   create_table "receivers", :force => true do |t|
     t.string   "name",         :limit => 50,                     :null => false
     t.text     "introduction",                                   :null => false
-    t.string   "address",      :limit => 200
-    t.string   "phone",        :limit => 20
-    t.string   "email",        :limit => 50
+    t.string   "address",      :limit => 200,                    :null => false
+    t.string   "phone",        :limit => 20,                     :null => false
+    t.string   "email",        :limit => 50,                     :null => false
     t.boolean  "approved",                    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "image_id"
+    t.integer  "image_id",                                       :null => false
   end
 
   add_index "receivers", ["image_id"], :name => "receiver_image_foreign_key"
