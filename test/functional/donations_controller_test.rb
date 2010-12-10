@@ -28,6 +28,8 @@ class DonationsControllerTest < ActionController::TestCase
         )
       end
     end
+    assert assigns(:donation)
+    assert_redirected_to donation_path(assigns(:donation).id)
   end
 
   test "blank items should be ignored" do
@@ -43,6 +45,8 @@ class DonationsControllerTest < ActionController::TestCase
           ) 
         end
     end
+    assert assigns(:donation)
+    assert_redirected_to donation_path(assigns(:donation).id)
   end
 
   test "partial blank item should fail donation create" do
