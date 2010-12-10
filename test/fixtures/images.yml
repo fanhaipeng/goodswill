@@ -4,14 +4,26 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-image_one:
+image_one: # for donation
   id: 1
   image_type: 'images/jpeg'
   data: [0xa]
   description: 'image one'
 
-image_two: 
+image_two: # for donation
   id: 2
   image_type: 'images/png'
   data: [0xb]
   description: 'image two' 
+
+image_three: # for news
+  id: 3
+  image_type: 'images/jpeg'
+  data: [0xd]
+  description: 'image three'
+
+image_four: # for news
+  id: 4
+  image_type: 'images/png'
+  data: [0xa]
+  description: 'image four' 
