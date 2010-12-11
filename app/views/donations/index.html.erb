@@ -1,1 +1,9 @@
 <h2>Index of donations</h2>
+
+<ul>
+<% for donation in @donations %>
+  <li><%= link_to "Donation by " << donation.name, donation_path(donation) %></li>
+<% end %>
+</ul>
+
+<%= link_to "New donation", new_donation_path %>

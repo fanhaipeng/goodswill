@@ -8,6 +8,7 @@ class DonationsControllerTest < ActionController::TestCase
   test "index of donations should be ok" do
     get :index
     assert_response :success
+    assert assigns(:donations)
   end
 
   test "new donation should be ok" do

@@ -5,7 +5,7 @@
     Phone: <span><%= @donation.phone %></span>
     </p>
     <p>
-    Adress: <span><%= @donation.address %></span>
+    Address: <span><%= @donation.address %></span>
     </p>
     <p>
     Email: <span><%= @donation.email %></span>
@@ -16,15 +16,19 @@
     <p>
     Track? <span><%= @donation.track ? "YES" : "NO" %></span>
     </p>
-    <table>
+    <h3>Donated items</h3>
+    <table> 
       <thead>
-        <tr><td>Category</td><td>Quantity</td></tr>
+        <tr style="text-align:center;font-weight:bold;border:solid 1px">
+          <td style="width: 150px">Category</td>
+          <td style="width: 150px">Quantity</td>
+        </tr>
       </thead>
       <tbody>
         <% for item in @donation.items %>
-          <tr>
-            <td><%= h item.category %></td>
-            <td><%= h item.quantity %></td>
+          <tr> 
+            <td style="border:solid 1px"><%= h item.category %></td>
+            <td style="border:solid 1px"><%= h item.quantity %></td>
           </tr>
         <% end %>
       </tbody>
@@ -77,4 +81,6 @@
   </div>
 
   <%= link_to "New Donation", new_donation_path %>
+  <%= link_to "Edit Donation", edit_donation_path(@donation) %>
+  <%= link_to "Back to list", donations_path %>
 </div>
