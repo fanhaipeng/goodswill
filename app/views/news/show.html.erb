@@ -28,3 +28,7 @@
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>
+
+<%= link_to "Create news", new_news_path %>
+<%= link_to "Edit news", edit_news_path(@news) %>
+<%= link_to "Back to list", news_index_path %>

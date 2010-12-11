@@ -1,1 +1,9 @@
 <h2>Index of news</h2>
+
+<ul>
+<% for news in @all_news %>
+  <li><%= link_to news.title, news_path(news) %></li>
+<% end %>
+</ul>
+
+<%= link_to "Create news", new_news_path %>
