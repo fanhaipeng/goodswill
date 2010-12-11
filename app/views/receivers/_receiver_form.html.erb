@@ -1,0 +1,11 @@
+<div id="receiver_form">
+<%= form_for @receiver, :html => { :multipart => true } do |f| %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>Introduction: <%= f.text_area :introduction %></p>
+  <p>Phone: <%= f.text_field :phone %></p>
+  <p>Address: <%= f.text_field :address %></p>
+  <p>Email: <%= f.email_field :email %></p>
+  <p>Image: <%= f.file_field :image_file %>
+  <p><%= submit_tag "Submit" %></p>
+<% end %>
+</div>

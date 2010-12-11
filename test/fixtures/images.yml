@@ -27,3 +27,15 @@ image_four: # for news
   image_type: 'images/png'
   data: [0xa]
   description: 'image four' 
+
+image_five: # for receiver
+  id: 5
+  image_type: 'image/jpeg'
+  data: [0xc]
+  description: 'image five of receiver'
+
+image_six: # for receiver
+  id: 6
+  image_type: 'image/png'
+  data: [0x4]
+  description: 'image six of receiver'

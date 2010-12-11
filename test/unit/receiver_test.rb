@@ -10,7 +10,6 @@ class ReceiverTest < ActiveSupport::TestCase
     assert receiver.errors[:address].any?
     assert receiver.errors[:phone].any?
     assert receiver.errors[:email].any?
-    assert receiver.errors[:image_id].any?
 
     receiver = create_valid_receiver
     assert receiver.valid?
@@ -44,12 +43,6 @@ class ReceiverTest < ActiveSupport::TestCase
     invalid_phone(receiver, '010-123456789')
   end
 
-  test "receiver should have one image" do
-    receiver = create_valid_receiver
-    assert receiver.valid?
-    assert receiver.image
-  end
-
   private
 
   def create_valid_receiver
@@ -59,7 +52,7 @@ class ReceiverTest < ActiveSupport::TestCase
       :address => 'any address',
       :phone => '13812345678',
       :email => 'goodswill@live.com',
-      :image_id => 1)
+      :image_file => 1)
   end
 
   def valid_phone(receiver, phone)

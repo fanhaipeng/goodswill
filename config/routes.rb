@@ -71,4 +71,8 @@ Goodswill::Application.routes.draw do
   resources :news do
     resources :images, :controller => 'news_images'
   end
+
+  resources :receivers
+
+  resources :images
 end
