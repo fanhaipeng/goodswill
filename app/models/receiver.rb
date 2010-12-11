@@ -1,5 +1,6 @@
 class Receiver < ActiveRecord::Base
   belongs_to :image
+  belongs_to :delivery
 
   validates_presence_of :name, :introduction, :address, :phone, :email 
   validates_format_of :email, 
