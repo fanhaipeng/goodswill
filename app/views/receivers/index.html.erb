@@ -1,1 +1,9 @@
 <h2>Index of receivers</h2>
+
+<ul>
+  <% for receiver in @receivers %>
+    <li><%= link_to receiver.name, receiver_path(receiver) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Register new receiver", new_receiver_path %>
