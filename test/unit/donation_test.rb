@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DonationTest < ActiveSupport::TestCase
 
-  test "fields except track and details must not be blank." do
+  test "fields except note must not be blank." do
     donation = Donation.new
     assert !donation.valid?
 
@@ -10,6 +10,12 @@ class DonationTest < ActiveSupport::TestCase
     assert donation.errors[:address].any?
     assert donation.errors[:email].any?
     assert donation.errors[:name].any?
+
+    # fields which have default values
+    assert !donation.errors[:pick_up].any?
+    assert !donation.errors[:discard].any?
+    assert !donation.errors[:news_letter].any?
+    assert !donation.errors[:note].any?
   end
 
   test "phone must follow cell number rule" do
@@ -94,7 +100,7 @@ class DonationTest < ActiveSupport::TestCase
     assert donation.comments
   end
 
-  test "donation has many images" do
+  test "donation has many donation images" do
     donation = create_valid_donation
     assert donation.images
   end
