@@ -1,0 +1,2 @@
+1. Remove unused actions in donation_images controller, limit actions in routes.
+2. 
