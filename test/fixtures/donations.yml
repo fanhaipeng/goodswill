@@ -10,7 +10,6 @@ donation_one:
   address: '1F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
   email: 'goodswill@live.com'
   name: 'Haipeng Fan'
-  track: false
 
 donation_two: 
   id: 2
@@ -18,5 +17,4 @@ donation_two:
   address: '3F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
   email: 'weiwu@microsoft.com'
   name: 'Wei Wu'
-  track: true
 
