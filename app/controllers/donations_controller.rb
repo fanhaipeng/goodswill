@@ -6,6 +6,7 @@ class DonationsController < ApplicationController
   def new
     @donation = Donation.new
     @donation.items.build
+    @donation.images.build
   end
 
   def create

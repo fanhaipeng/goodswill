@@ -11,27 +11,39 @@
     </div> 
   <%  end %> 
 
-    <%= form_for @donation do |f| %>
-      Phone: <%= f.text_field :phone %> <br/>
-      Address: <%= f.text_area :address %> <br/>
-      Email: <%= f.email_field :email %> <br/>
-      Name: <%= f.text_field :name %> <br/>
-      Details: <%= f.text_area :details %> <br/>
-      Track?: <%= f.check_box :track %> <br/>
+  <%= form_for @donation, :html => {:multipart => true} do |f| %>
+    Phone: <%= f.text_field :phone %> <br/>
+    Address: <%= f.text_area :address %> <br/>
+    Email: <%= f.email_field :email %> <br/>
+    Name: <%= f.text_field :name %> <br/>
+    Note: <%= f.text_area :note %> <br/>
+    Pick Up?: <%= f.check_box :pick_up%> <br/>
+    Discard?: <%= f.check_box :discard%> <br/>
+    News Letter?: <%= f.check_box :news_letter%> <br/>
   
-  <div id="donation_items">
+    <div id="donation_items">
       <%= f.fields_for :items  do |i| %>
       <div class="donation_item">
         Category<%= i.text_field :category %>
         Quantity<%= i.number_field :quantity %>
-        <%= raw remove_link_unless_new_record(i) %>
-        <br/>
+        <%= raw remove_link_unless_new_record(i, 'donation_item') %>
       </div>
       <% end %>
-  </div>
-      <br/>
-      <%= add_item_link "Add an item", f %> 
-      <%= submit_tag %>
-    <% end %>
-  <p>
+    </div>
+    <%= add_item_link "Add an item", f %> 
+  
+    <br/>
+    <div id="donation_images">
+      <%= f.fields_for :images do |i| %>
+      <div class="donation_image">
+        Description: <%= i.text_field :description %>
+        Image File: <%= i.file_field :image_data %>  
+        <%= raw remove_link_unless_new_record(i, 'donation_image') %>
+      </div>
+      <% end %>
+    </div>
+    <%= add_image_link "Add an image", f %>
+    <br/>
+    <%= submit_tag %>
+  <% end %>
 </div>

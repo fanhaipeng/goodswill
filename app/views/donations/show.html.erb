@@ -14,8 +14,18 @@
     Name: <span><%= @donation.name %></span>
     </p>
     <p>
-    Track? <span><%= @donation.track ? "YES" : "NO" %></span>
+    Note: <span><%= @donation.note %></span>
     </p>
+    <p>
+    Pick Up? <span><%= @donation.pick_up ? "YES" : "NO" %></span>
+    </p>
+    <p>
+    Discard? <span><%= @donation.discard ? "YES" : "NO" %></span>
+    </p>
+    <p>
+    News Letter? <span><%= @donation.news_letter ? "YES" : "NO" %></span>
+    </p>
+
     <h3>Donated items</h3>
     <table> 
       <thead>
@@ -33,6 +43,12 @@
         <% end %>
       </tbody>
     </table>
+
+    <h3>Images of donation</h3>
+    <% for image in @donation.images %>
+      <%= image.description %>
+      <img alt="<%= image.description %>" src="<%= donation_image_path(image) %>"/>
+    <% end %>
   </div>
 
   <h2>Comments of this donation</h2>
@@ -50,33 +66,6 @@
       Comment: <%= f.text_area :comment %>
       </p>
       <%= submit_tag "Add a comment" %>
-    <% end %>
-  </div>
-
-  <h2>Images of this donation</h2>
-  <div id="donation_images_section">
-    <% for img in @donation.images %>
-      <p>
-      <span><%= img.description %></span>
-      <img alt="<%= img.description %>" src="<%= donation_image_path(@donation.id, img.id) %>" />
-      [<%= link_to('X', donation_image_path(@donation, img), :method => :delete) %>]
-      </p>
-    <% end %>
-
-    <h3>Add new image:</h3>
-    <p>
-    <% if flash[:image_error] %>
-      <strong>Error: <%= flash[:image_error] %></strong>
-    <% end %>
-    </p>
-    <%= form_for([@donation, @donation.images.build], :html => {:multipart => true}) do |f| %>
-      <p>
-      Description: <%= f.text_field :description %>
-      </p>
-      <p>
-      Image file: <%= f.file_field :image_data %>
-      </p>
-      <%= submit_tag "Add an image" %>
     <% end %>
   </div>
 

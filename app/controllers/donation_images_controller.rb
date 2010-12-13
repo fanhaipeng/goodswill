@@ -18,11 +18,7 @@ class DonationImagesController < ApplicationController
   end
 
   def show
-    @donation = Donation.find_by_id(params[:donation_id])
-    @image = Image.find_by_id(params[:id])
-
-    # TODO: check if donation and image are found, and image is contained by donation
-    
+    @image = DonationImage.find_by_id(params[:id])
     send_data @image.data, :type => @image.image_type
   end
 
