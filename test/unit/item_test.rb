@@ -11,14 +11,14 @@ class ItemTest < ActiveSupport::TestCase
     assert item.errors[:quantity].any?
   end
 
-  test "default status should be submitted" do
+  test "default status should be initial" do
     item = Item.new(
       :donation => donations(:donation_one),
       :category => 'clothe',
       :quantity => 1)
 
     assert item.valid?
-    assert_equal item.status, Item::SUBMITTED
+    assert_equal item.status, Item::INITIAL
   end
 
   test "status must be 0 to 4" do
@@ -47,6 +47,11 @@ class ItemTest < ActiveSupport::TestCase
     item = create_valid_item
     item.delivery = Delivery.new
     assert item.delivery
+  end
+
+  test "item has many notes" do
+    item = create_valid_item
+    assert item.notes
   end
 
   private

@@ -1,17 +1,16 @@
 class Item < ActiveRecord::Base
   # item status 
-  SUBMITTED = 0
-  PICKED_UP = 1
-  CHECKED_OUT = 2
-  DELIVERED = 3
-  WITHDRAWN = 4
+  INITIAL = 0
+  PICKED = 1
+  SORTED = 2
+  WITHDREW = 3
+  DISPOSED = 4
 
   belongs_to :donation
   belongs_to :delivery
+  has_and_belongs_to_many :notes, :class_name => 'ItemNotes'
 
   validates_presence_of :category, :quantity
-  validates_numericality_of :status, 
-                            :greater_than_or_equal_to => SUBMITTED,
-                            :less_than_or_equal_to => WITHDRAWN
+  validates_inclusion_of :status, :in => [INITIAL, PICKED, SORTED, WITHDREW, DISPOSED] 
 
 end
