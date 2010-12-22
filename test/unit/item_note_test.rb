@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ItemNotesTest < ActiveSupport::TestCase
+class ItemNoteTest < ActiveSupport::TestCase
 
   fixtures :users
 
