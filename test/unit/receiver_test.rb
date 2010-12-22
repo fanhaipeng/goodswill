@@ -51,8 +51,8 @@ class ReceiverTest < ActiveSupport::TestCase
       :introduction => 'any text',
       :address => 'any address',
       :phone => '13812345678',
-      :email => 'goodswill@live.com',
-      :image_file => 1)
+      :email => 'goodswill@live.com'
+    )
   end
 
   def valid_phone(receiver, phone)
