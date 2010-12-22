@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :donation
   belongs_to :delivery
-  has_and_belongs_to_many :notes, :class_name => 'ItemNotes'
+  has_and_belongs_to_many :notes, :class_name => 'ItemNote', :join_table => 'items_notes'
 
   validates_presence_of :category, :quantity
   validates_inclusion_of :status, :in => [INITIAL, PICKED, SORTED, WITHDREW, DISPOSED] 
