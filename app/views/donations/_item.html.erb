@@ -2,6 +2,7 @@
   <%= df.fields_for :items, item do |i| %>
     Category<%= i.text_field :category %>
     Quantity<%= i.number_field :quantity %>
+    Unit<%= i.text_field :unit %>
     <%= link_to_function "[-]", "$(this).up('.donation_item').remove()" %>
   <% end %>
 </div>

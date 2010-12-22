@@ -26,6 +26,7 @@
       <div class="donation_item">
         Category<%= i.text_field :category %>
         Quantity<%= i.number_field :quantity %>
+        Unit<%= i.text_field :unit %>
         <%= raw remove_link_unless_new_record(i, 'donation_item') %>
       </div>
       <% end %>
