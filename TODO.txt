@@ -1,2 +1,2 @@
 1. Remove unused actions in donation_images controller, limit actions in routes.
-2. 
+2. Investigate how to delete a donation which has items, donation_images and comments 

@@ -2,9 +2,8 @@ require 'test_helper'
 
 class DonationsControllerTest < ActionController::TestCase
 
-  fixtures :donations
-  fixtures :items
-
+  # tests for donations
+  
   test "index of donations should be ok" do
     get :index
     assert_response :success
@@ -21,11 +20,9 @@ class DonationsControllerTest < ActionController::TestCase
     assert_difference('Donation.count') do
       assert_difference('Item.count', 2) do
         post :create, :donation =>
-        create_donation_with_items(
-          { 
-            "0" => { :category => 'one', :quantity => 12 },
-            "1" => {:category => 'two', :quantity => 2 }
-          }
+        create_donation(
+          create_item_params, 
+          create_image_params
         )
       end
     end
@@ -33,16 +30,50 @@ class DonationsControllerTest < ActionController::TestCase
     assert_redirected_to donation_path(assigns(:donation).id)
   end
 
+  test "edit donation should be ok" do
+    get :edit, :id => donations(:donation_two).to_param
+    assert_response :success
+    assert assigns(:donation)
+    assert_equal donations(:donation_two).id, assigns(:donation).id
+  end
+  
+  test "update donation should be ok" do
+    put :update, :id => donations(:donation_one), :donation => { :phone => '020-12345678' }
+    assert_redirected_to donation_path(donations(:donation_one))
+  end
+
+  test "show donation should be ok" do
+    get :show, :id => donations(:donation_one).to_param
+    assert_response :success
+    assert assigns(:donation)
+    assert_equal 2, assigns(:donation).items.length
+  end
+
+  test "404 should return when donation is not found" do
+    get :show, :id => 9999
+    assert_response :missing
+  end
+
+  test "delete donation should be ok" do
+    assert_difference('Donation.count', -1) do 
+      delete :destroy, :id => donations(:donation_one).to_param
+    end
+    assert_redirected_to donations_path
+  end
+
+  # tests for items
+
   test "blank items should be ignored" do
     assert_difference("Donation.count") do
       assert_difference('Item.count', 2) do
         post :create, :donation =>
-          create_donation_with_items(
+          create_donation(
             { 
               "0" => {:category => nil, :quantity => nil}, 
               "1" => {:category => 'two', :quantity => 20},
               "2" => {:category => 'three', :quantity => 3} 
-            }
+            },
+            create_image_params
           ) 
         end
     end
@@ -54,27 +85,16 @@ class DonationsControllerTest < ActionController::TestCase
     assert_no_difference("Donation.count") do
       assert_no_difference("Item.count") do
         post :create, :donation =>
-          create_donation_with_items(
+          create_donation(
             {
               "0" => {:category => nil, :quantity => 1}
-            }
+            },
+            create_image_params
           )
       end
     end
     assert assigns(:donation)
     assert assigns(:donation).errors.any?
-  end
-
-  test "edit donation should be ok" do
-    get :edit, :id => donations(:donation_two).to_param
-    assert_response :success
-    assert assigns(:donation)
-    assert_equal donations(:donation_two).id, assigns(:donation).id
-  end
-
-  test "update donation should be ok" do
-    put :update, :id => donations(:donation_one), :donation => { :phone => '020-12345678' }
-    assert_redirected_to donation_path(donations(:donation_one))
   end
 
   test "add item to existing donation should be ok" do
@@ -107,6 +127,7 @@ class DonationsControllerTest < ActionController::TestCase
               {
                 :id => items(:item_one).id,
                 :category => 'new category one',
+                :unit => 'new unit'
               },
               "1" =>
               {
@@ -137,34 +158,125 @@ class DonationsControllerTest < ActionController::TestCase
     end
   end
 
-  test "show donation should be ok" do
-    get :show, :id => donations(:donation_one).to_param
-    assert_response :success
-    assert assigns(:donation)
-    assert_equal 2, assigns(:donation).items.length
-  end
+  # tests for images
 
-  test "404 should return when donation is not found" do
-    get :show, :id => 9999
-    assert_response :missing
-  end
-
-  test "delete donation should be ok" do
-    assert_difference('Donation.count', -1) do 
-      delete :destroy, :id => donations(:donation_one).to_param
+  test "blank images should be ignored" do
+    assert_difference("Donation.count") do
+      assert_difference("DonationImage.count") do
+        post :create, :donation =>
+          create_donation(
+            create_item_params,
+            { 
+              "0" => {:description => nil, :image_data => nil}, 
+              "1" => {:description => 'image1', :image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
+            }
+          ) 
+      end
     end
-    assert_redirected_to donations_path
+  end
+
+  test "partial blank image should fail donation create" do
+    assert_no_difference("Donation.count") do
+      assert_no_difference("DonationImage.count") do
+        post :create, :donation =>
+          create_donation(
+            create_item_params,
+            {
+              "0" => {:description => nil, :image_data => fixture_file_upload('/files/test2.jpg', 'image/jpeg')}
+            }
+          )
+      end
+    end
+    assert assigns(:donation)
+    assert assigns(:donation).errors.any?
+  end
+
+  test "add image to existing donation should be ok" do
+    assert_no_difference("Donation.count") do
+      assert_difference("DonationImage.count") do
+        put :update, :id => donations(:donation_one), 
+          :donation => 
+          { :images_attributes => 
+            { "0" => 
+              { 
+                :description => 'new image', 
+                :image_data => fixture_file_upload('/files/test3.png', 'image/png')
+              }
+            }
+          }
+      end
+    end
+    assert_redirected_to donation_path(donations(:donation_one))
+  end
+
+  test "update image of donation should be ok" do
+    assert_no_difference("Donation.count") do
+      assert_no_difference("DonationImage.count") do
+        put :update, :id => donations(:donation_one),
+          :donation => 
+          {
+            :images_attributes =>
+            {
+              "0" =>
+              {
+                :id => donation_images(:donation_image_one).id,
+                :description => 'new description'
+              },
+              "1" =>
+              {
+                :id => donation_images(:donation_image_two).id,
+                :image_data => fixture_file_upload('/files/test2.jpg', 'image/jpeg')
+              }              
+            }
+          }
+      end
+    end
+    assert_redirected_to donation_path(donations(:donation_one))
+  end
+
+  test "delete image from existing donation should be ok" do
+    assert_no_difference("Donation.count") do
+      assert_difference("DonationImage.count", -1) do
+        put :update, :id => donations(:donation_one),
+          :donation => 
+          {
+            :images_attributes =>
+            { "0" =>
+              {
+                :id => donation_images(:donation_image_one).id, :_destroy => true
+              }
+            }
+          }
+      end
+    end
   end
 
   private 
 
-  def create_donation_with_items(items)
+  def create_donation(items, images)
     { :phone => '13811111111',
       :address => 'any address',
       :email => 'goodswill@live.com',
       :name => 'any name',
-      :track => false,
-      :items_attributes => items
+      :pick_up => false,
+      :discard => true,
+      :news_letter => true,
+      :items_attributes => items,
+      :images_attributes => images
+    }
+  end
+
+  def create_item_params
+    { 
+      "0" => { :category => 'one', :quantity => 12 ,},
+      "1" => { :category => 'two', :quantity => 2 }
+    }
+  end
+
+  def create_image_params
+    {
+      "0" => { :description => 'a', :image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
+      "1" => { :description => 'test3', :image_data => fixture_file_upload('/files/test2.jpg', 'image/png')}
     }
   end
 end

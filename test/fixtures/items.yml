@@ -9,6 +9,7 @@ item_one:
   donation_id: 1
   category: 'category one'
   quantity: 2
+  unit: 'piece'
   status: 0
 
 item_two:
@@ -16,16 +17,19 @@ item_two:
   donation_id: 1
   category: 'category two'
   quantity: 3
+  unit: 'kilogram'
   status: 0
 
 item_three: 
   id: 3
   category: 'category three'
   quantity: 12
+  unit: 'meter'
   status: 0
 
 item_four:
   id: 4
   category: 'category four'
   quantity: 8
+  unit: 'litre'
   status: 0
