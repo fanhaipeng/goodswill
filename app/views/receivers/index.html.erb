@@ -2,7 +2,10 @@
 
 <ul>
   <% for receiver in @receivers %>
-    <li><%= link_to receiver.name, receiver_path(receiver) %></li>
+    <li>
+    <%= link_to receiver.name, receiver_path(receiver) %>
+    (<%= receiver.approved ? "approved" : "pending approve" %>)
+    </li>
   <% end %>
 </ul>
 

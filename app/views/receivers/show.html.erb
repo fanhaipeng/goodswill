@@ -6,7 +6,6 @@
   <p>Phone: <%= @receiver.phone %></p>
   <p>Address: <%= @receiver.address %></p>
   <p>Email: <%= @receiver.email %></p>
-  <p><img alt="<%= @receiver.name %>" src="<%= image_path(@receiver.image_id) %>"/></p>
 </div>
 
 <%= link_to "Edit", edit_receiver_path(@receiver) %>

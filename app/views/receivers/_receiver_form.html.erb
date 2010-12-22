@@ -5,7 +5,11 @@
   <p>Phone: <%= f.text_field :phone %></p>
   <p>Address: <%= f.text_field :address %></p>
   <p>Email: <%= f.email_field :email %></p>
-  <p>Image: <%= f.file_field :image_file %>
+
+  <% if not @receiver.new_record? %>
+  <p>Approved? <%= f.check_box :approved %></p>
+  <% end %>
+
   <p><%= submit_tag "Submit" %></p>
 <% end %>
 </div>

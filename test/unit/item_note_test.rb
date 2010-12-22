@@ -5,7 +5,7 @@ class ItemNoteTest < ActiveSupport::TestCase
   fixtures :users
 
   test "user_id must not be blank" do
-    item_note = ItemNotes.new
+    item_note = ItemNote.new
     assert !item_note.valid?
   end
 
@@ -29,7 +29,7 @@ class ItemNoteTest < ActiveSupport::TestCase
   private
 
   def create_valid_note
-    item_note = ItemNotes.new
+    item_note = ItemNote.new
     item_note.user = users(:user_one)
     assert item_note.valid?
     item_note
