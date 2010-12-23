@@ -1,4 +1,4 @@
 class News < ActiveRecord::Base
-  has_many :news_images
+  has_many :images, :class_name => "NewsImage"
   validates_presence_of :title, :content
 end

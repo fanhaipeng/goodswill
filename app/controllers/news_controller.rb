@@ -5,6 +5,7 @@ class NewsController < ApplicationController
 
   def new
     @news = News.new
+    @news.images.build
   end
 
   def create

@@ -9,25 +9,19 @@
   <h3>Images of this news</h3>
   <% for img in @news.images %>
     <p><%= img.description %></p>
-    <img alt="<%= img.description %>" src="<%= news_image_path(@news, img) %>" />
-    [<%= link_to "X", news_image_path(@news, img), :method => :delete %>]
+    <img alt="<%= img.description %>" src="<%= news_news_image_path(@news, img) %>" />
+    [<%= link_to "X", news_news_image_path(@news, img), :method => :delete %>]
   <% end %>
-  <h3>Add new image</h3>
-  <p>
-  <% if flash[:image_error] %>
-  <strong>Error: <%= flash[:image_error] %></strong>
-  <% end %>
-  </p>
-  <%= form_for([@news, @news.images.build], :html => {:multipart => true}) do |f| %>
-    <p>
+</div>
+
+<div>
+  <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
     Description: <%= f.text_field :description %>
-    </p>
-    <p>
-    Image file: <%= f.file_field :image_data %>
-    </p>
+    Image File: <%= f.file_field :image_data %>
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>
+
 
 <%= link_to "Create news", new_news_path %>
 <%= link_to "Edit news", edit_news_path(@news) %>

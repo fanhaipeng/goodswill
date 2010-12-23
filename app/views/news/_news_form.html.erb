@@ -1,5 +1,5 @@
 <div id="news_form">
-  <%= form_for @news do |f| %>
+  <%= form_for @news, :html => {:multipart => true} do |f| %>
     <p>Title: <%= f.text_field :title %></p>
     <p><%= f.text_area :content %></p>
     <%= submit_tag "Create News" %>

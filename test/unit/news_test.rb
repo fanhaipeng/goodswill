@@ -10,4 +10,10 @@ class NewsTest < ActiveSupport::TestCase
     news = News.new(:title => 'any text', :content => 'any text')
     assert news.valid?
   end
+
+  test "news should have many images" do
+    news = News.new(:title => 'any text', :content => 'any text')
+    assert news.valid?
+    assert news.images 
+  end
 end
