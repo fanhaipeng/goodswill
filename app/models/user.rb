@@ -31,9 +31,11 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, password)
     user = User.find_by_email(email)
-    expected_password = encrypt_password(password, user.salt)
-    if user.hashed_password != expected_password
-      user = nil
+    if user
+      expected_password = encrypt_password(password, user.salt)
+      if user.hashed_password != expected_password
+        user = nil
+      end
     end
     user
   end

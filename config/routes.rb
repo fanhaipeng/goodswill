@@ -75,4 +75,9 @@ Goodswill::Application.routes.draw do
   resources :images
 
   resources :users
+
+  match 'account/login' => 'account#login'
+  match 'account/login' => 'account#login', :method => :post
+  match 'account/logout' => 'account#logout'
+  match 'home/index' => 'home#index'
 end
