@@ -6,8 +6,8 @@
 
 user_one: 
   id: 1
-  email: '1@live.com'
-  hashed_password: '12345'
-  salt: 'salt'
+  email: 'one@goodswill.info'
+  hashed_password: '93c8ff3268503ae6e8b3356027f93ff2aa816f51'
+  salt: '-6168964680.161622786190736'
   name: 'user one'
-  role: 1
+  role: 0

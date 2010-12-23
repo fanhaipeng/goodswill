@@ -73,4 +73,6 @@ Goodswill::Application.routes.draw do
   resources :receivers
 
   resources :images
+
+  resources :users
 end
