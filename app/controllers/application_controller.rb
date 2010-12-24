@@ -4,18 +4,18 @@ class ApplicationController < ActionController::Base
   protected
 
   def admin_user_required
-    user = User.find_by_id(session[:user_id])
+    @current_user = User.find_by_id(session[:user_id])
     flash[:notice] = nil
-    unless user and user.role == User::ADMIN_USER
+    unless @current_user and @current_user.role <= User::ADMIN_USER
       flash[:notice] = "please login"
       redirect_to :controller => :account, :action => :login
     end
   end
 
   def super_user_required
-    user = User.find_by_id(session[:user_id])
+    @current_user = User.find_by_id(session[:user_id])
     flash[:notice] = nil
-    unless user and user.role == User::SUPER_USER
+    unless @current_user and @current_user.role == User::SUPER_USER
       flash[:notice] = 'please login as super user'
       redirect_to :controller => :account, :action => :login
     end

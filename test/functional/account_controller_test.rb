@@ -25,4 +25,11 @@ class AccountControllerTest < ActionController::TestCase
     assert_response :success
     assert !session[:user_id]
   end
+
+  test "logout can't be called not logged in" do
+    post :logout
+    assert_redirected_to account_login_path
+    assert_equal 'please log in', flash[:notice]
+  end
+
 end

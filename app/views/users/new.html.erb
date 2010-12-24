@@ -1,9 +1,5 @@
 <h2>New user</h2>
-<%= form_for :user do |f| %>
-  <p>Email: <%= f.email_field :email %></p>
-  <p>Password: <%= f.password_field :password %></p>
-  <p>Confirm password: <%= f.password_field :password_confirmation %></p>
-  <p>Name: <%= f.text_field :name %></p>
-  <p>Role: <%= f.hidden_field :role %></p>
-  <%= submit_tag "Create user" %>
-<% end %>
+
+<%= render :partial => 'user_form' %>
+
+<%= link_to "Back to list", users_path %>

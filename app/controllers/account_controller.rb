@@ -1,4 +1,7 @@
 class AccountController < ApplicationController
+
+  before_filter :logged_in, :only => :logout
+
   def login
     if request.post?
       user = User.authenticate(params[:user][:email], params[:user][:password])
@@ -20,4 +23,15 @@ class AccountController < ApplicationController
       format.html { render :action => :login }
     end
   end
+
+  private 
+
+  def logged_in
+    flash[:notice] = nil
+    unless session[:user_id]
+      flash[:notice] = "please log in"
+      redirect_to account_login_path
+    end
+  end
+
 end

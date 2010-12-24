@@ -12,10 +12,10 @@ user_one: # password = 'passone'
   name: 'user one'
   role: 0 # super user
 
-user_two:
+user_two: # password = 'passtwo'
   id: 2
   email: 'two@goodswill.info'
-  hashed_password: 'f2ed9764d70a0d0db07368bc78a5ba30401bf9d0'
-  salt: '-6169084280.0936685718146922'
+  hashed_password: 'ee78b28b5aa467039bea4db692d48e56cd60ab6c'
+  salt: '-6171974080.614011057717001'
   name: 'user two'
   role: 1 # admin user

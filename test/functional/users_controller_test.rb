@@ -6,6 +6,8 @@ class UsersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert assigns(:users)
+    assert assigns(:current_user)
+    assert users(:user_one).id, assigns(:current_user).id
   end
 
   test "non super user can't see index" do
@@ -17,6 +19,9 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert assigns(:user)
+    assert assigns(:current_user)
+    assert users(:user_one).id, assigns(:current_user).id
+
   end
 
   test "non super user can't see new page" do
@@ -30,6 +35,8 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert assigns(:user)
     assert_redirected_to user_path(assigns(:user))
+    assert assigns(:current_user)
+    assert users(:user_one).id, assigns(:current_user).id
   end
 
   test "non super user can't create user" do
@@ -54,11 +61,33 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:user)
     assert assigns(:user).id, users(:user_one).id
+    assert assigns(:current_user)
+    assert assigns(:user).id, users(:user_two).id
   end
 
   test "anonymous user can't see show page" do
     get :show, :id => users(:user_one)
     assert_redirected_to account_login_path
+  end
+
+  test "user can see other user's information" do
+    session[:user_id] = users(:user_two).id
+    get :show, :id => users(:user_one).id
+    assert_response :success
+    assert assigns(:user)
+    assert assigns(:user).id, users(:user_one).id
+    assert assigns(:current_user)
+    assert users(:user_two).id, assigns(:current_user).id
+  end
+
+  test "super user can see show page" do
+    session[:user_id] = users(:user_one).id
+    get :show, :id => users(:user_two)
+    assert_response :success
+    assert assigns(:user)
+    assert users(:user_two).id, assigns(:user).id
+    assert assigns(:current_user)
+    assert users(:user_two).id, assigns(:current_user).id
   end
 
   test "delete a user should be ok" do
