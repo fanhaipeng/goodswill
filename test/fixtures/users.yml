@@ -4,10 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 
-user_one: 
+user_one: # password = 'passone'
   id: 1
   email: 'one@goodswill.info'
   hashed_password: '93c8ff3268503ae6e8b3356027f93ff2aa816f51'
   salt: '-6168964680.161622786190736'
   name: 'user one'
-  role: 0
+  role: 0 # super user
+
+user_two:
+  id: 2
+  email: 'two@goodswill.info'
+  hashed_password: 'f2ed9764d70a0d0db07368bc78a5ba30401bf9d0'
+  salt: '-6169084280.0936685718146922'
+  name: 'user two'
+  role: 1 # admin user

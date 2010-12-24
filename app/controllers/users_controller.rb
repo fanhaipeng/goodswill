@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_filter :super_user_required, :only => [:index, :new, :create, :destroy]
+  before_filter :admin_user_required, :only => :show
+
   def index
     @users = User.all
   end
