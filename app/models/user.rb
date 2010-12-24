@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  SUPER_USER = 0
+  ADMIN_USER = 1
+
   validates_presence_of :name
   validates_presence_of :email, :salt, :role, :password, :password_confirmation, :on => :create
   validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i

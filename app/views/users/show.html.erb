@@ -1,1 +1,4 @@
 <h2>Show a user</h2>
+<p>Email: <%= @user.email %></p>
+<p>Name: <%= @user.name %></p>
+<p>Role: <%= @user.role == User::SUPER_USER ? "Super user" : "Admin user" %></p>
