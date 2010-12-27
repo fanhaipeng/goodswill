@@ -1,0 +1,8 @@
+<h2>Edit user's password</h2>
+<%= form_for @user do |f| %>
+  <p>Change password of <%= @user.name %></p>
+  <p>Password: <%= f.password_field :password %></p>
+  <p>Confirm Password: <%= f.password_field :password_confirmation %></p>
+  <%= submit_tag "Change password" %>
+  <%= link_to "Cancel", user_path(@user) %>
+<% end %>

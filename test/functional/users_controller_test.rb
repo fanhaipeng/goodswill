@@ -106,6 +106,43 @@ class UsersControllerTest < ActionController::TestCase
     super_user_login_notice
   end
 
+  test "edit user's password should be ok" do
+    session[:user_id] = users(:user_two).id
+    get :edit, :id => users(:user_two).id.to_s
+    assert_response :success
+    assert assigns(:user)
+    assert_equal users(:user_two).id, assigns(:user).id
+  end
+
+  test "anonymous user can't see edit page" do
+    get :edit, :id => users(:user_two)
+    assert_redirected_to account_login_path
+  end
+
+  test "user is not allowed to edit other user's password" do
+    session[:user_id] = users(:user_one).id
+    get :edit, :id => users(:user_two).id.to_s
+    assert_response 401 # unauthorized
+  end
+
+  test "update user's password should be ok" do
+    session[:user_id] = users(:user_two).id
+    put :update, :id => users(:user_two).id.to_s, :user => { :password => 'newpass', :password_confirmation => 'newpass' }
+    assert_redirected_to user_path(users(:user_two))
+    assert_equal 'Password has been changed successfully', flash[:notice]
+  end
+
+  test "anonymous user can't update user" do
+    put :update, :id => users(:user_two).id.to_s, :user => { :password => 'newpass', :password_confirmation => 'newpass' }
+    assert_redirected_to account_login_path
+  end
+
+  test "user is not allowed to update other user's password" do
+    session[:user_id] = users(:user_one)
+    put :update, :id => users(:user_two).id.to_s, :user => { :password => 'newpass', :password_confirmation => 'newpass' }
+    assert_response 401 # unauthorized
+  end
+
   private
 
   def test_super_user_required page

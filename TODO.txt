@@ -2,3 +2,4 @@
 2. Investigate how to delete a donation which has items, donation_images and comments 
 3. extract common parts of different image model to a module
 4. Investigate how to right helper class for each model
+5. Figure out why the flash message gets lost after redirect
