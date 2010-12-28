@@ -90,6 +90,20 @@ class DonationTest < ActiveSupport::TestCase
     assert donation.valid?
   end
 
+  test "status must be 0 to 2" do
+    donation = create_valid_donation
+
+    donation.status = -1
+    assert !donation.valid?
+    donation.status = 3
+    assert !donation.valid?
+
+    donation.status = 0 
+    assert donation.valid?
+    donation.status = 2
+    assert donation.valid?
+  end
+
   test "donation has many items" do
     donation = create_valid_donation
     assert donation.items
