@@ -1,0 +1,9 @@
+<h3>Comments of this donation</h3>
+<div id="donation_comments_section">
+  <% for comment in @donation.comments %>
+    <p>
+      <%= comment.comment %>
+      [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete)%>]
+    </p>
+  <% end %>
+</div>
