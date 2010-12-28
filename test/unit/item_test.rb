@@ -18,22 +18,22 @@ class ItemTest < ActiveSupport::TestCase
       :quantity => 1)
 
     assert item.valid?
-    assert_equal item.status, Item::INITIAL
+    assert_equal item.status, Item::NORMAL
   end
 
-  test "status must be 0 to 4" do
+  test "status must be 0 to 2" do
     item = create_valid_item
 
     item.status = -1
     assert !item.valid?
 
-    item.status =5 
+    item.status =3 
     assert !item.valid?
 
     item.status =0 
     assert item.valid?
     
-    item.status =4 
+    item.status =2 
     assert item.valid?
   end
 
@@ -47,11 +47,6 @@ class ItemTest < ActiveSupport::TestCase
     item = create_valid_item
     item.delivery = Delivery.new
     assert item.delivery
-  end
-
-  test "item has many notes" do
-    item = create_valid_item
-    assert item.notes
   end
 
   private
