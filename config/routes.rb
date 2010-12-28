@@ -84,5 +84,9 @@ Goodswill::Application.routes.draw do
   match 'pick_up/:id' => 'pick_up#show', :via => :get, :as => 'pick_up_donation'
   match 'pick_up/:id' => 'pick_up#update', :via => :put, :as => 'pick_up_donation'
 
+  match 'sort/index' => 'sort#index'
+  match 'sort/:id' => 'sort#show', :via => :get, :as => 'sort_donation'
+  match 'sort/:id' => 'sort#update', :via => :put, :as => 'sort_donation'
+
   match 'home/index' => 'home#index'
 end

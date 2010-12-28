@@ -13,6 +13,7 @@ donation_one:
   pick_up: false
   discard: true
   news_letter: true
+  status: 0
 
 donation_two: 
   id: 2
@@ -23,4 +24,15 @@ donation_two:
   pick_up: false
   discard: true
   news_letter: true
+  status: 0
 
+donation_three: 
+  id: 3
+  phone: 13887654321
+  address: '6F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
+  email: 'carrie@microsoft.com'
+  name: 'Carrie Wong'
+  pick_up: false
+  discard: true
+  news_letter: true
+  status: 1

@@ -33,3 +33,19 @@ item_four:
   quantity: 8
   unit: 'litre'
   status: 0
+
+item_five:
+  id: 5
+  donation_id: 3
+  category: 'category five'
+  quantity: 8
+  unit: 'litre'
+  status: 0
+
+item_six:
+  id: 6
+  donation_id: 3
+  category: 'category six'
+  quantity: 10
+  unit: 'piece'
+  status: 0

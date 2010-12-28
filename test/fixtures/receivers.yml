@@ -20,3 +20,11 @@ receiver_two:
   address: 'address two'
   phone: '010-12345678'
   email: '2@goodswill.info'
+
+receiver_three: 
+  id: 3
+  name: 'receiver three '
+  introduction: 'introduction three'
+  address: 'address three'
+  phone: '010-12345678'
+  email: '3@goodswill.info'

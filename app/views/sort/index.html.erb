@@ -1,0 +1,7 @@
+<h2>Index of sort</h2>
+
+<ul>
+<% for d in @donations %>
+  <li>Donation by <%= d.name %> [<%= link_to "=>", sort_donation_path(d) %>]</li>
+<% end %>
+</ul>
