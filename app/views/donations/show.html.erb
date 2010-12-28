@@ -1,75 +1,14 @@
 <div>
   <h2>Donation information</h2>
-  <div id="donation_section">
-    <p>
-    Phone: <span><%= @donation.phone %></span>
-    </p>
-    <p>
-    Address: <span><%= @donation.address %></span>
-    </p>
-    <p>
-    Email: <span><%= @donation.email %></span>
-    </p>
-    <p>
-    Name: <span><%= @donation.name %></span>
-    </p>
-    <p>
-    Note: <span><%= @donation.note %></span>
-    </p>
-    <p>
-    Pick Up? <span><%= @donation.pick_up ? "YES" : "NO" %></span>
-    </p>
-    <p>
-    Discard? <span><%= @donation.discard ? "YES" : "NO" %></span>
-    </p>
-    <p>
-    News Letter? <span><%= @donation.news_letter ? "YES" : "NO" %></span>
-    </p>
+  <%= render :partial => "shared/donation" %>
 
-    <h3>Donated items</h3>
-    <table> 
-      <thead>
-        <tr style="text-align:center;font-weight:bold;border:solid 1px">
-          <td style="width: 150px">Category</td>
-          <td style="width: 150px">Quantity</td>
-          <td style="width: 150px">Unit</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% for item in @donation.items %>
-          <tr> 
-            <td style="border:solid 1px"><%= h item.category %></td>
-            <td style="border:solid 1px"><%= h item.quantity %></td>
-            <td style="border:solid 1px"><%= h item.unit%></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <h3>Images of donation</h3>
-    <% for image in @donation.images %>
-      <%= image.description %>
-      <img alt="<%= image.description %>" src="<%= donation_image_path(image) %>"/>
-    <% end %>
-  </div>
-
-  <h2>Comments of this donation</h2>
-  <div id="donation_comments_section">
-    <% for comment in @donation.comments %>
-      <p>
-        <%= comment.comment %>
-        [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete)%>]
-      </p>
-    <% end %>
-
-    <h3>Add new comment:</h3>
-    <%= form_for [@donation, @donation.comments.build] do |f| %>
-      <p>
-      Comment: <%= f.text_area :comment %>
-      </p>
-      <%= submit_tag "Add a comment" %>
-    <% end %>
-  </div>
+  <h3>Add new comment:</h3>
+  <%= form_for [@donation, @donation.comments.build] do |f| %>
+    <p>
+    Comment: <%= f.text_area :comment %>
+    </p>
+    <%= submit_tag "Add a comment" %>
+  <% end %>
 
   <%= link_to "New Donation", new_donation_path %>
   <%= link_to "Edit Donation", edit_donation_path(@donation) %>

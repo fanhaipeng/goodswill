@@ -77,7 +77,12 @@ Goodswill::Application.routes.draw do
   resources :users
 
   match 'account/login' => 'account#login'
-  match 'account/login' => 'account#login', :method => :post
+  match 'account/login' => 'account#login', :via => :post
   match 'account/logout' => 'account#logout'
+
+  match 'pick_up/index' => 'pick_up#index'
+  match 'pick_up/:id' => 'pick_up#show', :via => :get, :as => 'pick_up_donation'
+  match 'pick_up/:id' => 'pick_up#update', :via => :put, :as => 'pick_up_donation'
+
   match 'home/index' => 'home#index'
 end

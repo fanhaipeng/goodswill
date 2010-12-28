@@ -1,0 +1,17 @@
+<h2>Show a donation</h2>
+
+<%= render :partial => "shared/donation" %>
+
+<h3>Pick up this donation</h3>
+<% form_for :donation, :url => pick_up_donation_path(@donation), :html => { :method => :put } do |f| %>
+  <%= f.hidden_field :status, :value => Donation::PICKED %>
+  <%= fields_for @donation.notes.build do |n| %>
+    <%= n.text_area :note %>
+  <% end %>
+  <%= submit_tag "Pick up" %>
+<% end %>
+
+<h3>History of operation</h3>
+<% for note in @donation_notes %>
+  <p><%= note.note %></p>
+<% end %>

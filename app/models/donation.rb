@@ -7,6 +7,7 @@ class Donation < ActiveRecord::Base
   has_many :items
   has_many :comments
   has_many :images, :class_name => 'DonationImage'
+  has_many :notes, :class_name => 'DonationNote'
 
   accepts_nested_attributes_for :items, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => :all_blank

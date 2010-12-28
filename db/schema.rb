@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213082055) do
+ActiveRecord::Schema.define(:version => 20101228032805) do
 
   create_table "comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -44,8 +44,7 @@ ActiveRecord::Schema.define(:version => 20101213082055) do
   create_table "delivery_notes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "delivery_id"
-    t.text     "comment"
-    t.integer  "status",      :default => 0, :null => false
+    t.text     "note",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +63,17 @@ ActiveRecord::Schema.define(:version => 20101213082055) do
 
   add_index "donation_images", ["donation_id"], :name => "donation_image_donation_foreign_key"
 
+  create_table "donation_notes", :force => true do |t|
+    t.integer  "donation_id", :null => false
+    t.integer  "user_id",     :null => false
+    t.text     "note",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "donation_notes", ["donation_id"], :name => "donation_notes_donation_foreign_key"
+  add_index "donation_notes", ["user_id"], :name => "donation_notes_user_foreign_key"
+
   create_table "donations", :force => true do |t|
     t.string   "phone",       :limit => 20,                    :null => false
     t.string   "address",     :limit => 20,                    :null => false
@@ -75,17 +85,8 @@ ActiveRecord::Schema.define(:version => 20101213082055) do
     t.boolean  "discard",                   :default => true,  :null => false
     t.boolean  "news_letter",               :default => true,  :null => false
     t.text     "note"
+    t.integer  "status",                    :default => 0,     :null => false
   end
-
-  create_table "item_notes", :force => true do |t|
-    t.integer  "user_id",                   :null => false
-    t.integer  "status",     :default => 0, :null => false
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "item_notes", ["user_id"], :name => "item_notes_user_foreign_key"
 
   create_table "items", :force => true do |t|
     t.integer  "donation_id",                              :null => false
@@ -100,14 +101,6 @@ ActiveRecord::Schema.define(:version => 20101213082055) do
 
   add_index "items", ["delivery_id"], :name => "item_delivery_foreign_key"
   add_index "items", ["donation_id"], :name => "item_donation_foreign_key"
-
-  create_table "items_notes", :id => false, :force => true do |t|
-    t.integer "item_id"
-    t.integer "item_note_id"
-  end
-
-  add_index "items_notes", ["item_id"], :name => "items_notes_item_foreign_key"
-  add_index "items_notes", ["item_note_id"], :name => "items_notes_item_note_foreign_key"
 
   create_table "news", :force => true do |t|
     t.string   "title",      :limit => 200, :null => false

@@ -1,0 +1,7 @@
+<h2>Index of pick up</h2>
+
+<ul>
+  <% for donation in @donations %>
+    <li><%= "Donation by #{donation.name}" %> [<%= link_to "=>", pick_up_donation_path(donation) %>]</li>
+  <% end %>
+</ul>

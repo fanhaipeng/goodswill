@@ -119,6 +119,11 @@ class DonationTest < ActiveSupport::TestCase
     assert donation.images
   end
 
+  test "donation has many donation notes" do
+    donation = create_valid_donation
+    assert donation.notes
+  end
+
 private
 
   def create_valid_donation
