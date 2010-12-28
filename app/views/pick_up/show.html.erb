@@ -8,7 +8,7 @@
 </div>
 
 <h3>Pick up this donation</h3>
-<% form_for :donation, :url => pick_up_donation_path(@donation), :html => { :method => :put } do |f| %>
+<%= form_for :donation, :url => pick_up_donation_path(@donation), :html => { :method => :put } do |f| %>
   <%= f.hidden_field :status, :value => Donation::PICKED %>
   <%= fields_for @donation.notes.build do |n| %>
     <%= n.text_area :note %>
