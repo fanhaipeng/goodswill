@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class DeliveryImageTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "fields should not be blank" do
+    img = DeliveryImage.new
+    assert !img.valid?
+    assert img.errors[:description].any?
+    assert img.errors[:data].any?
+    assert img.errors[:image_type].any?
+
+    img.description = 'any description'
+    img.image_type = 'image/png'
+    img.data = [0xa, 0xb]
   end
 end
