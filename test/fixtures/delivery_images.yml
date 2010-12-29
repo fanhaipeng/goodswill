@@ -3,9 +3,10 @@
 # This model initially had no columns defined.  If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+delivery_image_one:
+  id: 1
+  delivery_id: 1
+  description: 'delivery image one'
+  image_type: 'image/png'
+  data: [0x1, 0x2]

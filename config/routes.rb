@@ -66,10 +66,14 @@ Goodswill::Application.routes.draw do
     resources :news_images
   end
   resources :receivers
+  
   resources :deliveries
   match 'deliveries/:id/pack' => 'deliveries#pack', :via => :put, :as => 'delivery_pack'
   match 'deliveries/:id/print_pack' => 'deliveries#print_pack', :via => :get, :as => 'delivery_print_pack'
   match 'deliveries/:id/print_ship' => 'deliveries#print_ship', :via => :get, :as => 'delivery_print_ship'
+  resources :deliveries do
+    resources :delivery_images
+  end
   resources :images
   resources :users
 
