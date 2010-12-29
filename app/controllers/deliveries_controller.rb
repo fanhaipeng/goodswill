@@ -11,6 +11,14 @@ class DeliveriesController < ApplicationController
   end
 
   def update
+    @delivery = Delivery.find_by_id(params[:id])
+    current_status = @delivery.status
+    respond_to do |format|
+      if @delivery.update_attributes(params[:delivery])
+        add_delivery_note(params[:id], build_note_per_status(@delivery.status, params[:note]))
+      end
+      format.html { redirect_to delivery_path(@delivery)}
+    end
   end
 
   def print_pack
@@ -25,12 +33,16 @@ class DeliveriesController < ApplicationController
     @delivery = Delivery.find_by_id(params[:id])
     user = User.find_by_id(session[:user_id])
     @delivery.update_attribute(:status, Delivery::PACKED)
-    note_text << "<p>Packed by #{user.name} at #{Time.now.strftime("%m/%d/%Y %H:%M:%S")}.</p>"
+    note_text << "<p>Packed by #{user.name} at #{get_timestamp}.</p>"
     note_text << "<p>Comment: #{params[:note]}.</p>" if params[:note]
     add_delivery_note params[:id], note_text
     respond_to do |format|
-      format.html { redirect_to deliveries_path(:s => Delivery::OPEN) }
+      format.html { redirect_to delivery_path(@delivery) }
     end
+  end
+
+  def print_ship
+    @delivery = Delivery.find_by_id(params[:id])
   end
 
   private
@@ -48,6 +60,23 @@ class DeliveriesController < ApplicationController
 
   def add_delivery_note delivery_id, note_text
     note = DeliveryNote.create(:user_id => session[:user_id], :delivery_id => delivery_id, :note => note_text)
+  end
+
+  def get_timestamp
+    Time.now.strftime("%m/%d/%Y %H:%M:%S")
+  end
+
+  def build_note_per_status status, note
+    user = User.find_by_id(session[:user_id])
+    action = case status
+             when Delivery::SHIPPED then  "Shipped"
+             when Delivery::CONFIRMED then "Confirmed"
+             else raise "Unexpected status"
+             end
+
+    note_text = "<p>#{} by #{user.name} at #{get_timestamp}</p>"
+    note_text << "<p>#{note}</p>" if note
+    note_text
   end
 end
 

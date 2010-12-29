@@ -1,5 +1,12 @@
 <h2>Show delivery</h2>
 
-<% if @delivery.status == Delivery::OPEN %>
+<% case @delivery.status %>
+<% when Delivery::PACKED %>
+<%= render :partial => "ship" %>
+<% when Delivery::SHIPPED %>
+<%= render :partial => "confirm" %>
+<% when Delivery::CONFIRMED %>
+<%= render :partial => "summary" %>
+<% else %>
 <%= render :partial => "pack" %>
 <% end %>

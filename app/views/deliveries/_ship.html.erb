@@ -1,0 +1,30 @@
+<h3>Donated items to <%= @delivery.receiver.name %></h3>
+
+<p>
+<%= link_to "Print shipment slip", delivery_print_ship_path(@delivery) %>
+</p>
+
+<%= form_for @delivery do |f|  %>
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>Quantity</td>
+      <td>Unit</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% for i in @delivery.items %>
+      <tr>
+        <td><%= i.category %></td>
+        <td><%= i.quantity %></td>
+        <td><%= i.unit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= f.hidden_field :status, :value => Delivery::SHIPPED %>
+Note: <%= text_area_tag :note %> 
+<%= submit_tag "Ship items" %>
+<% end %>
+

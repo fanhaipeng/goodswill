@@ -38,7 +38,22 @@ class DeliveriesControllerTest < ActionController::TestCase
       put :pack, :id => deliveries(:delivery_six), :items => { "0" => { :id => "7", :include => true }, "1" => { :id => "8", :include => false }}, :note => 'one item does not meet quality bar'
     end
     assert 1, deliveries(:delivery_six).items.length
-    assert_redirected_to deliveries_path(:s => Delivery::OPEN)
+    assert_redirected_to delivery_path(deliveries(:delivery_six))
+  end
+
+  test "print ship should be ok" do
+    session[:user_id] = users(:user_two)
+    get :print_ship, :id => deliveries(:delivery_three)
+    assert_response :success
+    assert assigns(:delivery)
+  end
+
+  test "ship delivery should be ok" do
+    session[:user_id] = users(:user_two)
+    assert_difference("DeliveryNote.count") do
+      put :update, :id => deliveries(:delivery_three), :delivery => {:status => Delivery::SHIPPED}
+    end
+    assert_redirected_to delivery_path(deliveries(:delivery_three))
   end
 
 end

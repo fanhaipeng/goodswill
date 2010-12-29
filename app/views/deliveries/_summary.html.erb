@@ -1,0 +1,20 @@
+<h3>Summary of delivery</h3>
+
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>Quantity</td>
+      <td>Unit</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% for i in @delivery.items %>
+      <tr>
+        <td><%= i.category %></td>
+        <td><%= i.quantity %></td>
+        <td><%= i.unit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

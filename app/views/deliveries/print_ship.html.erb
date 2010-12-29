@@ -1,0 +1,42 @@
+<h2>Ship slip</h2>
+
+<h3>Time: </h3><span><%= Time.now.strftime("%m/%d/%Y %H:%M:%S") %></span>
+<h3>To: </h3><span><%= @delivery.receiver.name %> (id = <%= @delivery.receiver_id %>)</span>
+<h3>Items: </h3>
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>Quantity</td>
+      <td>Unit</td>
+      <td>Donor(id)</td>
+      <td>Comment</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% for i in @delivery.items %>
+    <tr>
+      <td><%= i.category %></td>
+      <td><%= i.quantity %></td>
+      <td><%= i.unit %></td>
+      <td><%= i.donation.name%>(<%= i.donation_id %>)</td>
+      <td></td>
+    </tr>
+  <% end %>
+  <tbody>
+</table>
+
+<hr/>
+<p>
+Shipper's Signature: __________________
+</p>
+<p>
+Date of delivery: __/__/____
+</p>
+<hr/>
+<p>
+Receiver's Signature: ___________________
+</p>
+<p>
+Date of delivery: __/__/____
+</p>

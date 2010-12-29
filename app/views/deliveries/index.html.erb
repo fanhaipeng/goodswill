@@ -5,6 +5,6 @@
 
 <ul>
   <% for d in @deliveries %>
-    <li>Delivery to <%= d.receiver.name %> [<%= link_to "=>", delivery_path(d) %>]</li>
+    <li>Delivery to <%= d.receiver.name %> [<%= link_to "=>", delivery_path(:id => d.id) %>]</li>
   <% end %>
 </ul>
