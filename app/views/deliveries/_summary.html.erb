@@ -18,3 +18,16 @@
     <% end %>
   </tbody>
 </table>
+
+<% for img in @delivery.images %>
+  <p><%= img.description %></p>
+  <img alt="<%= img.description %>" src="<%= delivery_delivery_image_path(@delivery, img) %>"/>
+  [<%= link_to "X", delivery_delivery_image_path(@delivery, img), :method => :delete %>]
+<% end %>
+
+<%= form_for [@delivery, @delivery.images.build], :html => {:multipart => true} do |f| %>
+  Description:<%= f.text_field :description %> Image:<%= f.file_field :image_data %>
+  <p>
+  <%= submit_tag "Add a image" %>
+  </p>
+<% end %>
