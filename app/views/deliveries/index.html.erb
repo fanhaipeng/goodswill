@@ -1,0 +1,10 @@
+<h2>Index of deliveries</h2>
+<%= link_to "Pack", deliveries_path(:s => Delivery::OPEN)%>
+<%= link_to "Ship", deliveries_path(:s => Delivery::PACKED)%>
+<%= link_to "Confirm", deliveries_path(:s => Delivery::SHIPPED)%>
+
+<ul>
+  <% for d in @deliveries %>
+    <li>Delivery to <%= d.receiver.name %> [<%= link_to "=>", delivery_path(d) %>]</li>
+  <% end %>
+</ul>

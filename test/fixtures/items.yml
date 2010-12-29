@@ -49,3 +49,21 @@ item_six:
   quantity: 10
   unit: 'piece'
   status: 0
+
+item_seven:
+  id: 7
+  donation_id: 4
+  delivery_id: 6
+  category: 'category seven'
+  quantity: 2
+  unit: 'litre'
+  status: 0
+
+item_eight:
+  id: 8
+  donation_id: 4
+  delivery_id: 6
+  category: 'category eight'
+  quantity: 1 
+  unit: 'piece'
+  status: 0

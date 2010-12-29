@@ -36,3 +36,14 @@ donation_three:
   discard: true
   news_letter: true
   status: 1
+
+donation_four: 
+  id: 4
+  phone: 13887654321
+  address: '4F, Sigma Building, Zhichun RD., Haidian, Beijing, P.R.China'
+  email: 'rextian@microsoft.com'
+  name: 'Rex Tian'
+  pick_up: false
+  discard: true
+  news_letter: true
+  status: 2

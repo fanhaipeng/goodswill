@@ -57,23 +57,19 @@ Goodswill::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   resources :donations
-
   resources :donations do
     resources :comments
   end
-
   resources :donation_images 
-
   resources :news
-
   resources :news do
     resources :news_images
   end
-
   resources :receivers
-
+  resources :deliveries
+  match 'deliveries/:id/pack' => 'deliveries#pack', :via => :put, :as => 'delivery_pack'
+  match 'deliveries/:id/print_pack' => 'deliveries#print_pack', :via => :get, :as => 'delivery_print_pack'
   resources :images
-
   resources :users
 
   match 'account/login' => 'account#login'
@@ -87,6 +83,7 @@ Goodswill::Application.routes.draw do
   match 'sort/index' => 'sort#index'
   match 'sort/:id' => 'sort#show', :via => :get, :as => 'sort_donation'
   match 'sort/:id' => 'sort#update', :via => :put, :as => 'sort_donation'
+
 
   match 'home/index' => 'home#index'
 end

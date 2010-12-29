@@ -3,3 +3,4 @@
 3. extract common parts of different image model to a module
 4. Investigate how to right helper class for each model
 5. Figure out why the flash message gets lost after redirect
+6. Investigate how to enclose operations in a transaction

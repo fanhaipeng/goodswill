@@ -1,0 +1,5 @@
+<h2>Show delivery</h2>
+
+<% if @delivery.status == Delivery::OPEN %>
+<%= render :partial => "pack" %>
+<% end %>

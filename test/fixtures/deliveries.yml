@@ -7,4 +7,29 @@
 delivery_one:
   id: 1
   receiver_id: 3
+  status: 0
 
+delivery_two:
+  id: 2
+  receiver_id: 2
+  status: 0
+
+delivery_three:
+  id: 3
+  receiver_id: 2
+  status: 1
+
+delivery_four:
+  id: 4
+  receiver_id: 1
+  status: 2
+
+delivery_five:
+  id: 5
+  receiver_id: 1
+  status: 3
+
+delivery_six:
+  id: 6
+  receiver_id: 3
+  status: 2

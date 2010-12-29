@@ -27,7 +27,7 @@ class SortController < ApplicationController
   private
 
   def sort item_param
-    delivery = Delivery.where(:receiver_id => item_param["dest"]).first
+    delivery = Delivery.where(:receiver_id => item_param["dest"], :status => Delivery::OPEN).first
     item = Item.find_by_id(item_param["id"]) 
     delivery = Delivery.create(:receiver_id => item_param["dest"]) unless delivery
     item.update_attribute(:delivery_id, delivery.id) 
