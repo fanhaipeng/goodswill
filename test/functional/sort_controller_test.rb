@@ -34,7 +34,7 @@ class SortControllerTest < ActionController::TestCase
     session[:user_id] = users(:user_two)
     assert_difference("DonationNote.count") do
       assert_difference("Delivery.count", 2) do
-        put :update,:id => donations(:donation_three), :items => { "0" => { :id => "5", :dest => "1"}, "1" => { :id => "6", :dest => "2"} }
+        put :update,:id => donations(:donation_three), :items => { "0" => { :id => "5", :dest => "1"}, "1" => { :id => "6", :dest => "4"} }
       end
     end
     assert_redirected_to sort_index_path
