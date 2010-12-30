@@ -50,4 +50,18 @@ class DonationsController < ApplicationController
       format.html { redirect_to donations_path }
     end
   end
+
+  def query
+  end
+
+  def search
+    donation = Donation.where(:email => params[:email], :phone => params[:phone], :name => params[:name]).first
+    respond_to do |format|
+      if donation
+        format.html { redirect_to donation_path(donation) }
+      else
+        format.html { render :action => :query}
+      end
+    end
+  end
 end

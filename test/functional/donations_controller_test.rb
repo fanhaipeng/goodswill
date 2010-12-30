@@ -251,6 +251,23 @@ class DonationsControllerTest < ActionController::TestCase
     end
   end
 
+  # test for query/search
+
+  test "query donation should be ok" do
+    get :query
+    assert_response :success
+  end
+
+  test "search donation should be ok" do
+    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'Haipeng Fan'
+    assert_redirected_to donation_path(donations(:donation_one))
+  end
+
+  test "search not found should go back to query" do
+    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
+    assert_response :success
+  end
+
   private 
 
   def create_donation(items, images)

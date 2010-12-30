@@ -56,10 +56,13 @@ Goodswill::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   
+  match 'donations/query' => 'donations#query', :via => :get, :as => 'donation_query'
+  match 'donations/search' => 'donations#search', :via => :post, :as => 'donation_search'
   resources :donations
   resources :donations do
     resources :comments
   end
+
   resources :donation_images 
   resources :news
   resources :news do
