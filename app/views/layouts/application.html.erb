@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Goodswill</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "site" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="page">
+  <div id="head">
+  <%= image_tag "logo.jpg", :alt => 'logo' %>
+  <span id="link_logout">[<%= link_to("logout", account_logout_path) if session[:user_id] %>]</span>
+  </div>
 
-<%= yield %>
+  <div id="main">
+    <%= render :partial => "layouts/#{controller.controller_name}"%>
+  </div>
+  <div id="foot">
+  </div>
+</div>
 
 </body>
 </html>
