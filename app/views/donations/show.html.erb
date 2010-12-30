@@ -15,7 +15,6 @@
     <%= submit_tag "Add a comment" %>
   <% end %>
 
-  <%= link_to "New Donation", new_donation_path %>
-  <%= link_to "Edit Donation", edit_donation_path(@donation) %>
-  <%= link_to "Back to list", donations_path %>
+  <%= link_to "Edit donation", edit_donation_path(@donation) if authenticated %>
+  <%= link_to "Back to list", donations_path if authenticated %>
 </div>

@@ -1,4 +1,7 @@
 class DonationsController < ApplicationController
+
+  before_filter :admin_user_required, :only => [:index, :edit, :update, :destroy]
+
   def index
     @donations = Donation.all
   end

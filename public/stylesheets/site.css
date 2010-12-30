@@ -8,12 +8,12 @@ body{
 
 a {
   text-decoration: none;
-  color: #888;
+  color: #ba2;
   font-weight: bold;
 }
 
 a:hover {
-  color: #222;
+  color: #ed5;
 }
 
 div#page{

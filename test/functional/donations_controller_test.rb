@@ -5,9 +5,15 @@ class DonationsControllerTest < ActionController::TestCase
   # tests for donations
   
   test "index of donations should be ok" do
+    session[:user_id] = users(:user_two)
     get :index
     assert_response :success
     assert assigns(:donations)
+  end
+
+  test "anonymous user can't see index" do
+    get :index
+    assert_redirected_to account_login_path 
   end
 
   test "new donation should be ok" do
@@ -31,6 +37,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "edit donation should be ok" do
+    session[:user_id] = users(:user_two)
     get :edit, :id => donations(:donation_two).to_param
     assert_response :success
     assert assigns(:donation)
@@ -38,6 +45,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
   
   test "update donation should be ok" do
+    session[:user_id] = users(:user_two)
     put :update, :id => donations(:donation_one), :donation => { :phone => '020-12345678' }
     assert_redirected_to donation_path(donations(:donation_one))
   end
@@ -55,10 +63,28 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "delete donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_difference('Donation.count', -1) do 
       delete :destroy, :id => donations(:donation_one).to_param
     end
     assert_redirected_to donations_path
+  end
+
+  test "anonymous user can't see edit page" do
+    get :edit, :id => donations(:donation_two).to_param
+    assert_redirected_to account_login_path
+  end
+
+  test "anonymous user can't update donation" do
+    put :update, :id => donations(:donation_one), :donation => { :phone => '020-12345678' }
+    assert_redirected_to account_login_path
+  end
+
+  test "anonymous user can't delete donation" do
+    assert_no_difference('Donation.count') do 
+      delete :destroy, :id => donations(:donation_one).to_param
+    end
+    assert_redirected_to account_login_path
   end
 
   # tests for items
@@ -98,6 +124,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "add item to existing donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_difference("Item.count") do
         put :update, :id => donations(:donation_one), 
@@ -116,6 +143,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "update items of donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_no_difference("Item.count") do
         put :update, :id => donations(:donation_one),
@@ -142,6 +170,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "delete item from existing donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_difference("Item.count", -1) do
         put :update, :id => donations(:donation_one),
@@ -192,6 +221,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "add image to existing donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_difference("DonationImage.count") do
         put :update, :id => donations(:donation_one), 
@@ -210,6 +240,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "update image of donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_no_difference("DonationImage.count") do
         put :update, :id => donations(:donation_one),
@@ -235,6 +266,7 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "delete image from existing donation should be ok" do
+    session[:user_id] = users(:user_two)
     assert_no_difference("Donation.count") do
       assert_difference("DonationImage.count", -1) do
         put :update, :id => donations(:donation_one),

@@ -1,8 +1,16 @@
-<h2>Query donation</h2>
+<h3>Donate your goods</h3>
+<p>If you have stuff to donate, please click the button and fill in the donation form step by step. Thank for you kindness!</p>
+<p><%= link_to "Donate your goods", new_donation_path %></p>
 
+<h3>Search your donated goods</h3>
+<p>If you want to review the donation you made, please provide your name, email and phone that you specified in the donation form. Note, all the information you provide must be accurate, otherwise nothing will be found!</p>
 <%= form_tag donation_search_path do %>
   <p>Name: <%= text_field_tag :name %></p>
   <p>Email: <%= email_field_tag :email %></p>
   <p>Phone: <%= text_field_tag :phone %></p>
   <p><%= submit_tag "Search" %></p>
+<% end %>
+
+<% if authenticated %>
+  <p><%= link_to "Index of donations", donations_path %></p>
 <% end %>
