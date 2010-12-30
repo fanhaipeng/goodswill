@@ -1,4 +1,6 @@
 class DeliveryImagesController < ApplicationController
+  
+  before_filter :admin_user_required, :except => :show
 
   def create
     @img = DeliveryImage.new(params[:delivery_image])

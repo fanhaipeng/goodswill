@@ -10,10 +10,11 @@
   <% for img in @news.images %>
     <p><%= img.description %></p>
     <img alt="<%= img.description %>" src="<%= news_news_image_path(@news, img) %>" />
-    [<%= link_to "X", news_news_image_path(@news, img), :method => :delete %>]
+    <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete if authenticated %>
   <% end %>
 </div>
 
+<% if authenticated %>
 <div>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
     Description: <%= f.text_field :description %>
@@ -21,8 +22,9 @@
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>
+<% end %>
 
 
-<%= link_to "Create news", new_news_path %>
-<%= link_to "Edit news", edit_news_path(@news) %>
+<%= link_to "Create news", new_news_path if authenticated %>
+<%= link_to "Edit news", edit_news_path(@news) if authenticated %>
 <%= link_to "Back to list", news_index_path %>

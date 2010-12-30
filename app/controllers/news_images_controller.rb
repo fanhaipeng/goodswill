@@ -1,5 +1,6 @@
 class NewsImagesController < ApplicationController
 
+  before_filter :admin_user_required, :except => :show
   def create
     @img = NewsImage.new(params[:news_image])
     @img.news_id = params[:news_id]
