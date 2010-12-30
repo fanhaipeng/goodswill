@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "index of home should be ok" do
+    get :index
+    assert_response :success
+    assert assigns(:latest_news)
+    assert assigns(:latest_items)
   end
 end
