@@ -8,6 +8,6 @@
   <p>Email: <%= @receiver.email %></p>
 </div>
 
-<%= link_to "Edit", edit_receiver_path(@receiver) %>
-<%= link_to "Delete", receiver_path(@receiver), :method => :delete %>
+<%= link_to "Edit", edit_receiver_path(@receiver) if authenticated %>
+<%= link_to "Delete", receiver_path(@receiver), :method => :delete if authenticated %>
 <%= link_to "Back to list", receivers_path %>

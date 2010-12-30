@@ -47,6 +47,7 @@ class ReceiversControllerTest < ActionController::TestCase
   end
 
   test "edit receiver should be ok" do
+    session[:user_id] = users(:user_two)
     get :edit, :id => receivers(:receiver_one)
     assert_response :success
     assert assigns(:receiver)
@@ -54,6 +55,7 @@ class ReceiversControllerTest < ActionController::TestCase
   end
 
   test "update receiver should be ok" do
+    session[:user_id] = users(:user_two)
     put :update, :id => receivers(:receiver_one), :receiver => 
     {
       :address => 'another address'
@@ -70,6 +72,7 @@ class ReceiversControllerTest < ActionController::TestCase
   end
 
   test "delete receiver should be ok" do
+    session[:user_id] = users(:user_two)
     assert_difference("Receiver.count", -1) do
       delete :destroy, :id => receivers(:receiver_one)
     end
@@ -81,4 +84,23 @@ class ReceiversControllerTest < ActionController::TestCase
     assert_response :missing
   end
 
+  test "anonymous user can't see edit page" do
+    get :edit, :id => receivers(:receiver_one)
+    assert_redirected_to account_login_path
+  end
+
+  test "anonymous user can't update receiver" do
+    put :update, :id => receivers(:receiver_one), :receiver => 
+    {
+      :address => 'another address'
+    }
+    assert_redirected_to account_login_path
+  end
+
+  test "anonymous user can't delete receiver" do
+    assert_no_difference("Receiver.count") do
+      delete :destroy, :id => receivers(:receiver_one)
+    end
+    assert_redirected_to account_login_path 
+  end
 end

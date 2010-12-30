@@ -21,4 +21,8 @@ module ApplicationHelper
     end
     raw return_text
   end
+
+  def authenticated
+    session[:user_id]
+  end
 end

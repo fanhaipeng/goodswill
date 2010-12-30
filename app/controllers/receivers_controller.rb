@@ -1,4 +1,7 @@
 class ReceiversController < ApplicationController
+
+  before_filter :admin_user_required, :only => [:edit, :update, :destroy]
+
   def index
     @receivers = Receiver.all
   end
