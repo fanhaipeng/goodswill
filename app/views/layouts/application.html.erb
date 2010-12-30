@@ -10,7 +10,7 @@
 <div id="page">
   <div id="head">
   <%= image_tag "logo.jpg", :alt => 'logo' %>
-  <span id="link_logout">[<%= link_to("logout", account_logout_path) if session[:user_id] %>]</span>
+  <span id="link_logout"><%= link_to("[logout]", account_logout_path) if session[:user_id] %></span>
   </div>
 
   <div id="main">
