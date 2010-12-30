@@ -2,6 +2,7 @@
 <%= link_to "Pack", deliveries_path(:s => Delivery::OPEN)%>
 <%= link_to "Ship", deliveries_path(:s => Delivery::PACKED)%>
 <%= link_to "Confirm", deliveries_path(:s => Delivery::SHIPPED)%>
+<%= link_to "Done", deliveries_path(:s => Delivery::CONFIRMED)%>
 
 <ul>
   <% for d in @deliveries %>

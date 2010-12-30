@@ -10,3 +10,8 @@
 <% else %>
 <%= render :partial => "pack" %>
 <% end %>
+
+<h3>History of operations</h3>
+<% for n in @delivery_notes %>
+  <p><%= n.note %></p>
+<% end %>

@@ -8,6 +8,7 @@ class DeliveriesController < ApplicationController
 
   def show
     @delivery = Delivery.find_by_id(params[:id])
+    @delivery_notes = DeliveryNote.where(:delivery_id => @delivery.id)
   end
 
   def update
@@ -74,7 +75,7 @@ class DeliveriesController < ApplicationController
              else raise "Unexpected status"
              end
 
-    note_text = "<p>#{} by #{user.name} at #{get_timestamp}</p>"
+    note_text = "<p>#{action} by #{user.name} at #{get_timestamp}</p>"
     note_text << "<p>#{note}</p>" if note
     note_text
   end

@@ -22,6 +22,7 @@ class DeliveriesControllerTest < ActionController::TestCase
     get :show, :id => deliveries(:delivery_one)
     assert_response :success
     assert_equal deliveries(:delivery_one).id, assigns(:delivery).id
+    assert assigns(:delivery_notes)
   end
 
   test "print pack should be ok" do 
