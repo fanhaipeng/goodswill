@@ -8,6 +8,13 @@
 </div>
 
 <h3>Pick up this donation</h3>
+
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+<% end %>
+
 <%= form_for :donation, :url => pick_up_donation_path(@donation), :html => { :method => :put } do |f| %>
   <%= f.hidden_field :status, :value => Donation::PICKED %>
   <%= fields_for @donation.notes.build do |n| %>

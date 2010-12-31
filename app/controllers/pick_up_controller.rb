@@ -18,6 +18,7 @@ class PickUpController < ApplicationController
         add_donation_note(@donation.id, params[:donation_note])
         format.html { redirect_to pick_up_index_path }
       else
+        flash[:error] = "Error occured while updating donation's status, try later again"
         @donation_notes = DonationNote.where(:donation_id => params[:id])
         format.html { render :controller => :pick_up, :action => show }
       end

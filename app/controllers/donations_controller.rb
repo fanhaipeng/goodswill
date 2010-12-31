@@ -65,6 +65,7 @@ class DonationsController < ApplicationController
       if donation
         format.html { redirect_to donation_path(donation) }
       else
+        flash[:error] = "No donation found. Donation recored can only be found by exactly matching these fields."
         format.html { render :action => :query}
       end
     end

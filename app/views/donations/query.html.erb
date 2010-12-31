@@ -4,6 +4,13 @@
 
 <h3>Search your donated goods</h3>
 <p>If you want to review the donation you made, please provide your name, email and phone that you specified in the donation form. Note, all the information you provide must be accurate, otherwise nothing will be found!</p>
+
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+<% end %>
+
 <%= form_tag donation_search_path do %>
   <p>Name: <%= text_field_tag :name %></p>
   <p>Email: <%= email_field_tag :email %></p>
