@@ -94,4 +94,5 @@ Goodswill::Application.routes.draw do
 
 
   match 'home/index' => 'home#index'
+  root :to => "home#index"
 end
