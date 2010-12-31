@@ -25,4 +25,19 @@ module ApplicationHelper
   def authenticated
     session[:user_id]
   end
+
+  def generate_login_link
+    out = ""
+    if authenticated
+      user = User.find_by_id(session[:user_id])
+      out << "Welcome "
+      out << link_to(user.name, user_path(user))
+      out << " ["
+      out << link_to("logout", account_logout_path) 
+      out << "]"
+    else
+      out << link_to("login", account_login_path)
+    end
+    raw out
+  end
 end
