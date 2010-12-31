@@ -25,6 +25,12 @@
   [<%= link_to "X", delivery_delivery_image_path(@delivery, img), :method => :delete %>]
 <% end %>
 
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+<% end %>
+
 <%= form_for [@delivery, @delivery.images.build], :html => {:multipart => true} do |f| %>
   Description:<%= f.text_field :description %> Image:<%= f.file_field :image_data %>
   <p>

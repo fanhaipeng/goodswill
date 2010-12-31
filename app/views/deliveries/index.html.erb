@@ -1,9 +1,4 @@
-<h2>Index of deliveries</h2>
-<%= link_to "Pack", deliveries_path(:s => Delivery::OPEN)%>
-<%= link_to "Ship", deliveries_path(:s => Delivery::PACKED)%>
-<%= link_to "Confirm", deliveries_path(:s => Delivery::SHIPPED)%>
-<%= link_to "Done", deliveries_path(:s => Delivery::CONFIRMED)%>
-
+<%= render :partial => "shared/admin_head", :locals => { :admin_page_title => get_index_page_title(params[:s]) } %>
 <ul>
   <% for d in @deliveries %>
     <li>Delivery to <%= d.receiver.name %> [<%= link_to "=>", delivery_path(:id => d.id) %>]</li>

@@ -1,0 +1,7 @@
+[<%= link_to "Pick up", pick_up_index_path %>]
+[<%= link_to "Sort", sort_index_path %>]
+[<%= link_to "Pack", deliveries_path(:s => Delivery::OPEN)%>]
+[<%= link_to "Ship", deliveries_path(:s => Delivery::PACKED)%>]
+[<%= link_to "Confirm", deliveries_path(:s => Delivery::SHIPPED)%>]
+[<%= link_to "Done", deliveries_path(:s => Delivery::CONFIRMED)%>]
+<h2><%= admin_page_title %></h2>
