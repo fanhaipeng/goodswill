@@ -5,7 +5,8 @@ class NewsImagesController < ApplicationController
     @img = NewsImage.new(params[:news_image])
     @img.news_id = params[:news_id]
     respond_to do |format|
-      if @img.save
+      if not @img.save
+        flash[:error] = "All fields of image can't be blank"
       end
       format.html { redirect_to news_path(params[:news_id]) }
     end

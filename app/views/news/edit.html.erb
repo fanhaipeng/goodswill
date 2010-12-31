@@ -1,6 +1,6 @@
 <h2>Edit news</h2>
 
-<%= render :partial => 'news_form' %>
+<%= render :partial => 'news_form', :locals => {:submit_label => "Edit news"} %>
 
 <%= link_to "Cancel", news_path(@news) %>
 

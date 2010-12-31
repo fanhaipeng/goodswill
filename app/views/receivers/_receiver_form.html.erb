@@ -1,4 +1,17 @@
 <div id="receiver_form">
+
+<% if @receiver.errors.any? %>
+  <div class="error_explanation">
+    <h3><%= pluralize(@receiver.errors.count, " error") %> 
+      prohibited this receiver from being saved:</h3> 
+    <ul> 
+      <%  @receiver.errors.full_messages.each do |msg|  %> 
+      <li><%= msg  %></li> 
+      <%  end %> 
+    </ul> 
+  </div>
+<% end %>
+
 <%= form_for @receiver, :html => { :multipart => true } do |f| %>
   <p>Name: <%= f.text_field :name %></p>
   <p>Introduction: <%= f.text_area :introduction %></p>

@@ -1,5 +1,5 @@
 <h2>Create news</h2>
 
-<%= render :partial => 'news_form' %>
+<%= render :partial => 'news_form', :locals => {:submit_label => "Create news"} %>
 
 <%= link_to "Back to list", news_index_path %>

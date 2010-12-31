@@ -16,6 +16,11 @@
 
 <% if authenticated %>
 <div>
+  <% if flash[:error] %>
+    <div class="error_explanation">
+      <h3><%= flash[:error] %></h3>
+    </div>
+  <% end %>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
     Description: <%= f.text_field :description %>
     Image File: <%= f.file_field :image_data %>
