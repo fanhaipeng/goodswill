@@ -35,6 +35,14 @@ div#foot{
   height: 100px;
 }
 
+div.error_explanation {
+  color: red;
+  border: solid 2px red;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  background-color: pink;
+}
+
 #link_logout {
   float: right;
 }

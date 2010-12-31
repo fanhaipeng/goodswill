@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
     @donation = Donation.find_by_id(params[:donation_id])
     @comment.donation = @donation
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to donation_path(@donation) }
+      if not @comment.save
+        flash[:error] = "Comment can't be blank"
       end
+      format.html { redirect_to donation_path(@donation) }
     end
   end
 

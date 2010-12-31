@@ -1,8 +1,8 @@
 <div>
   <% if @donation.errors.any?      %> 
-    <div   id=" error_explanation"> 
-    <h2><%=   pluralize(@donation.errors.count,        " error")   %> 
-      prohibited this donation from being saved:</h2> 
+    <div class="error_explanation"> 
+    <h3><%= pluralize(@donation.errors.count, " error") %> 
+      prohibited this donation from being saved:</h3> 
     <ul> 
       <%  @donation.errors.full_messages.each do |msg|  %> 
       <li><%= msg  %></li> 

@@ -18,6 +18,8 @@ class DonationsController < ApplicationController
       if @donation.save
         format.html { redirect_to donation_path(@donation) }
       else
+        @donation.items.build if @donation.items.length == 0
+        @donation.images.build if @donation.images.length == 0
         format.html { render :action => 'new' }
       end
     end

@@ -8,6 +8,11 @@
   </div>
 
   <h3>Add new comment:</h3>
+  <% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+  <% end %>
   <%= form_for [@donation, @donation.comments.build] do |f| %>
     <p>
     Comment: <%= f.text_area :comment %>
