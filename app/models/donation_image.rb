@@ -1,7 +1,7 @@
 class DonationImage < ActiveRecord::Base
   belongs_to :donation
 
-  validates_presence_of :image_type, :data, :description
+  validates_presence_of :image_type, :data
 
   before_validation :transform_data
 

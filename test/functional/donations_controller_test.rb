@@ -196,28 +196,12 @@ class DonationsControllerTest < ActionController::TestCase
           create_donation(
             create_item_params,
             { 
-              "0" => {:description => nil, :image_data => nil}, 
-              "1" => {:description => 'image1', :image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
+              "0" => {:image_data => nil}, 
+              "1" => {:image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
             }
           ) 
       end
     end
-  end
-
-  test "partial blank image should fail donation create" do
-    assert_no_difference("Donation.count") do
-      assert_no_difference("DonationImage.count") do
-        post :create, :donation =>
-          create_donation(
-            create_item_params,
-            {
-              "0" => {:description => nil, :image_data => fixture_file_upload('/files/test2.jpg', 'image/jpeg')}
-            }
-          )
-      end
-    end
-    assert assigns(:donation)
-    assert assigns(:donation).errors.any?
   end
 
   test "add image to existing donation should be ok" do
@@ -229,7 +213,6 @@ class DonationsControllerTest < ActionController::TestCase
           { :images_attributes => 
             { "0" => 
               { 
-                :description => 'new image', 
                 :image_data => fixture_file_upload('/files/test3.png', 'image/png')
               }
             }
@@ -251,7 +234,6 @@ class DonationsControllerTest < ActionController::TestCase
               "0" =>
               {
                 :id => donation_images(:donation_image_one).id,
-                :description => 'new description'
               },
               "1" =>
               {
@@ -323,8 +305,8 @@ class DonationsControllerTest < ActionController::TestCase
 
   def create_image_params
     {
-      "0" => { :description => 'a', :image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
-      "1" => { :description => 'test3', :image_data => fixture_file_upload('/files/test2.jpg', 'image/png')}
+      "0" => { :image_data => fixture_file_upload('/files/test1.jpg', 'image/jpeg')},
+      "1" => { :image_data => fixture_file_upload('/files/test2.jpg', 'image/png')}
     }
   end
 end

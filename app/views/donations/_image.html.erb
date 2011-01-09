@@ -1,6 +1,5 @@
 <div class="donation_image">
   <%= df.fields_for :images, image do |i| %>
-    Description: <%= i.text_field :description %>
     Image File: <%= i.file_field :image_data %>
     <%= link_to_function "[-]", "$(this).up('.donation_image').remove()" %>
   <% end %>

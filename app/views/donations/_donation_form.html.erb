@@ -36,7 +36,6 @@
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
       <div class="donation_image">
-        Description: <%= i.text_field :description %>
         Image File: <%= i.file_field :image_data %>  
         <%= raw remove_link_unless_new_record(i, 'donation_image') %>
       </div>

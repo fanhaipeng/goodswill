@@ -7,6 +7,5 @@ class DonationImageTest < ActiveSupport::TestCase
     assert !dimg.valid?
     assert dimg.errors[:image_type].any?
     assert dimg.errors[:data].any?
-    assert dimg.errors[:description].any?
   end
 end

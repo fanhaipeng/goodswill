@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109125838) do
+ActiveRecord::Schema.define(:version => 20110109222739) do
 
   create_table "comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20110109125838) do
     t.integer  "donation_id"
     t.string   "image_type",  :limit => 20,       :null => false
     t.binary   "data",        :limit => 16777215, :null => false
-    t.string   "description", :limit => 50,       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
