@@ -13,7 +13,6 @@ class DonationTest < ActiveSupport::TestCase
 
     # fields which have default values
     assert !donation.errors[:pick_up].any?
-    assert !donation.errors[:discard].any?
     assert !donation.errors[:news_letter].any?
     assert !donation.errors[:note].any?
   end

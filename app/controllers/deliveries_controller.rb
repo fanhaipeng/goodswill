@@ -50,13 +50,8 @@ class DeliveriesController < ApplicationController
 
   def dispose_item item_id, note_text
     item = Item.find_by_id(item_id)
-    if item.donation.discard
-      item.update_attributes(:status => Item::DISPOSED, :delivery_id => nil)
-      note_text << "<p>Item #{item_id} was disposed.</p>"
-    else
-      item.update_attributes(:status => Item::WITHDREW, :delivery_id => nil)
-      note_text << "<p>Item #{item_id} was withdrawn.</p>"
-    end
+    item.update_attributes(:status => Item::DISPOSED, :delivery_id => nil)
+    note_text << "<p>Item #{item_id} was disposed.</p>"
   end
 
   def add_delivery_note delivery_id, note_text

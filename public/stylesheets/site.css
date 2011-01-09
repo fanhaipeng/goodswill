@@ -1,14 +1,16 @@
 *{
-  margin: 0
-  padding: 0
+  margin: 0;
+  padding: 0;
 }
 
 body{
+  color: #555;
+  font: normal 10pt Arial,Helvetica,sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: #ba2;
+  color: #25a;
   font-weight: bold;
 }
 
@@ -47,36 +49,29 @@ div.error_explanation {
   float: right;
 }
 
-#tab_bar {
-  margin-left: 5px;
-  padding-left: 5px;
-  margin-bottom: 5px;
-  padding-bottom: 2px;
+#tab_bar ul {
+  padding:7px 20px 7px 20px;
+  margin-bottom:3px;
 }
 
-#tab_bar li{
-  padding: 10px 20px;
-  margin: 0px 2px;
-  list-style-type: none;
+#tab_bar ul li{
+  list-style-type: disc;
+  margin-right: 3px;
   display: inline;
 }
 
-#tab_bar li.normal_tab {
-  background-color: gray;
+#tab_bar ul li a{
+  color:#ffffed;
+  background-color:#5A564F;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+  padding: 8px 16px;
 }
 
-#tab_bar li.active_tab {
-  background-color: #ddd;
-  font-weight: bold;
-}
-
-#tab_bar a{
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#tab_bar a:hover {
-  color: #555;
+#tab_bar ul li a:hover, #tab_bar ul li.active_tab a {
+  color: #000;
+  background-color:#D2C9BB;
+  text-decoration:none;
 }
 

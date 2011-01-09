@@ -21,19 +21,19 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal item.status, Item::NORMAL
   end
 
-  test "status must be 0 to 2" do
+  test "status must be 0 to 1" do
     item = create_valid_item
 
     item.status = -1
     assert !item.valid?
 
-    item.status =3 
+    item.status =2 
     assert !item.valid?
 
     item.status =0 
     assert item.valid?
     
-    item.status =2 
+    item.status =1 
     assert item.valid?
   end
 

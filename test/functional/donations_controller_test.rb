@@ -308,7 +308,6 @@ class DonationsControllerTest < ActionController::TestCase
       :email => 'goodswill@live.com',
       :name => 'any name',
       :pick_up => false,
-      :discard => true,
       :news_letter => true,
       :items_attributes => items,
       :images_attributes => images

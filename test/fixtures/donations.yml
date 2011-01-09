@@ -11,7 +11,6 @@ donation_one:
   email: 'goodswill@live.com'
   name: 'Haipeng Fan'
   pick_up: false
-  discard: true
   news_letter: true
   status: 0
 
@@ -22,7 +21,6 @@ donation_two:
   email: 'weiwu@microsoft.com'
   name: 'Wei Wu'
   pick_up: false
-  discard: true
   news_letter: true
   status: 0
 
@@ -33,7 +31,6 @@ donation_three:
   email: 'carrie@microsoft.com'
   name: 'Carrie Wong'
   pick_up: false
-  discard: true
   news_letter: true
   status: 1
 
@@ -44,6 +41,5 @@ donation_four:
   email: 'rextian@microsoft.com'
   name: 'Rex Tian'
   pick_up: false
-  discard: true
   news_letter: true
   status: 2
