@@ -4,7 +4,7 @@ class DeliveryImagesControllerTest < ActionController::TestCase
   test "create delivery image should be ok" do
     session[:user_id] = users(:user_two)
     assert_difference("DeliveryImage.count") do
-      post :create, :delivery_id => deliveries(:delivery_one), :delivery_image => { :description => 'delivery image', :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
+      post :create, :delivery_id => deliveries(:delivery_one), :delivery_image => { :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
     end 
     assert assigns(:img)
     assert_equal assigns(:img).delivery_id, deliveries(:delivery_one).id 
@@ -26,7 +26,7 @@ class DeliveryImagesControllerTest < ActionController::TestCase
 
   test "anonymous user can't create delivery image" do
     assert_no_difference("DeliveryImage.count") do
-      post :create, :delivery_id => deliveries(:delivery_one), :delivery_image => { :description => 'delivery image', :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
+      post :create, :delivery_id => deliveries(:delivery_one), :delivery_image => { :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
     end 
     assert_redirected_to account_login_path
   end

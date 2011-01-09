@@ -7,6 +7,5 @@
 delivery_image_one:
   id: 1
   delivery_id: 1
-  description: 'delivery image one'
   image_type: 'image/png'
   data: [0x1, 0x2]
