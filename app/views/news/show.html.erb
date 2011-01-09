@@ -8,8 +8,7 @@
 <div id="news_images_section">
   <h3>Images of this news</h3>
   <% for img in @news.images %>
-    <p><%= img.description %></p>
-    <img alt="<%= img.description %>" src="<%= news_news_image_path(@news, img) %>" />
+    <img alt="image" src="<%= news_news_image_path(@news, img) %>" />
     <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete if authenticated %>
   <% end %>
 </div>
@@ -22,7 +21,6 @@
     </div>
   <% end %>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
-    Description: <%= f.text_field :description %>
     Image File: <%= f.file_field :image_data %>
     <%= submit_tag "Add an image" %>
   <% end %>

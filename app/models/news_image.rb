@@ -1,7 +1,7 @@
 class NewsImage < ActiveRecord::Base
   belongs_to :news
 
-  validates_presence_of :image_type, :data, :description
+  validates_presence_of :image_type, :data
 
   before_validation :transform_data
 

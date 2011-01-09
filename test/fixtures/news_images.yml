@@ -1,6 +1,5 @@
 news_image_one: 
   id: 1
   news_id: 1
-  description: 'news image one'
   image_type: 'image/png'
   data: [0xc, 0xd]

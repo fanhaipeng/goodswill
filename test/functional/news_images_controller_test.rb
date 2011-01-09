@@ -4,7 +4,7 @@ class NewsImagesControllerTest < ActionController::TestCase
   test "create news image should be ok" do
     session[:user_id] = users(:user_two)
     assert_difference("NewsImage.count") do
-      post :create, :news_id => news(:news_one), :news_image => { :description => 'new image', :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
+      post :create, :news_id => news(:news_one), :news_image => { :image_data => fixture_file_upload('files/test1.jpg', 'image/jpeg')}
     end 
     assert assigns(:img)
     assert_equal assigns(:img).news_id, news(:news_one).id 
