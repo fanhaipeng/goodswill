@@ -1,5 +1,11 @@
 <h2>Show receiver</h2>
 
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+<% end %>
+
 <div id="receiver_section">
   <p>Name: <%= @receiver.name %></p>
   <p>Introduction: <%= @receiver.introduction %></p>
@@ -9,5 +15,5 @@
 </div>
 
 <%= link_to "Edit", edit_receiver_path(@receiver) if authenticated %>
-<%= link_to "Delete", receiver_path(@receiver), :method => :delete if authenticated %>
+<%= link_to "Delete", receiver_path(@receiver), :method => :delete, :confirm => "Are you sure?" if authenticated %>
 <%= link_to "Back to list", receivers_path %>

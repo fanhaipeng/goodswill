@@ -9,7 +9,7 @@
   <h3>Images of this news</h3>
   <% for img in @news.images %>
     <img alt="image" src="<%= news_news_image_path(@news, img) %>" />
-    <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete if authenticated %>
+    <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete, :confirm => "Are you sure?" if authenticated %>
   <% end %>
 </div>
 

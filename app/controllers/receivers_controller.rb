@@ -45,9 +45,15 @@ class ReceiversController < ApplicationController
 
   def destroy
     @receiver = Receiver.find_by_id(params[:id])
-    @receiver.destroy
+    flash[:error] = nil
     respond_to do |format|
-      format.html { redirect_to receivers_path }
+      begin
+        @receiver.destroy
+        format.html { redirect_to receivers_path }
+      rescue => e
+        flash[:error] = "Fail to delete this record!"
+        format.html { render :action => :show }
+      end
     end
   end
 end

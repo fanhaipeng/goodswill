@@ -20,9 +20,8 @@
 </table>
 
 <% for img in @delivery.images %>
-  <p><%= img.description %></p>
-  <img alt="<%= img.description %>" src="<%= delivery_delivery_image_path(@delivery, img) %>"/>
-  [<%= link_to "X", delivery_delivery_image_path(@delivery, img), :method => :delete %>]
+  <img alt="image" src="<%= delivery_delivery_image_path(@delivery, img) %>"/>
+  [<%= link_to "X", delivery_delivery_image_path(@delivery, img), :method => :delete, :confirm => "Are you sure?" %>]
 <% end %>
 
 <% if flash[:error] %>
@@ -32,7 +31,7 @@
 <% end %>
 
 <%= form_for [@delivery, @delivery.images.build], :html => {:multipart => true} do |f| %>
-  Description:<%= f.text_field :description %> Image:<%= f.file_field :image_data %>
+  Image:<%= f.file_field :image_data %>
   <p>
   <%= submit_tag "Add a image" %>
   </p>

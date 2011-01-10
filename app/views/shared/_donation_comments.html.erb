@@ -3,7 +3,7 @@
   <% for comment in @donation.comments %>
     <p>
       <%= comment.comment %>
-      [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete)%>]
+      [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete, :confirm => "Are you sure?")%>]
     </p>
   <% end %>
 </div>

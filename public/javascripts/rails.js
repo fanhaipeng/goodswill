@@ -125,22 +125,37 @@
   }
 
 
+  /* 
+   * Code between the two comment lines are copied from rails community.
+   * The original problem was the link would be fired anyway before the
+   * confirmation dialog pops up. This problem should be fixed in the next
+   * formal rails distribution. Here the replacement is temporary.
+   * */
+
   document.on("click", "*[data-confirm]", function(event, element) {
-    var message = element.readAttribute('data-confirm');
-    if (!confirm(message)) event.stop();
+    if(element.readAttribute('data-remote') || element.readAttribute('data-method')) return;
+     var message = element.readAttribute('data-confirm');
+     if (!confirm(message)) event.stop();
   });
 
-  document.on("click", "a[data-remote]", function(event, element) {
+  document.on("click", "a[data-remote], a[data-method]", function(event, element) {
     if (event.stopped) return;
-    handleRemote(element);
+    if(element.readAttribute('data-confirm')) {
+      var message = element.readAttribute('data-confirm');
+      if (!confirm(message)) {
+        event.stop();
+        return;
+      }
+    }
+    if(element.readAttribute('data-remote')) {
+      handleRemote(element);
+    } else {
+      handleMethod(element);
+    }
     event.stop();
   });
 
-  document.on("click", "a[data-method]", function(event, element) {
-    if (event.stopped) return;
-    handleMethod(element);
-    event.stop();
-  });
+  /* end of bug fix */
 
   document.on("submit", function(event) {
     var element = event.findElement(),

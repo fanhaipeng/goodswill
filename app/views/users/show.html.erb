@@ -3,6 +3,6 @@
 <p>Name: <%= @user.name %></p>
 <p>Role: <%= @user.role == User::SUPER_USER ? "Super user" : "Admin user" %></p>
 
-<%= link_to("Delete user", user_path(@user), :method => :delete) if @current_user.role == User::SUPER_USER %> 
+<%= link_to("Delete user", user_path(@user), :method => :delete, :confirm => "Are you sure?") if @current_user.role == User::SUPER_USER %> 
 <%= link_to("Change password", edit_user_path(@user)) %> 
 <%= link_to("Back to list", users_path) if @current_user.role == User::SUPER_USER%>
