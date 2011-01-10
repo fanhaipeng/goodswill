@@ -1,11 +1,9 @@
-<div id="donation_pane">
-  <%= render :partial => "pane_left" %>
-  <div class="pane_middle">
-    <%= render :partial => 'donation_form' %>
-    <br/>
-    <%= link_to image_tag("cancel.png"), donation_path(@donation), :class => "image_link" %>
-    <%= link_to image_tag("back.png"), donations_path, :class => "image_link" %>
-  </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
-  <div class="clear" ></div>
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+  <%= render :partial => 'donation_form' %>
+  <br/>
+  <%= link_to image_tag("cancel.png"), donation_path(@donation), :class => "image_link" %>
+  <%= link_to image_tag("back.png"), donations_path, :class => "image_link" %>
 </div>
+<%= render :partial => "pane_right", :locals => { :active_link => nil } %>
+<div class="clear" ></div>

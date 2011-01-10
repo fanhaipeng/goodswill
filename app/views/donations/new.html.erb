@@ -1,9 +1,6 @@
-<div id="donation_pane">
-  <%= render :partial => "pane_left" %>
-  <div class="pane_middle">
-    <%= render :partial => 'donation_form' %>
-  </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
-  <div class="clear" ></div>
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+  <%= render :partial => 'donation_form' %>
 </div>
-
+<%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
+<div class="clear" ></div>

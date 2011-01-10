@@ -1,38 +1,34 @@
-<div id="donation_pane">
-  <%= render :partial => "pane_left" %>
-  <div class="pane_middle">
-    <h3>Donation status</h3>
-    <p>If you have registered your donation, you can check its status by providing your name, email, and phone as you entered in the donation form.</p>
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+  <h3>Donation status</h3>
+  <p>If you have registered your donation, you can check its status by providing your name, email, and phone as you entered in the donation form.</p>
 
-    <% if flash[:error] %>
-      <div class="error_explanation">
-        <h3><%= flash[:error] %></h3>
-      </div>
-    <% end %>
+  <% if flash[:error] %>
+    <div class="error_explanation">
+      <h3><%= flash[:error] %></h3>
+    </div>
+  <% end %>
 
-    <%= form_tag donation_search_path do %>
-      <p>
-        <label class="form_label">Name</label><br/>
-        <%= text_field_tag :name, nil, :class => "form_text_field" %>
-      </p>
-      <p>
-        <label class="form_label">Email</label><br/>
-        <%= email_field_tag :email, nil, :class => "form_text_field" %>
-      </p>
-      <p>
-        <label class="form_label">Phone</label><br/>
-        <%= text_field_tag :phone, nil, :class => "form_text_field" %>
-      </p>
-      <br/>
-      <p>
-        <%= submit_tag "Search", :class => "button" %>
-      </p>
-    <% end %>
+  <%= form_tag donation_search_path do %>
+    <p>
+      <label class="form_label">Name</label><br/>
+      <%= text_field_tag :name, nil, :class => "form_text_field" %>
+    </p>
+    <p>
+      <label class="form_label">Email</label><br/>
+      <%= email_field_tag :email, nil, :class => "form_text_field" %>
+    </p>
+    <p>
+      <label class="form_label">Phone</label><br/>
+      <%= text_field_tag :phone, nil, :class => "form_text_field" %>
+    </p>
     <br/>
-    <%= link_to raw("<h4>Index of donations</h4>"), donations_path if authenticated %>
-  </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => :check_donation} %>
-  <div class="clear" ></div>
+    <p>
+      <%= submit_tag "Search", :class => "button" %>
+    </p>
+  <% end %>
+  <br/>
+  <%= link_to raw("<h4>Index of donations</h4>"), donations_path if authenticated %>
 </div>
-
-
+<%= render :partial => "pane_right", :locals => { :active_link => :check_donation} %>
+<div class="clear" ></div>

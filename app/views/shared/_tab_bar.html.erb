@@ -3,4 +3,15 @@
   <%= build_tab_bar active_tab %>
   </ul>
 </div>
-<%= render :partial => "shared/content_pane" %>
+
+<div id="content_pane_top">
+</div>
+
+<div id="content_pane_middle">
+  <div id="<%= "#{active_tab.to_s}_pane"%>">
+    <%= yield %>
+  </div>
+</div>
+
+<div id="content_pane_bottom">
+</div>

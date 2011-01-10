@@ -1,30 +1,28 @@
-<div id="donation_pane">
-  <%= render :partial => "pane_left" %>
-  <div class="pane_middle">
-    <div id="donation_section">
-    <%= render :partial => "shared/donation" %>
-    <%= render :partial => "shared/donation_items" %>
-    <%= render :partial => "shared/donation_images" %>
-    <%= render :partial => "shared/donation_comments" %>
-    </div>
-
-    <h3>Add new comment:</h3>
-    <% if flash[:error] %>
-    <div class="error_explanation">
-      <h3><%= flash[:error] %></h3>
-    </div>
-    <% end %>
-    <%= form_for [@donation, @donation.comments.build] do |f| %>
-      <p>
-      <%= f.text_area :comment, :class => "form_text_area" %>
-      </p>
-      <%= submit_tag "Add a comment", :class => "button" %>
-    <% end %>
-    
-    <br/>
-    <%= link_to image_tag("edit.png"), (edit_donation_path(@donation) if authenticated), :class => "image_link" %>
-    <%= link_to image_tag("back.png"), (donations_path if authenticated), :class => "image_link" %>
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+  <div id="donation_section">
+  <%= render :partial => "shared/donation" %>
+  <%= render :partial => "shared/donation_items" %>
+  <%= render :partial => "shared/donation_images" %>
+  <%= render :partial => "shared/donation_comments" %>
   </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
-  <div class="clear" ></div>
+
+  <h3>Add new comment:</h3>
+  <% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+  <% end %>
+  <%= form_for [@donation, @donation.comments.build] do |f| %>
+    <p>
+    <%= f.text_area :comment, :class => "form_text_area" %>
+    </p>
+    <%= submit_tag "Add a comment", :class => "button" %>
+  <% end %>
+  
+  <br/>
+  <%= link_to image_tag("edit.png"), (edit_donation_path(@donation) if authenticated), :class => "image_link" %>
+  <%= link_to image_tag("back.png"), (donations_path if authenticated), :class => "image_link" %>
 </div>
+<%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
+<div class="clear" ></div>

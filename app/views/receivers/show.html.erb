@@ -1,43 +1,41 @@
-<div id="receiver_pane">
-  <%= render :partial => "pane_left" %>
-  <div class="pane_middle">
-    <% if flash[:error] %>
-      <div class="error_explanation">
-        <h3><%= flash[:error] %></h3>
-      </div>
-    <% end %>
-
-    <div id="receiver_section">
-      <p>
-        <label class="form_label">Name</label><br/>
-        <%= @receiver.name %>
-      </p>
-      <p>
-        <label class="form_label">Email</label><br/>
-        <%= @receiver.email %>
-      </p>
-      <p>
-        <label class="form_label">Phone</label><br/> 
-        <%= @receiver.phone %>
-      </p>
-      <p>
-        <label class="form_label">Address</label><br/>
-        <%= @receiver.address %>
-      </p>
-      <p>
-        <label class="form_label">Message</label><br/> 
-        <%= @receiver.introduction %>
-      </p>
-      <p>
-        <label class="form_label">Approved? </label>
-        <%= @receiver.approved ? "YES" : "NO" %>
-      </p>
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+  <% if flash[:error] %>
+    <div class="error_explanation">
+      <h3><%= flash[:error] %></h3>
     </div>
+  <% end %>
 
-    <%= link_to(image_tag("edit.png"), edit_receiver_path(@receiver), :class => "image_link") if authenticated %>
-    <%= link_to(image_tag("delete.png"), receiver_path(@receiver), :method => :delete, :class => "image_link", :confirm => "Are you sure?") if authenticated %>
-    <%= link_to image_tag("back.png"), receivers_path, :class => "image_link" %>
+  <div id="receiver_section">
+    <p>
+      <label class="form_label">Name</label><br/>
+      <%= @receiver.name %>
+    </p>
+    <p>
+      <label class="form_label">Email</label><br/>
+      <%= @receiver.email %>
+    </p>
+    <p>
+      <label class="form_label">Phone</label><br/> 
+      <%= @receiver.phone %>
+    </p>
+    <p>
+      <label class="form_label">Address</label><br/>
+      <%= @receiver.address %>
+    </p>
+    <p>
+      <label class="form_label">Message</label><br/> 
+      <%= @receiver.introduction %>
+    </p>
+    <p>
+      <label class="form_label">Approved? </label>
+      <%= @receiver.approved ? "YES" : "NO" %>
+    </p>
   </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
-  <div class="clear"></div>
+
+  <%= link_to(image_tag("edit.png"), edit_receiver_path(@receiver), :class => "image_link") if authenticated %>
+  <%= link_to(image_tag("delete.png"), receiver_path(@receiver), :method => :delete, :class => "image_link", :confirm => "Are you sure?") if authenticated %>
+  <%= link_to image_tag("back.png"), receivers_path, :class => "image_link" %>
 </div>
+<%= render :partial => "pane_right", :locals => { :active_link => nil } %>
+<div class="clear"></div>
