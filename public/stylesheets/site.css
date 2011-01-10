@@ -5,7 +5,7 @@
 
 body{
   color: #555;
-  font: normal 10pt Arial,Helvetica,sans-serif;
+  font: normal 12pt Segoe UI,Helvetica,sans-serif;
 }
 
 a {
@@ -37,6 +37,22 @@ div#foot{
   height: 100px;
 }
 
+div#content_pane_top{
+  background: url('../images/content-pane-top.png') no-repeat;
+  height: 28px;
+}
+
+div#content_pane_middle{
+  background: url('../images/content-pane-middle.png') repeat-y;
+  height: auto;
+  padding: 0px 30px;
+}
+
+div#content_pane_bottom{
+  background: url('../images/content-pane-bottom.png') no-repeat;
+  height: 28px;
+}
+
 div.error_explanation {
   color: red;
   border: solid 2px red;
@@ -46,7 +62,12 @@ div.error_explanation {
 }
 
 #link_login {
+  display: block;
   float: right;
+  margin-right: 20px;
+}
+
+#tab_bar{
 }
 
 #tab_bar ul {
@@ -61,17 +82,29 @@ div.error_explanation {
 }
 
 #tab_bar ul li a{
-  color:#ffffed;
-  background-color:#5A564F;
-  font-size:14px;
+  color: white;
+  background-color:#ff6633;
+  font-size:12px;
   font-weight:bold;
   text-decoration:none;
   padding: 8px 16px;
 }
 
 #tab_bar ul li a:hover, #tab_bar ul li.active_tab a {
-  color: #000;
-  background-color:#D2C9BB;
+  color: #4b4b4b;
+  background-color:#efefe7;
   text-decoration:none;
+}
+
+div#donation_button{
+  background: url('../images/donation-button.png') no-repeat;
+  width: 210px;
+  height: 40px;
+  position: absolute;
+  top: 105px;
+  left: 900px;
+}
+div#donation_button a{
+  padding: 20px 105px;
 }
 

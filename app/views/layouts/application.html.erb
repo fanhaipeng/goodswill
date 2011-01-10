@@ -9,8 +9,11 @@
 <body>
 <div id="page">
   <div id="head">
-  <%= image_tag "logo.jpg", :alt => 'logo' %>
+  <%= image_tag "logo.png", :alt => 'logo' %>
   <span id="link_login"><%= generate_login_link %></span>
+  <div id="donation_button">
+    <%= link_to "", new_donation_path%>
+  </div>
   </div>
 
   <div id="main">
