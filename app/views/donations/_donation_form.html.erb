@@ -1,5 +1,5 @@
 <div>
-  <% if @donation.errors.any?      %> 
+  <% if @donation.errors.any? %> 
     <div class="error_explanation"> 
     <h3><%= pluralize(@donation.errors.count, " error") %> 
       prohibited this donation from being saved:</h3> 
@@ -16,13 +16,14 @@
       <%= add_item_link image_tag("new.png"), f %>
     </h3>
     <div id="donation_items">
+      <span class="item_head">Category</span>
+      <span class="item_head">Quantity</span>
       <%= f.fields_for :items  do |i| %>
-      <div class="donation_item">
-        <label class="form_label">Category </label><%= i.text_field :category, :class => "form_text_field_small" %>
-        <label class="form_label">Quantity </label><%= i.number_field :quantity, :class => "form_text_field_tiny" %>
-        <label class="form_label">Unit </label><%= i.text_field :unit, :class => "form_text_field_tiny" %>
-        <%= raw remove_link_unless_new_record(i, 'donation_item') %>
-      </div>
+        <div class="donation_item">
+          <%= i.text_field :category, :class => "item_field_c" %>
+          <%= i.number_field :quantity, :class => "item_field_q" %>
+          <%= raw remove_link_unless_new_record(i, 'donation_item') %>
+        </div>
       <% end %>
     </div>
     <br/>
@@ -41,7 +42,7 @@
     </div>
     <br/>
 
-    <h3>Basic information</h3>
+    <h3>Contact information</h3>
     <p>
     <label class="form_label">Name</label><br/> 
     <%= f.text_field :name, :class => "form_text_field" %> <br/>

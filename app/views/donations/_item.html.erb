@@ -1,8 +1,7 @@
 <div class="donation_item">
   <%= df.fields_for :items, item do |i| %>
-    <label class="form_label">Category </label><%= i.text_field :category, :class => "form_text_field_small" %>
-    <label class="form_label">Quantity </label><%= i.number_field :quantity, :class => "form_text_field_tiny" %>
-    <label class="form_label">Unit </label><%= i.text_field :unit, :class => "form_text_field_tiny" %>
+    <%= i.text_field :category, :class => "item_field_c" %>
+    <%= i.number_field :quantity, :class => "item_field_q" %>
     <%= link_to_function "[-]", "$(this).up('.donation_item').remove()" %>
   <% end %>
 </div>

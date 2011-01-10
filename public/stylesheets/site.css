@@ -91,9 +91,13 @@ div#content_pane_bottom{
 div.error_explanation {
   color: red;
   border: solid 2px red;
-  padding-left: 10px;
+  padding: 10px 10px;
   margin-bottom: 15px;
   background-color: pink;
+}
+
+div.error_explanation li{
+  list-style-type: none; 
 }
 
 #link_login {
@@ -276,13 +280,18 @@ div#receiver_pane{
   height: 80px;
 }
 
-.form_text_field_small{
-  width: 150px;
+.item_head{
+  margin: 0 80px;
+  text-align: center;
+}
+
+.item_field_c{
+  width: 280px;
   height: 20px;
 }
 
-.form_text_field_tiny{
-  width: 50px;
+.item_field_q{
+  width: 90px;
   height: 20px;
 }
 
@@ -316,4 +325,12 @@ div#user_pane{
 
 div#user_pane ul{
   margin: 10px 40px
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors *{
+  background: pink;
 }
