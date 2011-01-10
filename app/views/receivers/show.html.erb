@@ -1,19 +1,23 @@
-<h2>Show receiver</h2>
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <% if flash[:error] %>
+      <div class="error_explanation">
+        <h3><%= flash[:error] %></h3>
+      </div>
+    <% end %>
 
-<% if flash[:error] %>
-  <div class="error_explanation">
-    <h3><%= flash[:error] %></h3>
+    <div id="receiver_section">
+      <p>Name: <%= @receiver.name %></p>
+      <p>Introduction: <%= @receiver.introduction %></p>
+      <p>Phone: <%= @receiver.phone %></p>
+      <p>Address: <%= @receiver.address %></p>
+      <p>Email: <%= @receiver.email %></p>
+    </div>
+
+    <%= link_to "Edit", edit_receiver_path(@receiver) if authenticated %>
+    <%= link_to "Delete", receiver_path(@receiver), :method => :delete, :confirm => "Are you sure?" if authenticated %>
+    <%= link_to "Back to list", receivers_path %>
   </div>
-<% end %>
-
-<div id="receiver_section">
-  <p>Name: <%= @receiver.name %></p>
-  <p>Introduction: <%= @receiver.introduction %></p>
-  <p>Phone: <%= @receiver.phone %></p>
-  <p>Address: <%= @receiver.address %></p>
-  <p>Email: <%= @receiver.email %></p>
+  <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
 </div>
-
-<%= link_to "Edit", edit_receiver_path(@receiver) if authenticated %>
-<%= link_to "Delete", receiver_path(@receiver), :method => :delete, :confirm => "Are you sure?" if authenticated %>
-<%= link_to "Back to list", receivers_path %>

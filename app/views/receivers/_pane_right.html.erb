@@ -1,0 +1,7 @@
+<div class="pane_right">
+  <ul>
+    <li><%= link_to "Who we are", receivers_path(:page => "who_we_are"), :class => ("side_active_link" if active_link == :who_we_are) %></li>
+    <li><%= link_to "Our partners", receivers_path(:page => "our_partners"), :class => ("side_active_link" if active_link == :our_partners) %></li>
+    <li><%= link_to "Contact us", new_receiver_path, :class => ("side_active_link" if active_link == :contact_us) %></li>
+  </ul>
+</div>

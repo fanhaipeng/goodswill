@@ -3,7 +3,12 @@ class ReceiversController < ApplicationController
   before_filter :admin_user_required, :only => [:edit, :update, :destroy]
 
   def index
-    @receivers = Receiver.all
+    if params[:page] == "who_we_are"
+      @page = :who_we_are
+    else
+      @page = :our_partners
+      @receivers = Receiver.all
+    end
   end
 
   def new

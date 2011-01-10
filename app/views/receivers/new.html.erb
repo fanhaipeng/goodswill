@@ -1,5 +1,8 @@
-<h2>Create a receiver</h2>
-
-<%= render :partial => 'receiver_form' %>
-
-<%= link_to "Back to list", receivers_path %>
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <%= render :partial => 'receiver_form' %>
+    <%= link_to "Cancel", receivers_path(:page => "our_partners") %>
+  </div>
+  <%= render :partial => "pane_right", :locals => { :active_link => :contact_us } %>
+</div>

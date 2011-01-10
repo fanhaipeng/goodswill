@@ -12,7 +12,7 @@
   </div>
 </div>
 <div id="home_bottom">
-  <div id="home_donation">
+  <div id="home_donation" class="home_vertical_pane">
     <h3>How you can help</h3>
     <%= image_tag "home-donation.png", :alt => 'donation' %>
     <div class="donation_button">
@@ -31,7 +31,7 @@
       <%= link_to "More +", donation_query_path %>
     </div>
   </div>
-  <div id="home_receiver">
+  <div id="home_receiver" class="home_vertical_pane">
     <h3>Our receivers</h3>
     <%= image_tag "home-receiver.png", :alt => 'receiver' %>
     <p>
@@ -52,7 +52,7 @@
       <%= link_to "More +", receivers_path %>
     </div>
   </div>
-  <div id="home_news">
+  <div id="home_news" class="home_vertical_pane">
     <h3>News</h3>
     <ul>
     <% for one_news in @latest_news %>

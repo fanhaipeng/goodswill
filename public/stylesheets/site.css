@@ -97,9 +97,10 @@ div.error_explanation {
 }
 
 #tab_bar ul li a{
+  margin: 0 2px;
   color: white;
   background-color:#ff6633;
-  font-size:12px;
+  font-size:14px;
   font-weight:bold;
   text-decoration:none;
   padding: 8px 16px;
@@ -145,32 +146,29 @@ div#home_picture{
 }
 
 div#home_bottom{
-  height: 580px;
+  height: 630px;
 }
 
 div#home_bottom h3{
   margin-bottom: 10px;
 }
 
-div#home_donation{
+.home_vertical_pane {
   padding-left: 10px;
   padding-bottom: 5px;
-  margin-right: 8px;
-  width: 31%;
   float:left;
+  height: 620px;
+  width: 31%;
   background: #eee;
-  height: 570px;
+}
+
+div#home_donation{
+  margin-right: 8px;
 }
 
 div#home_receiver{
-  padding-left: 10px;
-  padding-bottom: 5px;
   margin-right: 8px;
-  width: 31%;
   padding-right: 10px;
-  float:left;
-  background: #eee;
-  height: 570px;
 }
 
 div#home_receiver ul{
@@ -179,12 +177,6 @@ div#home_receiver ul{
 }
 
 div#home_news{
-  padding-left: 10px;
-  padding-bottom: 5px;
-  width: 31%;
-  height: 570px;
-  float:left;
-  background: #eee;
 }
 
 div#home_news ul{
@@ -201,17 +193,46 @@ div#receiver_pane{
   height: 500px;
 }
 
-div#receiver_left {
-  width: 30%;
+.pane_left {
+  width: 25%;
+  margin: 0 5px;
   float: left;
 }
 
-div#receiver_middle {
+.pane_middle {
   width: 50%;
   float: left;
 }
 
-div#receiver_right {
-  width: 15%;
-  float: left;
+.pane_right {
+  width: 22%;
+  float: right;
+}
+
+.pane_right ul li{
+  list-style-type: none;
+  margin: 3px 0;
+}
+
+.pane_right ul{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.pane_right ul li a {
+  display: block;
+  padding: 5px 20px;
+  width: 120px;
+  background: #ddd;
+}
+
+.pane_right ul li a:hover, .pane_right ul li a.side_active_link {
+  background: #888;
+  color: #fff;
+}
+
+.item_section {
+  background: #eee;
+  padding: 5px 10px;
+  margin: 5px 0;
 }
