@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109224854) do
+ActiveRecord::Schema.define(:version => 20110110190421) do
 
   create_table "comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -73,16 +73,16 @@ ActiveRecord::Schema.define(:version => 20110109224854) do
   add_index "donation_notes", ["user_id"], :name => "donation_notes_user_foreign_key"
 
   create_table "donations", :force => true do |t|
-    t.string   "phone",       :limit => 20,                    :null => false
-    t.string   "address",     :limit => 20,                    :null => false
-    t.string   "email",       :limit => 50,                    :null => false
-    t.string   "name",        :limit => 50,                    :null => false
+    t.string   "phone",       :limit => 20,                     :null => false
+    t.string   "address",     :limit => 200
+    t.string   "email",       :limit => 50,                     :null => false
+    t.string   "name",        :limit => 50,                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "pick_up",                   :default => false, :null => false
-    t.boolean  "news_letter",               :default => true,  :null => false
+    t.boolean  "pick_up",                    :default => false, :null => false
+    t.boolean  "news_letter",                :default => true,  :null => false
     t.text     "note"
-    t.integer  "status",                    :default => 0,     :null => false
+    t.integer  "status",                     :default => 0,     :null => false
   end
 
   create_table "items", :force => true do |t|

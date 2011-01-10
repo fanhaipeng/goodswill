@@ -7,7 +7,6 @@ class DonationTest < ActiveSupport::TestCase
     assert !donation.valid?
 
     assert donation.errors[:phone].any?
-    assert donation.errors[:address].any?
     assert donation.errors[:email].any?
     assert donation.errors[:name].any?
 

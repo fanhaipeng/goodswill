@@ -12,7 +12,7 @@ class Donation < ActiveRecord::Base
   accepts_nested_attributes_for :items, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :images, :allow_destroy => true, :reject_if => :all_blank
 
-  validates_presence_of :phone, :address, :email, :name, :status
+  validates_presence_of :phone, :email, :name, :status
   validates_inclusion_of :pick_up, :news_letter, :in => [true, false]
   validates_inclusion_of :status, :in => [INITIAL, PICKED, SORTED]
   validates_format_of :phone, 
