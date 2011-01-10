@@ -20,14 +20,21 @@ img{
   border-style: none;
 }
 
-h2{
+h2, h3, h4{
   color: #ff6633;
-  font: normal 28pt Segoe UI light,Helvetica,sans-serif;
+  font: normal 18pt Segoe UI light,Helvetica,sans-serif;
+}
+
+h2{
+  font-size: 28pt;
 }
 
 h3{
-  color: #ff6633;
-  font: normal 18pt Segoe UI light,Helvetica,sans-serif;
+  font-size: 22pt;
+}
+
+h4{
+  font-size: 18pt;
 }
 
 table{
@@ -138,14 +145,30 @@ div#head .donation_button{
 }
 
 .donation_button{
-  background: url('../images/donation-button.png') no-repeat;
   width: 210px;
   height: 40px;
   margin: 10px 0px;
+  background: #f63;
 }
 
 .donation_button a{
-  padding: 20px 105px;
+  padding: 0px 26px;
+  color: white;
+  text-align: center;
+  font: normal 20pt Segoe UI light, Helvetica,sans-serif;
+}
+
+.donation_button a:hover{
+  text-decoration: none;
+}
+
+input.button{
+  font: normal 14pt Segoe UI, Helvetica,sans-serif;
+  color: #555;
+  border: solid 1px;
+  border-color: #ddd #777 #777 #ddd;
+  background: #eee;
+  padding: 0 25px;
 }
 
 div#home_top{
@@ -216,8 +239,18 @@ div#home_news ul p{
   float:right;
 }
 
-div#receiver_pane{
+div#receiver_pane, div#donation_pane{
   height: auto;
+}
+
+div#donation_pane ul{
+  margin-left: 15px;
+}
+
+div#donation_pane li{
+  font-size: 14pt;
+  color: #4b4b4b;
+  margin: 5px 0;
 }
 
 .pane_left {
@@ -260,7 +293,7 @@ div#receiver_pane{
 }
 
 .item_section {
-  padding: 5px 10px;
+  padding: 5px 0px;
   margin: 5px 0;
 }
 
@@ -293,6 +326,20 @@ div#receiver_pane{
 .item_field_q{
   width: 90px;
   height: 20px;
+}
+
+.item_image{
+  max-width: 450px;
+  border: solid 1px #aaa;
+  margin: 5px 0px;
+}
+
+.column_c{
+  width: 300px;
+}
+
+.column_q{
+  width: 100px;
 }
 
 .donation_item, .donation_image{

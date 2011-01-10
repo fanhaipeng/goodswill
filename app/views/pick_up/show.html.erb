@@ -20,7 +20,7 @@
   <%= fields_for @donation.notes.build do |n| %>
     <%= n.text_area :note %>
   <% end %>
-  <%= submit_tag "Pick up" %>
+  <%= submit_tag "Pick up", :class => "button" %>
 <% end %>
 
 <h3>History of operation</h3>

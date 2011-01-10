@@ -1,10 +1,10 @@
-<div id="receiver_pane">
+<div id="donation_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
     <h3>Index of donations</h3>
     <ul>
     <% for donation in @donations %>
-      <li><%= link_to "Donation by " << donation.name, donation_path(donation) %></li>
+      <li><%= link_to "Donation by #{donation.name} at #{donation.created_at}", donation_path(donation) %></li>
     <% end %>
     </ul>
   </div>

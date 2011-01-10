@@ -6,7 +6,7 @@
       prohibited this receiver from being saved:</h3> 
     <ul> 
       <%  @receiver.errors.full_messages.each do |msg|  %> 
-      <li><%= msg  %></li> 
+      <li><%= msg %></li> 
       <%  end %> 
     </ul> 
   </div>
@@ -43,6 +43,7 @@
   <p>Approved? <%= f.check_box :approved %></p>
   <% end %>
 
-  <p><%= submit_tag "Submit" %></p>
+  <br/>
+  <p><%= submit_tag "Submit", :class => "button" %></p>
 <% end %>
 </div>

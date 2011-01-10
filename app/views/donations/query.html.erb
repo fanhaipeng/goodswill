@@ -1,4 +1,4 @@
-<div id="receiver_pane">
+<div id="donation_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
     <h3>Search your donated goods</h3>
@@ -21,11 +21,15 @@
       </p>
       <p>
         <label class="form_label">Phone</label><br/>
-        <%= text_field_tag :phone, nil, :class => "form_text_field" %></p>
-      <p><%= submit_tag "Search" %></p>
+        <%= text_field_tag :phone, nil, :class => "form_text_field" %>
+      </p>
+      <br/>
+      <p>
+        <%= submit_tag "Search", :class => "button" %>
+      </p>
     <% end %>
     <br/>
-    <%= link_to "Index of donations", donations_path if authenticated %>
+    <%= link_to raw("<h4>Index of donations</h4>"), donations_path if authenticated %>
   </div>
   <%= render :partial => "pane_right", :locals => { :active_link => :check_donation} %>
   <div class="clear" ></div>

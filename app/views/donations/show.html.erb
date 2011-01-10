@@ -1,4 +1,4 @@
-<div id="receiver_pane">
+<div id="donation_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
     <div id="donation_section">
@@ -16,10 +16,9 @@
     <% end %>
     <%= form_for [@donation, @donation.comments.build] do |f| %>
       <p>
-      <label class="form_label">Comment</label><br/>
       <%= f.text_area :comment, :class => "form_text_area" %>
       </p>
-      <%= submit_tag "Add a comment" %>
+      <%= submit_tag "Add a comment", :class => "button" %>
     <% end %>
     
     <br/>

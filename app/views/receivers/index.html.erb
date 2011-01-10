@@ -5,15 +5,14 @@
     <% for receiver in @receivers %>
       <% next unless receiver.approved or authenticated %>
       <div class="item_section">
-        <h3>
-          <%= receiver.name %>
-          <%= link_to(image_tag("view.png"), receiver_path(receiver), :class => "image_link") if authenticated %>
-        </h3>
-        <p>
-        <%= receiver.introduction %>
-        </p>
         <% if authenticated %>
+            <%= link_to(raw("<h4>#{receiver.name}</h4>"), receiver_path(receiver)) %>
+        <% else %>
+          <h4><%= receiver.name %></h4>
         <% end %>
+        <p>
+          <%= receiver.introduction %>
+        </p>
       </div>
     <% end %>
   </div>
