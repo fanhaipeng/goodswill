@@ -8,6 +8,16 @@ body{
   font: normal 12pt Segoe UI,Helvetica,sans-serif;
 }
 
+h2{
+  color: #ff6633;
+  font-size: 38px;
+}
+
+h3{
+  color: #ff6633;
+  font-size: 18px;
+}
+
 a {
   text-decoration: none;
   color: #25a;
@@ -96,15 +106,88 @@ div.error_explanation {
   text-decoration:none;
 }
 
-div#donation_button{
+div#head .donation_button{
+  position: absolute;
+  top: 95px;
+  left: 900px;
+}
+
+.donation_button{
   background: url('../images/donation-button.png') no-repeat;
   width: 210px;
   height: 40px;
-  position: absolute;
-  top: 105px;
-  left: 900px;
+  margin: 10px 0px;
 }
-div#donation_button a{
+
+.donation_button a{
   padding: 20px 105px;
 }
 
+div#home_top{
+  height: 350px;
+  padding-top: 10px;
+}
+
+div#home_introduction{
+  width: 220px;
+  margin-right: 10px;
+  margin-left: 10px;
+  float:left;
+}
+
+div#home_picture{
+  float:right;
+}
+
+div#home_bottom{
+  height: 550px;
+}
+
+div#home_bottom h3{
+  margin-bottom: 10px;
+}
+
+div#home_donation{
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  width: 32%;
+  float:left;
+  background: #eee;
+  height: 540px;
+}
+
+div#home_receiver{
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  width: 32%;
+  padding-right: 10px;
+  float:left;
+  background: #eee;
+  height: 540px;
+}
+
+div#home_receiver ul{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
+div#home_news{
+  padding-left: 10px;
+  padding-bottom: 5px;
+  width: 30%;
+  height: 540px;
+  float:left;
+  background: #eee;
+}
+
+div#home_news ul{
+  margin-left: 15px;
+}
+
+.more_link{
+  padding-top: 20px;
+  padding-right: 15px;
+  float:right;
+}

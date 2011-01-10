@@ -1,1 +1,68 @@
-<h2>Home page</h2>
+<div id="home_top">
+  <div id="home_introduction">
+    <h2>Who we are</h2>
+    <p>
+    This is a introduction to who we are. We are a non-profit organization.
+    This is a introduction to who we are. We are a non-profit organization.
+    This is a introduction to who we are. We are a non-profit organization.
+    This is a introduction to who we are. We are a non-profit organization.
+    This is a introduction to who we are. We are a non-profit organization.
+    </p>
+  </div>
+  <div id="home_picture">
+    <%= image_tag "home.jpg", :alt => 'home' %>
+  </div>
+</div>
+<div id="home_bottom">
+  <div id="home_donation">
+    <h3>How you can help</h3>
+    <%= image_tag "home-donation.png", :alt => 'donation' %>
+    <div class="donation_button">
+      <%= link_to "", new_donation_path %>
+    </div>
+    <p>
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    Here we tell you how you can help those people.
+    </p>
+    <div class="more_link">
+      <%= link_to "More +", donation_query_path %>
+    </div>
+  </div>
+  <div id="home_receiver">
+    <h3>Our receivers</h3>
+    <%= image_tag "home-receiver.png", :alt => 'receiver' %>
+    <p>
+    Now we need lots of stuff to donate to people who need.
+    Now we need lots of stuff to donate to people who need.
+    Now we need lots of stuff to donate to people who need.
+    Now we need lots of stuff to donate to people who need.
+    What we need include:
+    <ul>
+      <li>Furniture</li>
+      <li>Clothe</li>
+      <li>Computer</li>
+      <li>Toys</li>
+      <li>What else you thing can help these people</li>
+    </ul>
+    </p>
+    <div class="more_link">
+      <%= link_to "More +", receivers_path %>
+    </div>
+  </div>
+  <div id="home_news">
+    <h3>News</h3>
+    <ul>
+    <% for one_news in @latest_news %>
+      <li><%= link_to one_news.title, news_path(one_news) %></li>
+    <% end %>
+    </ul>
+    <div class="more_link">
+      <%= link_to "More +", news_index_path %>
+    </div>
+  </div>
+</div>
