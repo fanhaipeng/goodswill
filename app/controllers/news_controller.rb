@@ -3,7 +3,12 @@ class NewsController < ApplicationController
   before_filter :admin_user_required, :except => [:index, :show]
 
   def index
-    @all_news = News.all
+    @all_news = News.order("created_at desc")
+    if params[:id]
+      @selected_news = News.find_by_id(params[:id])
+    else
+      @selected_news = @all_news[0]
+    end
   end
 
   def new

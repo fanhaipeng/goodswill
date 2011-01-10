@@ -1,9 +1,31 @@
-<h2>Index of news</h2>
+<div id="news_pane">
+  <div id="news_pane_left"> 
+    <h3>Our news<%= link_to(image_tag("new.png"), new_news_path, :class => "image_link") if authenticated %>
+</h3>
+    <ul>
+    <% for news in @all_news %>
+      <% if news == @selected_news %>
+        <li><%= link_to news.title, news_index_path(:id => news), :class => "selected_news"  %></li>
+      <% else %>
+        <li><%= link_to news.title, news_index_path(:id => news) %></li>
+    <% end %>
+    <% end %>
+    </ul>
+  </div>
 
-<ul>
-<% for news in @all_news %>
-  <li><%= link_to news.title, news_path(news) %></li>
-<% end %>
-</ul>
-
-<%= link_to "Create news", new_news_path if authenticated %>
+  <div id="news_pane_right">
+    <div id="news_title">
+      <h3><%= @selected_news.title %></h3>
+      <span class="comment_tag"><%= "posted at #{@selected_news.created_at}" %></span>
+      <%= link_to(image_tag("edit.png"), edit_news_path(@selected_news), :class => "image_link") if authenticated %>
+    </div>
+    <div id="news_content">
+      <%= raw(@selected_news.content) %>
+    </div>
+    <% for img in @selected_news.images %>
+      <img alt="image" src="<%= news_news_image_path(@selected_news, img) %>" class="item_image" />
+    <% end %>
+    <br/>
+  </div>
+  <div class="clear"></div>
+</div>

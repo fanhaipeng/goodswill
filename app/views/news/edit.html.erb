@@ -1,7 +1,6 @@
-<h2>Edit news</h2>
-
+<h2>
+  Edit news
+  <%= link_to image_tag("back.png"), news_index_path, :class => "image_link" %>
+</h2>
 <%= render :partial => 'news_form', :locals => {:submit_label => "Edit news"} %>
 
-<%= link_to "Cancel", news_path(@news) %>
-
-<%= link_to "Back to list", news_index_path %>

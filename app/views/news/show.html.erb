@@ -1,8 +1,6 @@
-<h2>Show a piece of news</h2>
-
 <div id="news_section">
-  <p>Title: <%= @news.title %></p> 
-  <p><%= @news.content %></p>
+  <h3><%= @news.title %></h3> 
+  <p><%= raw(@news.content) %></p>
 </div>
 
 <div id="news_images_section">
@@ -27,7 +25,7 @@
 </div>
 <% end %>
 
-
-<%= link_to "Create news", new_news_path if authenticated %>
-<%= link_to "Edit news", edit_news_path(@news) if authenticated %>
-<%= link_to "Back to list", news_index_path %>
+<br/>
+<%= link_to(image_tag("new.png"), new_news_path, :class => "image_link") if authenticated %>
+<%= link_to(image_tag("edit.png"), edit_news_path(@news), :class => "image_link")  if authenticated %>
+<%= link_to(image_tag("back.png"), news_index_path, :class => "image_link")  %>

@@ -1,20 +1,22 @@
-<div id="news_form">
-  <% if @news.errors.any? %>
-    <div class="error_explanation">
-      <h3><%= pluralize(@news.errors.count, " error") %> 
-        prohibited this news from being saved:</h3> 
-      <ul> 
-        <%  @news.errors.full_messages.each do |msg|  %> 
-        <li><%= msg  %></li> 
-        <%  end %> 
-      </ul> 
-    </div>
-  <% end %>
+<% if @news.errors.any? %>
+  <div class="error_explanation">
+    <h3><%= pluralize(@news.errors.count, " error") %> 
+      prohibited this news from being saved:</h3> 
+    <ul> 
+      <%  @news.errors.full_messages.each do |msg|  %> 
+      <li><%= msg  %></li> 
+      <%  end %> 
+    </ul> 
+  </div>
+<% end %>
 
-  <%= form_for @news, :html => {:multipart => true} do |f| %>
-    <p>Title: <%= f.text_field :title %></p>
-    <p><%= f.text_area :content %></p>
-    <br/>
-    <%= submit_tag submit_label, :class => "button" %>
-  <% end %>
-</div>
+<%= form_for @news, :html => {:multipart => true} do |f| %>
+  <p>
+    <label class="form_label">Title</label><br/>
+    <%= f.text_field :title, :class => "form_news_title" %>
+  </p>
+  <p><label class="form_label">Content (html tags are allowed)</label><br/>
+  <%= f.text_area :content, :class => "form_news_content" %></p>
+  <br/>
+  <%= submit_tag submit_label, :class => "button" %>
+<% end %>

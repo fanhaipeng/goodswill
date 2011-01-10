@@ -1,5 +1,10 @@
-<h2>Create news</h2>
+<div id="news_create_pane">
+<h2>
+  Create news
+  <%= link_to image_tag("back.png"), news_index_path %>
+</h2>
 
 <%= render :partial => 'news_form', :locals => {:submit_label => "Create news"} %>
+</div>
 
-<%= link_to "Back to list", news_index_path %>
+
