@@ -45,6 +45,7 @@ div#main{
 
 div#foot{
   height: 100px;
+  text-align: center;
 }
 
 div#content_pane_top{
@@ -107,9 +108,9 @@ div.error_explanation {
 }
 
 div#head .donation_button{
-  position: absolute;
-  top: 95px;
-  left: 900px;
+  position: relative;
+  top: -25px;
+  left: 800px;
 }
 
 .donation_button{
@@ -140,7 +141,7 @@ div#home_picture{
 }
 
 div#home_bottom{
-  height: 550px;
+  height: 580px;
 }
 
 div#home_bottom h3{
@@ -150,22 +151,22 @@ div#home_bottom h3{
 div#home_donation{
   padding-left: 10px;
   padding-bottom: 5px;
-  margin-right: 5px;
-  width: 32%;
+  margin-right: 8px;
+  width: 31%;
   float:left;
   background: #eee;
-  height: 540px;
+  height: 570px;
 }
 
 div#home_receiver{
   padding-left: 10px;
   padding-bottom: 5px;
-  margin-right: 5px;
-  width: 32%;
+  margin-right: 8px;
+  width: 31%;
   padding-right: 10px;
   float:left;
   background: #eee;
-  height: 540px;
+  height: 570px;
 }
 
 div#home_receiver ul{
@@ -176,8 +177,8 @@ div#home_receiver ul{
 div#home_news{
   padding-left: 10px;
   padding-bottom: 5px;
-  width: 30%;
-  height: 540px;
+  width: 31%;
+  height: 570px;
   float:left;
   background: #eee;
 }
