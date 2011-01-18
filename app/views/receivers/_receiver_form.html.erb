@@ -14,10 +14,10 @@
 
 <%= form_for @receiver, :html => { :multipart => true } do |f| %>
   <p>Name: <%= f.text_field :name %></p>
-  <p>Introduction: <%= f.text_area :introduction %></p>
+  <p>Email: <%= f.email_field :email %></p>
   <p>Phone: <%= f.text_field :phone %></p>
   <p>Address: <%= f.text_field :address %></p>
-  <p>Email: <%= f.email_field :email %></p>
+  <p>Message: <%= f.text_area :introduction %></p>
 
   <% if not @receiver.new_record? %>
   <p>Approved? <%= f.check_box :approved %></p>

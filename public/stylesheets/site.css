@@ -8,6 +8,10 @@ body{
   font: normal 12pt Segoe UI,Helvetica,sans-serif;
 }
 
+p{
+  margin: 20px 0;
+}
+
 h2{
   color: #ff6633;
   font-size: 38px;
@@ -109,7 +113,7 @@ div.error_explanation {
 
 div#head .donation_button{
   position: relative;
-  top: -25px;
+  top: -15px;
   left: 800px;
 }
 
@@ -191,4 +195,23 @@ div#home_news ul{
   padding-top: 20px;
   padding-right: 15px;
   float:right;
+}
+
+div#receiver_pane{
+  height: 500px;
+}
+
+div#receiver_left {
+  width: 30%;
+  float: left;
+}
+
+div#receiver_middle {
+  width: 50%;
+  float: left;
+}
+
+div#receiver_right {
+  width: 15%;
+  float: left;
 }
