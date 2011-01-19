@@ -12,6 +12,10 @@ p{
   margin: 20px 0;
 }
 
+img{
+  border-style: none;
+}
+
 h2{
   color: #ff6633;
   font-size: 38px;
@@ -231,7 +235,6 @@ div#receiver_pane{
 }
 
 .item_section {
-  background: #eee;
   padding: 5px 10px;
   margin: 5px 0;
 }
@@ -255,4 +258,8 @@ div#receiver_pane{
 
 .clear{
   clear: both;
+}
+
+.image_link{
+  margin: 0px 10px;
 }

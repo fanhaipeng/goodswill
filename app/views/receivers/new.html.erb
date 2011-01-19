@@ -1,9 +1,15 @@
 <div id="receiver_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
+    <div>
+      <h3>You can reach us by several means</h3>
+      <p>You can email us vis admin@goodswill.info</p>
+      <p>You can call us on 010-58178888.</p>
+    </div>
+    <h3>If you want to become our partner, please fill in this form in which all fields are required. </h3>
     <%= render :partial => 'receiver_form' %>
     <%= link_to "Cancel", receivers_path(:page => "our_partners") %>
   </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => :contact_us } %>
+  [<%= render :partial => "pane_right", :locals => { :active_link => :contact_us } %>]
   <div class="clear"></div>
 </div>
