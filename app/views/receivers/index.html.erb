@@ -1,5 +1,5 @@
 <div id="receiver_pane">
-<%= render :partial => "pane_left" %>
+  <%= render :partial => "pane_left" %>
   <div class="pane_middle">
     <% if @page == :who_we_are %>
       <%= render :partial => "who_we_are" %>
@@ -7,5 +7,6 @@
       <%= render :partial => "our_partners" %>
     <% end %>
   </div>
-<%= render :partial => "pane_right", :locals => { :active_link => @page } %>
+  <%= render :partial => "pane_right", :locals => { :active_link => @page } %>
+  <div class="clear" ></div>
 </div>

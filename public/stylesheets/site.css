@@ -146,7 +146,6 @@ div#home_picture{
 }
 
 div#home_bottom{
-  height: 630px;
 }
 
 div#home_bottom h3{
@@ -190,7 +189,7 @@ div#home_news ul{
 }
 
 div#receiver_pane{
-  height: 500px;
+  height: auto;
 }
 
 .pane_left {
@@ -206,7 +205,7 @@ div#receiver_pane{
 
 .pane_right {
   width: 22%;
-  float: right;
+  float: left;
 }
 
 .pane_right ul li{
@@ -223,11 +222,11 @@ div#receiver_pane{
   display: block;
   padding: 5px 20px;
   width: 120px;
-  background: #ddd;
+  background: #eea;
 }
 
 .pane_right ul li a:hover, .pane_right ul li a.side_active_link {
-  background: #888;
+  background: #aa2;
   color: #fff;
 }
 
@@ -235,4 +234,25 @@ div#receiver_pane{
   background: #eee;
   padding: 5px 10px;
   margin: 5px 0;
+}
+
+.form_label{
+  font-weight: bold;
+}
+
+.form_label_note{
+}
+
+.form_text_field{
+  width: 300px;
+  height: 20px;
+}
+
+.form_text_area{
+  width: 300px;
+  height: 80px;
+}
+
+.clear{
+  clear: both;
 }

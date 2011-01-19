@@ -8,11 +8,26 @@
     <% end %>
 
     <div id="receiver_section">
-      <p>Name: <%= @receiver.name %></p>
-      <p>Introduction: <%= @receiver.introduction %></p>
-      <p>Phone: <%= @receiver.phone %></p>
-      <p>Address: <%= @receiver.address %></p>
-      <p>Email: <%= @receiver.email %></p>
+      <p>
+        <label class="form_label">Name</label><br/>
+        <%= @receiver.name %>
+      </p>
+      <p>
+        <label class="form_label">Email</label><br/>
+        <%= @receiver.email %>
+      </p>
+      <p>
+        <label class="form_label">Phone</label><br/> 
+        <%= @receiver.phone %>
+      </p>
+      <p>
+        <label class="form_label">Address</label><br/>
+        <%= @receiver.address %>
+      </p>
+      <p>
+        <label class="form_label">Message</label><br/> 
+        <%= @receiver.introduction %>
+      </p>
     </div>
 
     <%= link_to "Edit", edit_receiver_path(@receiver) if authenticated %>
@@ -20,4 +35,5 @@
     <%= link_to "Back to list", receivers_path %>
   </div>
   <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
+  <div class="clear" />
 </div>
