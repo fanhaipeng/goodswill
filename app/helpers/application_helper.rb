@@ -3,7 +3,7 @@ module ApplicationHelper
     return_text = ""
     [ 
       { :tab => :home, :url => home_index_path, :text => "Home" },
-      { :tab => :introduction, :url => receivers_path(:page => "who_we_are"), :text => "Who we are" },
+      { :tab => :introduction, :url => receiver_page_path(:page => "who_we_are"), :text => "Who we are" },
       { :tab => :donations, :url => donation_query_path, :text => "How you can help" },
       { :tab => :news, :url => news_index_path, :text => "News" },
       { :tab => :admin, :url => deliveries_path, :text => "Admin" }

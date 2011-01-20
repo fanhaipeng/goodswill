@@ -58,6 +58,7 @@ Goodswill::Application.routes.draw do
   
   match 'donations/query' => 'donations#query', :via => :get, :as => 'donation_query'
   match 'donations/search' => 'donations#search', :via => :post, :as => 'donation_search'
+  match 'donations/page/:page' => 'donations#page', :as => 'donation_page'
   resources :donations
   resources :donations do
     resources :comments
@@ -68,6 +69,8 @@ Goodswill::Application.routes.draw do
   resources :news do
     resources :news_images
   end
+
+  match 'receivers/page/:page' => 'receivers#page', :as => 'receiver_page'
   resources :receivers
   
   resources :deliveries
@@ -92,7 +95,7 @@ Goodswill::Application.routes.draw do
   match 'sort/:id' => 'sort#show', :via => :get, :as => 'sort_donation'
   match 'sort/:id' => 'sort#update', :via => :put, :as => 'sort_donation'
 
-
   match 'home/index' => 'home#index'
+
   root :to => "home#index"
 end

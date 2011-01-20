@@ -2,6 +2,10 @@ class ReceiversController < ApplicationController
 
   before_filter :admin_user_required, :only => [:edit, :update, :destroy]
 
+  def page
+    @page_name = params[:page]
+  end
+
   def index
     if params[:page] == "who_we_are"
       @page = :who_we_are

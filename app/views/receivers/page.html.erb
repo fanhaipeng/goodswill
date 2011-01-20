@@ -1,0 +1,8 @@
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <%= render :partial => "static/#{controller.controller_name}/#{@page_name}" %>
+  </div>
+  <%= render :partial => "pane_right", :locals => { :active_link => @page_name.to_sym } %>
+  <div class="clear" ></div>
+</div>

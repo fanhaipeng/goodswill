@@ -1,12 +1,18 @@
 <div id="receiver_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
-    <% if @page == :who_we_are %>
-      <%= render :partial => "who_we_are" %>
-    <% else %>
-      <%= render :partial => "our_partners" %>
+    <% for receiver in @receivers %>
+      <div class="item_section">
+        <h3><%= receiver.name %></h3>
+        <p>
+        <%= receiver.introduction %>
+        </p>
+        <% if authenticated %>
+          <p><%= link_to "View", receiver_path(receiver) %></p>
+        <% end %>
+      </div>
     <% end %>
   </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => @page } %>
+  <%= render :partial => "pane_right", :locals => { :active_link => :our_partners} %>
   <div class="clear" ></div>
 </div>
