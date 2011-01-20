@@ -1,5 +1,4 @@
-<h2>New user</h2>
-
-<%= render :partial => 'user_form' %>
-
-<%= link_to "Back to list", users_path %>
+<div id="user_pane">
+  <h2>Create new user<%= link_to image_tag("cancel.png"), users_path, :class => "image_link" %></h2>
+  <%= render :partial => 'user_form' %>
+</div>

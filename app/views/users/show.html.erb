@@ -1,8 +1,19 @@
-<h2>Show a user</h2>
-<p>Email: <%= @user.email %></p>
-<p>Name: <%= @user.name %></p>
-<p>Role: <%= @user.role == User::SUPER_USER ? "Super user" : "Admin user" %></p>
+<div id="user_pane">
+  <h2>User profile</h2>
+  <p>
+    <label class="form_label">Email</label><br/>
+    <%= @user.email %>
+  </p>
+  <p>
+    <label class="form_label">Name</label><br/>
+    <%= @user.name %>
+  </p>
+  <p>
+    <label class="form_label">Role</label><br/>
+    <%= @user.role == User::SUPER_USER ? "Super user" : "Admin user" %>
+  </p>
 
-<%= link_to("Delete user", user_path(@user), :method => :delete, :confirm => "Are you sure?") if @current_user.role == User::SUPER_USER %> 
-<%= link_to("Change password", edit_user_path(@user)) %> 
-<%= link_to("Back to list", users_path) if @current_user.role == User::SUPER_USER%>
+  <%= link_to(image_tag("delete.png"), user_path(@user), :method => :delete, :confirm => "Are you sure?", :class => "image_link") if @current_user.role == User::SUPER_USER and @current_user != @user %> 
+  <%= link_to(image_tag("edit.png"), edit_user_path(@user), :class => "image_link") if @current_user == @user %> 
+  <%= link_to(image_tag("back.png"), users_path, :class => "image_link") if @current_user.role == User::SUPER_USER%>
+</div>

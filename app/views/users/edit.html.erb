@@ -1,8 +1,14 @@
-<h2>Edit user's password</h2>
+<div class="user_pane">
+<h2>Change password of <%= @user.name %> <%= link_to image_tag("cancel.png"), user_path(@user) %></h2>
 <%= form_for @user do |f| %>
-  <p>Change password of <%= @user.name %></p>
-  <p>Password: <%= f.password_field :password %></p>
-  <p>Confirm Password: <%= f.password_field :password_confirmation %></p>
+  <p>
+    <label class="form_label">New password</label><br/>
+    <%= f.password_field :password, :class => "form_text_field" %>
+  </p>
+  <p>
+    <label class="form_label">Confirm Password</label><br/>
+    <%= f.password_field :password_confirmation, :class => "form_text_field" %>
+  </p>
   <%= submit_tag "Change password" %>
-  <%= link_to "Cancel", user_path(@user) %>
 <% end %>
+</div>

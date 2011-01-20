@@ -27,7 +27,7 @@
     </p>
     <p>
     <label class="form_label">Address</label><br/> 
-    <%= f.text_area :address, :class => "form_text_field" %> <br/>
+    <%= f.text_area :address, :class => "form_text_area" %> <br/>
     </p>
     <p>
     <label class="form_label">Note(optional)</label><br/> 
@@ -43,33 +43,34 @@
     </p>
   
     <br/>
-    <h3>Stuff you want to donate</h3>
+    <h3>Stuff you want to donate
+      <%= add_item_link image_tag("new.png"), f %>
+    </h3>
     <div id="donation_items">
       <%= f.fields_for :items  do |i| %>
       <div class="donation_item">
-        Category<%= i.text_field :category, :class => "form_text_field_small" %>
-        Quantity<%= i.number_field :quantity, :class => "form_text_field_tiny" %>
-        Unit<%= i.text_field :unit, :class => "form_text_field_tiny" %>
+        <label class="form_label">Category </label><%= i.text_field :category, :class => "form_text_field_small" %>
+        <label class="form_label">Quantity </label><%= i.number_field :quantity, :class => "form_text_field_tiny" %>
+        <label class="form_label">Unit </label><%= i.text_field :unit, :class => "form_text_field_tiny" %>
         <%= raw remove_link_unless_new_record(i, 'donation_item') %>
       </div>
       <% end %>
     </div>
-    <%= add_item_link "Add one more item", f %> 
-  
+    
     <br/>
-    <br/>
-    <h3>Add images if you have</h3>
+    <h3>
+      Add images if you have
+      <%= add_image_link image_tag("new.png"), f %>
+    </h3>
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
       <div class="donation_image">
-        Image File: <%= i.file_field :image_data %>  
+        <label class="form_label">Image File</label> <%= i.file_field :image_data %>  
         <%= raw remove_link_unless_new_record(i, 'donation_image') %>
       </div>
       <% end %>
     </div>
-    <%= add_image_link "Add one more image", f %>
-
-    <br/>
+    
     <br/>
     <%= submit_tag %>
   <% end %>

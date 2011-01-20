@@ -266,21 +266,25 @@ div#receiver_pane{
 .form_text_field{
   width: 300px;
   height: 20px;
+  background: #eed;
 }
 
 .form_text_area{
   width: 300px;
   height: 80px;
+  background: #eed;
 }
 
 .form_text_field_small{
   width: 150px;
-  height: 20px
+  height: 20px;
+  background: #eed;
 }
 
 .form_text_field_tiny{
   width: 50px;
-  height: 20px
+  height: 20px;
+  background: #eed;
 }
 
 .donation_item, .donation_image{
@@ -304,5 +308,13 @@ div#receiver_pane{
 }
 
 div#login_pane{
-  margin: 20px 20px;
+  margin: 0px 20px;
+}
+
+div#user_pane{
+  margin: 0px 20px;
+}
+
+div#user_pane ul{
+  margin: 10px 40px
 }
