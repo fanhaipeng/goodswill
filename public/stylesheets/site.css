@@ -22,12 +22,12 @@ img{
 
 h2{
   color: #ff6633;
-  font-size: 38px;
+  font: normal 28pt Segoe UI light,Helvetica,sans-serif;
 }
 
 h3{
   color: #ff6633;
-  font-size: 18px;
+  font: normal 18pt Segoe UI light,Helvetica,sans-serif;
 }
 
 table{
@@ -45,12 +45,11 @@ td{
 
 a {
   text-decoration: none;
-  color: #25a;
-  font-weight: bold;
+  color: #000;
 }
 
 a:hover {
-  color: #ed5;
+  text-decoration: underline;
 }
 
 div#page{
@@ -118,19 +117,14 @@ div.error_explanation {
 }
 
 #tab_bar ul li a{
-  margin: 0 2px;
-  color: white;
-  background-color:#ff6633;
-  font-size:14px;
-  font-weight:bold;
+  color: #8a8a8a;
+  font: normal 14pt Segoe UI,Helvetica,sans-serif;
   text-decoration:none;
-  padding: 8px 16px;
+  padding: 5px 16px;
 }
 
 #tab_bar ul li a:hover, #tab_bar ul li.active_tab a {
-  color: #4b4b4b;
-  background-color:#efefe7;
-  text-decoration:none;
+  color: #000;
 }
 
 div#head .donation_button{
@@ -178,29 +172,38 @@ div#home_bottom h3{
   padding-bottom: 5px;
   float:left;
   height: 620px;
-  width: 31%;
-  background: #eee;
+  width: 28%;
+  text-align: justify;
 }
 
 div#home_donation{
-  margin-right: 8px;
+  margin-right: 40px;
+  padding-right: 15px;
 }
 
 div#home_receiver{
-  margin-right: 8px;
-  padding-right: 10px;
+  margin-right: 40px;
+  padding-right: 15px;
 }
 
 div#home_receiver ul{
   padding-left: 15px;
-  font-weight: bold;
 }
 
 div#home_news{
 }
 
 div#home_news ul{
-  margin-left: 15px;
+}
+
+div#home_news ul li{
+  list-style-type: none;
+  margin-bottom: 0px;
+
+}
+
+div#home_news ul p{
+  margin: 5px 0px 25px 0;
 }
 
 .more_link{
@@ -222,10 +225,12 @@ div#receiver_pane{
 .pane_middle {
   width: 50%;
   float: left;
+  padding-right: 20px;
+  border-right: solid #ddd 1px;
 }
 
 .pane_right {
-  width: 22%;
+  width: 20%;
   float: left;
 }
 
@@ -236,19 +241,18 @@ div#receiver_pane{
 
 .pane_right ul{
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .pane_right ul li a {
   display: block;
   padding: 5px 20px;
   width: 150px;
-  background: #eea;
 }
 
 .pane_right ul li a:hover, .pane_right ul li a.side_active_link {
-  background: #aa2;
-  color: #fff;
+  color: #222;
+  font-weight: bold;
 }
 
 .item_section {
@@ -257,7 +261,6 @@ div#receiver_pane{
 }
 
 .form_label{
-  font-weight: bold;
 }
 
 .form_label_note{
@@ -266,25 +269,21 @@ div#receiver_pane{
 .form_text_field{
   width: 300px;
   height: 20px;
-  background: #eed;
 }
 
 .form_text_area{
   width: 300px;
   height: 80px;
-  background: #eed;
 }
 
 .form_text_field_small{
   width: 150px;
   height: 20px;
-  background: #eed;
 }
 
 .form_text_field_tiny{
   width: 50px;
   height: 20px;
-  background: #eed;
 }
 
 .donation_item, .donation_image{

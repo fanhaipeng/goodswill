@@ -12,6 +12,35 @@
   <%  end %> 
 
   <%= form_for @donation, :html => {:multipart => true} do |f| %>
+    <h3>Stuff you want to donate
+      <%= add_item_link image_tag("new.png"), f %>
+    </h3>
+    <div id="donation_items">
+      <%= f.fields_for :items  do |i| %>
+      <div class="donation_item">
+        <label class="form_label">Category </label><%= i.text_field :category, :class => "form_text_field_small" %>
+        <label class="form_label">Quantity </label><%= i.number_field :quantity, :class => "form_text_field_tiny" %>
+        <label class="form_label">Unit </label><%= i.text_field :unit, :class => "form_text_field_tiny" %>
+        <%= raw remove_link_unless_new_record(i, 'donation_item') %>
+      </div>
+      <% end %>
+    </div>
+    <br/>
+
+    <h3>
+      Add images if you have
+      <%= add_image_link image_tag("new.png"), f %>
+    </h3>
+    <div id="donation_images">
+      <%= f.fields_for :images do |i| %>
+      <div class="donation_image">
+        <label class="form_label">Image File</label> <%= i.file_field :image_data %>  
+        <%= raw remove_link_unless_new_record(i, 'donation_image') %>
+      </div>
+      <% end %>
+    </div>
+    <br/>
+
     <h3>Basic information</h3>
     <p>
     <label class="form_label">Name</label><br/> 
@@ -27,7 +56,7 @@
     </p>
     <p>
     <label class="form_label">Address</label><br/> 
-    <%= f.text_area :address, :class => "form_text_area" %> <br/>
+    <%= f.text_field :address, :class => "form_text_field" %> <br/>
     </p>
     <p>
     <label class="form_label">Note(optional)</label><br/> 
@@ -43,33 +72,6 @@
     </p>
   
     <br/>
-    <h3>Stuff you want to donate
-      <%= add_item_link image_tag("new.png"), f %>
-    </h3>
-    <div id="donation_items">
-      <%= f.fields_for :items  do |i| %>
-      <div class="donation_item">
-        <label class="form_label">Category </label><%= i.text_field :category, :class => "form_text_field_small" %>
-        <label class="form_label">Quantity </label><%= i.number_field :quantity, :class => "form_text_field_tiny" %>
-        <label class="form_label">Unit </label><%= i.text_field :unit, :class => "form_text_field_tiny" %>
-        <%= raw remove_link_unless_new_record(i, 'donation_item') %>
-      </div>
-      <% end %>
-    </div>
-    
-    <br/>
-    <h3>
-      Add images if you have
-      <%= add_image_link image_tag("new.png"), f %>
-    </h3>
-    <div id="donation_images">
-      <%= f.fields_for :images do |i| %>
-      <div class="donation_image">
-        <label class="form_label">Image File</label> <%= i.file_field :image_data %>  
-        <%= raw remove_link_unless_new_record(i, 'donation_image') %>
-      </div>
-      <% end %>
-    </div>
     
     <br/>
     <%= submit_tag %>
