@@ -4,7 +4,9 @@
   <% for comment in @donation.comments %>
     <p>
       <span class="comment_content"><%= comment.comment %></span>
-      [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete, :confirm => "Are you sure?")%>]
+      <% if authenticated %>
+        [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete, :confirm => "Are you sure?") %>]
+      <% end %>
       <br/>
       <span class="comment_tag"><%= "posted at #{comment.created_at.to_s}" %></span>
     </p>
