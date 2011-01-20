@@ -1,11 +1,13 @@
 <div id="receiver_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
+    <h3>Our partners</h3>
     <% for receiver in @receivers %>
+      <% next unless receiver.approved or authenticated %>
       <div class="item_section">
         <h3>
           <%= receiver.name %>
-          <%= link_to image_tag("view.png"), receiver_path(receiver), :class => "image_link" %>
+          <%= link_to(image_tag("view.png"), receiver_path(receiver), :class => "image_link") if authenticated %>
         </h3>
         <p>
         <%= receiver.introduction %>

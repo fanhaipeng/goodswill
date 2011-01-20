@@ -28,6 +28,10 @@
         <label class="form_label">Message</label><br/> 
         <%= @receiver.introduction %>
       </p>
+      <p>
+        <label class="form_label">Approved? </label>
+        <%= @receiver.approved ? "YES" : "NO" %>
+      </p>
     </div>
 
     <%= link_to(image_tag("edit.png"), edit_receiver_path(@receiver), :class => "image_link") if authenticated %>
