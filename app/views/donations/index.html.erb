@@ -1,8 +1,14 @@
-<h2>Index of donations</h2>
-
-<ul>
-<% for donation in @donations %>
-  <li><%= link_to "Donation by " << donation.name, donation_path(donation) %></li>
-<% end %>
-</ul>
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <h3>Index of donations</h3>
+    <ul>
+    <% for donation in @donations %>
+      <li><%= link_to "Donation by " << donation.name, donation_path(donation) %></li>
+    <% end %>
+    </ul>
+  </div>
+  <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
+  <div class="clear" ></div>
+</div>
 

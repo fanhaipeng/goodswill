@@ -1,6 +1,8 @@
 <h3>Images of donation</h3>
+<br/>
 <div id="donation_images_section">
   <% for image in @donation.images %>
     <img alt="image" src="<%= donation_image_path(image) %>"/>
   <% end %>
 </div>
+<br/>

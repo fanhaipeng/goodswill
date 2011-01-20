@@ -1,23 +1,34 @@
-<h3>Donate your goods</h3>
-<p>If you have stuff to donate, please click the button and fill in the donation form step by step. Thank for you kindness!</p>
-<p><%= link_to "Donate your goods", new_donation_path %></p>
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <h3>Search your donated goods</h3>
+    <p>If you want to review the donation you made, please provide your name, email and phone that you specified in the donation form. Note, all the information you provide must be accurate, otherwise nothing will be found!</p>
 
-<h3>Search your donated goods</h3>
-<p>If you want to review the donation you made, please provide your name, email and phone that you specified in the donation form. Note, all the information you provide must be accurate, otherwise nothing will be found!</p>
+    <% if flash[:error] %>
+      <div class="error_explanation">
+        <h3><%= flash[:error] %></h3>
+      </div>
+    <% end %>
 
-<% if flash[:error] %>
-  <div class="error_explanation">
-    <h3><%= flash[:error] %></h3>
+    <%= form_tag donation_search_path do %>
+      <p>
+        <label class="form_label">Name</label><br/>
+        <%= text_field_tag :name, nil, :class => "form_text_field" %>
+      </p>
+      <p>
+        <label class="form_label">Email</label><br/>
+        <%= email_field_tag :email, nil, :class => "form_text_field" %>
+      </p>
+      <p>
+        <label class="form_label">Phone</label><br/>
+        <%= text_field_tag :phone, nil, :class => "form_text_field" %></p>
+      <p><%= submit_tag "Search" %></p>
+    <% end %>
+    <br/>
+    <%= link_to "Index of donations", donations_path if authenticated %>
   </div>
-<% end %>
+  <%= render :partial => "pane_right", :locals => { :active_link => :check_donation} %>
+  <div class="clear" ></div>
+</div>
 
-<%= form_tag donation_search_path do %>
-  <p>Name: <%= text_field_tag :name %></p>
-  <p>Email: <%= email_field_tag :email %></p>
-  <p>Phone: <%= text_field_tag :phone %></p>
-  <p><%= submit_tag "Search" %></p>
-<% end %>
 
-<% if authenticated %>
-  <p><%= link_to "Index of donations", donations_path %></p>
-<% end %>

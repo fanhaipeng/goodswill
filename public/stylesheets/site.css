@@ -12,6 +12,10 @@ p{
   margin: 20px 0;
 }
 
+form p{
+  margin: 5px 0;
+}
+
 img{
   border-style: none;
 }
@@ -24,6 +28,19 @@ h2{
 h3{
   color: #ff6633;
   font-size: 18px;
+}
+
+table{
+  text-align:center;
+  border-collapse: collapse;
+}
+
+thead{
+  font-weight: bold;
+}
+
+td{
+  border: solid 1px;
 }
 
 a {
@@ -225,7 +242,7 @@ div#receiver_pane{
 .pane_right ul li a {
   display: block;
   padding: 5px 20px;
-  width: 120px;
+  width: 150px;
   background: #eea;
 }
 
@@ -256,10 +273,32 @@ div#receiver_pane{
   height: 80px;
 }
 
+.form_text_field_small{
+  width: 150px;
+  height: 20px
+}
+
+.form_text_field_tiny{
+  width: 50px;
+  height: 20px
+}
+
+.donation_item, .donation_image{
+  margin: 5px 0;
+}
+
 .clear{
   clear: both;
 }
 
 .image_link{
   margin: 0px 10px;
+}
+
+.comment_content{
+}
+
+.comment_tag{
+  color: #aaa;
+  font-size: 14px;
 }

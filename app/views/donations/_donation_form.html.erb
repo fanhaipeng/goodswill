@@ -12,27 +12,53 @@
   <%  end %> 
 
   <%= form_for @donation, :html => {:multipart => true} do |f| %>
-    Phone: <%= f.text_field :phone %> <br/>
-    Address: <%= f.text_area :address %> <br/>
-    Email: <%= f.email_field :email %> <br/>
-    Name: <%= f.text_field :name %> <br/>
-    Note: <%= f.text_area :note %> <br/>
-    Pick Up?: <%= f.check_box :pick_up%> <br/>
-    News Letter?: <%= f.check_box :news_letter%> <br/>
+    <h3>Basic information</h3>
+    <p>
+    <label class="form_label">Name</label><br/> 
+    <%= f.text_field :name, :class => "form_text_field" %> <br/>
+    </p>
+    <p>
+    <label class="form_label">Email</label> <br/>
+    <%= f.email_field :email, :class => "form_text_field" %> <br/>
+    </p>
+    <p>
+    <label class="form_label">Phone</label><br/>
+    <%= f.text_field :phone, :class => "form_text_field" %> <br/>
+    </p>
+    <p>
+    <label class="form_label">Address</label><br/> 
+    <%= f.text_area :address, :class => "form_text_field" %> <br/>
+    </p>
+    <p>
+    <label class="form_label">Note(optional)</label><br/> 
+    <%= f.text_area :note, :class => "form_text_area" %> <br/>
+    </p>
+    <p>
+    <%= f.check_box :pick_up%>
+    <label class="form_label">Check this if you want us to pick up</label><br/> 
+    </p>
+    <p>
+    <%= f.check_box :news_letter%>
+    <label class="form_label">Check this if you want to hear from us via email</label><br/> 
+    </p>
   
+    <br/>
+    <h3>Stuff you want to donate</h3>
     <div id="donation_items">
       <%= f.fields_for :items  do |i| %>
       <div class="donation_item">
-        Category<%= i.text_field :category %>
-        Quantity<%= i.number_field :quantity %>
-        Unit<%= i.text_field :unit %>
+        Category<%= i.text_field :category, :class => "form_text_field_small" %>
+        Quantity<%= i.number_field :quantity, :class => "form_text_field_tiny" %>
+        Unit<%= i.text_field :unit, :class => "form_text_field_tiny" %>
         <%= raw remove_link_unless_new_record(i, 'donation_item') %>
       </div>
       <% end %>
     </div>
-    <%= add_item_link "Add an item", f %> 
+    <%= add_item_link "Add one more item", f %> 
   
     <br/>
+    <br/>
+    <h3>Add images if you have</h3>
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
       <div class="donation_image">
@@ -41,7 +67,9 @@
       </div>
       <% end %>
     </div>
-    <%= add_image_link "Add an image", f %>
+    <%= add_image_link "Add one more image", f %>
+
+    <br/>
     <br/>
     <%= submit_tag %>
   <% end %>

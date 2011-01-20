@@ -1,7 +1,8 @@
 <h3>Donated items</h3>
+<br/>
 <table> 
   <thead>
-    <tr style="text-align:center;font-weight:bold;border:solid 1px">
+    <tr> 
       <td style="width: 150px">Category</td>
       <td style="width: 150px">Quantity</td>
       <td style="width: 150px">Unit</td>
@@ -10,10 +11,11 @@
   <tbody>
     <% for item in @donation.items %>
       <tr> 
-        <td style="border:solid 1px"><%= h item.category %></td>
-        <td style="border:solid 1px"><%= h item.quantity %></td>
-        <td style="border:solid 1px"><%= h item.unit%></td>
+        <td><%= h item.category %></td>
+        <td><%= h item.quantity %></td>
+        <td><%= h item.unit%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br/>

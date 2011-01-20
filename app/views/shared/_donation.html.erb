@@ -1,23 +1,29 @@
 <div id="donation_basic_section">
+  <h3>Basic information</h3>
   <p>
-  Phone: <span><%= @donation.phone %></span>
+    <label class="form_label">Name</label><br/>
+    <span><%= @donation.name %></span>
   </p>
   <p>
-  Address: <span><%= @donation.address %></span>
+    <label class="form_label">Email</label><br/> 
+    <span><%= @donation.email %></span>
   </p>
   <p>
-  Email: <span><%= @donation.email %></span>
+    <label class="form_label">Phone</label><br/>
+    <span><%= @donation.phone %></span>
   </p>
   <p>
-  Name: <span><%= @donation.name %></span>
+    <label class="form_label">Address</label><br/>
+    <span><%= @donation.address %></span>
   </p>
   <p>
-  Note: <span><%= @donation.note %></span>
+    <label class="form_label">Note</label><br/>
+    <span><%= @donation.note %></span>
   </p>
   <p>
-  Pick Up? <span><%= @donation.pick_up ? "YES" : "NO" %></span>
+    <label class="form_label">Pick Up?</label> <span><%= @donation.pick_up ? "YES" : "NO" %></span>
   </p>
   <p>
-  News Letter? <span><%= @donation.news_letter ? "YES" : "NO" %></span>
+    <label class="form_label">News Letter?</label> <span><%= @donation.news_letter ? "YES" : "NO" %></span>
   </p>
 </div>

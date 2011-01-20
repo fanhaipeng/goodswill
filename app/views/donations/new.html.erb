@@ -1,6 +1,9 @@
-<h2> New donation </h2>
-
-<%= render :partial => 'donation_form' %>
-
-<%= link_to "Cancel", donation_query_path %>
+<div id="receiver_pane">
+  <%= render :partial => "pane_left" %>
+  <div class="pane_middle">
+    <%= render :partial => 'donation_form' %>
+  </div>
+  <%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
+  <div class="clear" ></div>
+</div>
 
