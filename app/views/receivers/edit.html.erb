@@ -2,8 +2,9 @@
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
     <%= render :partial => 'receiver_form' %>
-    <%= link_to "Cancel", receiver_path(@receiver) %>
-    <%= link_to "Back to list", receivers_path %>
+    <br/>
+    <%= link_to image_tag("cancel.png"), receiver_path(@receiver), :class => "image_link" %>
+    <%= link_to image_tag("back.png"), receivers_path, :class => "image_link" %>
   </div>
   <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
   <div class="clear" />

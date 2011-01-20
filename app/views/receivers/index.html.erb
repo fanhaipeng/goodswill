@@ -3,12 +3,14 @@
   <div class="pane_middle">
     <% for receiver in @receivers %>
       <div class="item_section">
-        <h3><%= receiver.name %></h3>
+        <h3>
+          <%= receiver.name %>
+          <%= link_to image_tag("view.png"), receiver_path(receiver), :class => "image_link" %>
+        </h3>
         <p>
         <%= receiver.introduction %>
         </p>
         <% if authenticated %>
-          <p><%= link_to "View", receiver_path(receiver) %></p>
         <% end %>
       </div>
     <% end %>
