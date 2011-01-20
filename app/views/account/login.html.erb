@@ -1,7 +1,15 @@
-<h2>Login</h2>
+<div id="login_pane">
+  <h3>Login (for administrators only)</h3>
+  <br/>
 
-<%= form_for :user do |f| %>
-  <p>Email: <%= f.email_field :email %></p>
-  <p>Password: <%= f.password_field :password %></p>
-  <%= submit_tag "Log in" %>
-<% end %>
+  <%= form_for :user do |f| %>
+    <p>
+      <label class="form_label">Email</label><br/>
+      <%= f.email_field :email, :class => "form_text_field" %>
+    </p>
+      <p><label class="form_label">Password</label><br/>
+      <%= f.password_field :password, :class => "form_text_field" %>
+    </p>
+    <%= submit_tag "Log in" %>
+  <% end %>
+</div>

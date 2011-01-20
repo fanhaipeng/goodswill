@@ -302,3 +302,7 @@ div#receiver_pane{
   color: #aaa;
   font-size: 14px;
 }
+
+div#login_pane{
+  margin: 20px 20px;
+}
