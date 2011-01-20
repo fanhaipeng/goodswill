@@ -10,6 +10,12 @@ class ReceiversControllerTest < ActionController::TestCase
     assert assigns(:receivers)
   end
 
+  test "page of receivers should be ok" do
+    get :page, :page => "who_we_are"
+    assert_response :success
+    assert assigns(:page_name)
+  end
+
   test "new page of receiver should be ok" do
     get :new
     assert_response :success

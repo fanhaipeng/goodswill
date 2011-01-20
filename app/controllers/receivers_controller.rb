@@ -7,12 +7,7 @@ class ReceiversController < ApplicationController
   end
 
   def index
-    if params[:page] == "who_we_are"
-      @page = :who_we_are
-    else
-      @page = :our_partners
-      @receivers = Receiver.all
-    end
+    @receivers = Receiver.all
   end
 
   def new
