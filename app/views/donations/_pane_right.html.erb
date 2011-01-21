@@ -3,6 +3,6 @@
     <li><%= link_to "How to donate", donation_page_path(:page => "process"), :class => ("side_active_link" if active_link == :process) %></li>
     <li><%= link_to "What we accept", donation_page_path(:page => "what_needed"), :class => ("side_active_link" if active_link == :what_needed) %></li>
     <li><%= link_to "Donate now", new_donation_path, :class => ("side_active_link" if active_link == :donate_now) %></li>
-    <li><%= link_to "Check donation", donation_query_path, :class => ("side_active_link" if active_link == :check_donation) %></li>
+    <li><%= link_to "Track donation", donation_query_path, :class => ("side_active_link" if active_link == :check_donation) %></li>
   </ul>
 </div>
