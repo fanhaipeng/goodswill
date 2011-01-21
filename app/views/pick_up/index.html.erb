@@ -1,7 +1,12 @@
-<%= render :partial => "shared/admin_head", :locals => { :admin_page_title => "Index of donations for picking up" } %>
-
-<ul>
-  <% for donation in @donations %>
-    <li><%= "Donation by #{donation.name}" %> [<%= link_to "=>", pick_up_donation_path(donation) %>]</li>
-  <% end %>
-</ul>
+<div id="admin_pane">
+  <%= render :partial => "shared/admin_pane_left", :locals => { :active_link => :pick_up } %>
+  <div id="admin_pane_right">
+    <h3>Donations to picking up</h3>
+    <ul>
+      <% for donation in @donations %>
+        <li><%= "Donation by #{donation.name}" %> [<%= link_to "=>", pick_up_donation_path(donation) %>]</li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,22 @@
+<div id="admin_pane_left">
+  <ul>
+    <li>
+    <%= link_to "Pick up", pick_up_index_path, :class => ("admin_active_link" if active_link == :pick_up) %>
+    </li>
+    <li>
+    <%= link_to "Sort", sort_index_path, :class => ("admin_active_link" if active_link == :sort) %>
+    </li>
+    <li>
+    <%= link_to "Pack", deliveries_path(:s => Delivery::OPEN), :class => ("admin_active_link" if active_link == :pack) %>
+    </li>
+    <li>
+    <%= link_to "Ship", deliveries_path(:s => Delivery::PACKED), :class => ("admin_active_link" if active_link == :ship) %>
+    </li>
+    <li>
+    <%= link_to "Confirm", deliveries_path(:s => Delivery::SHIPPED), :class => ("admin_active_link" if active_link == :confirm) %>
+    </li>
+    <li>
+    <%= link_to "Done", deliveries_path(:s => Delivery::CONFIRMED), :class => ("admin_active_link" if active_link == :done) %>
+    </li>
+  </ul>
+</div>
