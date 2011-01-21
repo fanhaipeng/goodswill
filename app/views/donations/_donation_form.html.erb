@@ -26,8 +26,7 @@
         </div>
       <% end %>
     </div>
-    <br/>
-
+    
 <label class="form_label">Pictures of the items (optional)</label>
       <%= add_image_link image_tag("new.png"), f %>
     <div id="donation_images">
@@ -38,7 +37,19 @@
       </div>
       <% end %>
     </div>
+    <p>
+    <label class="form_label">Note (optional)</label><br/> 
+    <textarea class="form_text_area" cols="40" id="donation_note" name="donation[note]" rows="20"></textarea> <br/>
+    </p>
+
+    <p>
+    <input name="donation[pick_up]" type="hidden" value="0" /><input id="donation_pick_up" name="donation[pick_up]" type="checkbox" value="1" />
+    <label class="form_label">Check this if you need pick-up. </label><br/> 
+    </p>
+	
+<p style="padding-left:18px;"><small>It help us to plan transportation if you can provide more information above about your items, such as pictures or description.</small></p>
     <br/>
+	
 
     <h3>Contact information</h3>
     <p>
@@ -54,20 +65,12 @@
     <%= f.text_field :phone, :class => "form_text_field" %> <br/>
     </p>
     <p>
-    <label class="form_label">Address (optional)</label><br/> 
+    <label class="form_label">Address</label><br/> 
     <%= f.text_field :address, :class => "form_text_field" %> <br/>
     </p>
     <p>
-    <label class="form_label">Note (optional)</label><br/> 
-    <%= f.text_area :note, :class => "form_text_area" %> <br/>
-    </p>
-    <p>
-    <%= f.check_box :pick_up%>
-    <label class="form_label">Check this if you want us to pick up</label><br/> 
-    </p>
-    <p>
     <%= f.check_box :news_letter%>
-    <label class="form_label">Check this if you want to hear from us via email</label><br/> 
+    <label class="form_label">Check this if you want to hear from us in email.</label><br/> 
     </p>
   
     <br/>
