@@ -14,28 +14,28 @@
 
 <%= form_for @receiver, :html => { :multipart => true } do |f| %>
   <p>
-  <label class="form_label">Name</label>
-  <span class="form_label_note"> (Your real name)</span></br>
+  <label class="form_label">Your name</label>
+  <span class="form_label_note">&nbsp;</span></br>
   <%= f.text_field :name, :class => "form_text_field" %></br>
   </p>
   <p>
   <label class="form_label">Email</label>
-  <span class="form_label_note"> (Leave your email, we'll update you)</span></br>
+  <span class="form_label_note">&nbsp;</span></br>
   <%= f.email_field :email, :class => "form_text_field" %></br>
   </p>
   <p>
   <label class="form_label">Phone</label>
-  <span class="form_label_note"> (cell phone or fixed-line)</span></br>
+  <span class="form_label_note">&nbsp;</span></br>
   <%= f.text_field :phone, :class => "form_text_field" %></br>
   </p>
   <p>
   <label class="form_label">Address</label>
-  <span class="form_label_note"> (Include building and street)</span></br>
+  <span class="form_label_note">&nbsp;</span></br>
   <%= f.text_field :address, :class => "form_text_field" %></br>
   </p>
   <p>
   <label class="form_label">Message</label>
-  <span class="form_label_note"> (Leave some words to introduce who you are)</span></br>
+  <span class="form_label_note">&nbsp;</span></br>
   <%= f.text_area :introduction, :class => "form_text_area" %></br>
   </p>
 
