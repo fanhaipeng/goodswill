@@ -12,12 +12,12 @@
   <%  end %> 
 
   <%= form_for @donation, :html => {:multipart => true} do |f| %>
-    <h3>Stuff you want to donate
+    <h3>Items to donate
       <%= add_item_link image_tag("new.png"), f %>
     </h3>
     <div id="donation_items">
-      <span class="item_head">Category</span>
-      <span class="item_head">Quantity</span>
+      <span style="margin:0 252px 0 0;" class="form_label">Item</span>
+	  <span class="form_label">Quantity</span>
       <%= f.fields_for :items  do |i| %>
         <div class="donation_item">
           <%= i.text_field :category, :class => "item_field_c" %>
@@ -28,14 +28,12 @@
     </div>
     <br/>
 
-    <h3>
-      Add images if you have
+<label class="form_label">Pictures of the items (optional)</label>
       <%= add_image_link image_tag("new.png"), f %>
-    </h3>
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
       <div class="donation_image">
-        <label class="form_label">Image File</label> <%= i.file_field :image_data %>  
+        <%= i.file_field :image_data %>  
         <%= raw remove_link_unless_new_record(i, 'donation_image') %>
       </div>
       <% end %>
@@ -56,11 +54,11 @@
     <%= f.text_field :phone, :class => "form_text_field" %> <br/>
     </p>
     <p>
-    <label class="form_label">Address</label><br/> 
+    <label class="form_label">Address (optional)</label><br/> 
     <%= f.text_field :address, :class => "form_text_field" %> <br/>
     </p>
     <p>
-    <label class="form_label">Note(optional)</label><br/> 
+    <label class="form_label">Note (optional)</label><br/> 
     <%= f.text_area :note, :class => "form_text_area" %> <br/>
     </p>
     <p>
