@@ -32,7 +32,7 @@
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
       <div class="donation_image">
-        <label class="form_label">Image File</label> <%= i.file_field :image_data, :class => "upload_file_select" %>  
+        <%= i.file_field :image_data, :class => "upload_file_select" %>  
         <%= raw remove_link_unless_new_record(i, 'donation_image') %>
       </div>
       <% end %>
