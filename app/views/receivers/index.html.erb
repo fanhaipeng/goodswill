@@ -1,21 +1,18 @@
 <div id="receiver_pane">
   <%= render :partial => "pane_left" %>
   <div class="pane_middle">
-    <h3>Our partners</h3>
+    <h3>Requests from external</h3>
     <% for receiver in @receivers %>
       <% next unless receiver.approved or authenticated %>
       <div class="item_section">
-        <% if authenticated %>
-            <%= link_to(raw("<h4>#{receiver.name}</h4>"), receiver_path(receiver)) %>
-        <% else %>
-          <h4><%= receiver.name %></h4>
-        <% end %>
+        <%= link_to(raw("<h4>#{receiver.name}</h4>"), receiver_path(receiver)) %>
+        <span class="comment_tag"><%= "posted at #{receiver.created_at}"%></span>
         <p>
           <%= receiver.introduction %>
         </p>
       </div>
     <% end %>
   </div>
-  <%= render :partial => "pane_right", :locals => { :active_link => :our_partners} %>
+  <%= render :partial => "pane_right", :locals => { :active_link => :requests } %>
   <div class="clear" ></div>
 </div>
