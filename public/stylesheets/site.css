@@ -435,3 +435,14 @@ div#news_create_pane{
 .selected_news{
   font-weight: bold;
 }
+
+div#admin_pane_left{
+  float:left;
+  width:30%;
+}
+
+div#admin_pane_right{
+  float:left;
+  width:65%;
+}
+
