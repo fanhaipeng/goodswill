@@ -26,8 +26,10 @@
         </div>
       <% end %>
     </div>
+    <br/>
     
-<label class="form_label">Pictures of the items (optional)</label>
+    <h3>Additional information</h3>
+    <label class="form_label">Pictures of the items (optional)</label>
       <%= add_image_link image_tag("new.png"), f %>
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
