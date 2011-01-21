@@ -171,6 +171,10 @@ input.button{
   padding: 0 25px;
 }
 
+input.upload_file_select{
+  height: 20px;
+}
+
 div#home_top{
   height: 350px;
   padding-top: 10px;
