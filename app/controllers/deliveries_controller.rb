@@ -1,9 +1,10 @@
 class DeliveriesController < ApplicationController
 
   before_filter :admin_user_required
+  layout :choose_layout
 
   def index
-    @deliveries = Delivery.where(:status => params[:s].to_i)
+    @deliveries = Delivery.where(:status => params[:s].to_i).order("updated_at desc")
   end
 
   def show
@@ -18,7 +19,7 @@ class DeliveriesController < ApplicationController
       if @delivery.update_attributes(params[:delivery])
         add_delivery_note(params[:id], build_note_per_status(@delivery.status, params[:note]))
       end
-      format.html { redirect_to delivery_path(@delivery)}
+      format.html { redirect_to deliveries_path(:s => current_status) }
     end
   end
 
@@ -27,18 +28,18 @@ class DeliveriesController < ApplicationController
   end
 
   def pack
+    user = User.find_by_id(session[:user_id])
     note_text = ""
+    note_text << "<p>#{params[:note]}.</p>" if params[:note]
+    note_text << "<p>packed by #{user.name} at #{get_timestamp}.</p>"
     for item_param in params[:items]
       dispose_item item_param[1][:id], note_text unless item_param[1][:include]
     end
     @delivery = Delivery.find_by_id(params[:id])
-    user = User.find_by_id(session[:user_id])
     @delivery.update_attribute(:status, Delivery::PACKED)
-    note_text << "<p>Packed by #{user.name} at #{get_timestamp}.</p>"
-    note_text << "<p>Comment: #{params[:note]}.</p>" if params[:note]
     add_delivery_note params[:id], note_text
     respond_to do |format|
-      format.html { redirect_to delivery_path(@delivery) }
+      format.html { redirect_to deliveries_path }
     end
   end
 
@@ -51,7 +52,7 @@ class DeliveriesController < ApplicationController
   def dispose_item item_id, note_text
     item = Item.find_by_id(item_id)
     item.update_attributes(:status => Item::DISPOSED, :delivery_id => nil)
-    note_text << "<p>Item #{item_id} was disposed.</p>"
+    note_text << "<p>item #{item_id} was disposed.</p>"
   end
 
   def add_delivery_note delivery_id, note_text
@@ -70,9 +71,18 @@ class DeliveriesController < ApplicationController
              else raise "Unexpected status"
              end
 
-    note_text = "<p>#{action} by #{user.name} at #{get_timestamp}</p>"
+    note_text = ""
     note_text << "<p>#{note}</p>" if note
+    note_text << "<p>#{action} by #{user.name} at #{get_timestamp}</p>"
     note_text
+  end
+
+  def choose_layout
+    if ['print_pack', 'print_ship'].include? action_name
+      'print'
+    else
+      'application'
+    end
   end
 end
 

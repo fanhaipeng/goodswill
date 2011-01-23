@@ -1,17 +1,23 @@
-<h2>Show delivery</h2>
+<%= render :partial => "shared/admin_pane_left", :locals => { :active_link => get_admin_step(@delivery.status)} %>
 
-<% case @delivery.status %>
-<% when Delivery::PACKED %>
-<%= render :partial => "ship" %>
-<% when Delivery::SHIPPED %>
-<%= render :partial => "confirm" %>
-<% when Delivery::CONFIRMED %>
-<%= render :partial => "summary" %>
-<% else %>
-<%= render :partial => "pack" %>
-<% end %>
+<div id="admin_pane_right">
 
-<h3>History of operations</h3>
-<% for n in @delivery_notes %>
-  <p><%= n.note %></p>
-<% end %>
+  <% case @delivery.status %>
+  <% when Delivery::PACKED %>
+  <%= render :partial => "ship" %>
+  <% when Delivery::SHIPPED %>
+  <%= render :partial => "confirm" %>
+  <% when Delivery::CONFIRMED %>
+  <%= render :partial => "summary" %>
+  <% else %>
+  <%= render :partial => "pack" %>
+  <% end %>
+
+  <% if not @delivery_notes.empty? %>
+    <h3>History of operations</h3>
+    <% for n in @delivery_notes %>
+      <%= raw n.note %>
+      <hr/>
+    <% end %>
+  <% end %>
+</div>

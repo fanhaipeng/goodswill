@@ -1,17 +1,14 @@
-<h3>Donated items to <%= @delivery.receiver.name %></h3>
+<h3>Donated items to <%= @delivery.receiver.name %><%= link_to image_tag("print.png"), delivery_print_pack_path(@delivery), :class => "image_link", :target => "_blank" %>
+</h3>
 
-<p>
-<%= link_to "Print pack table", delivery_print_pack_path(@delivery) %>
-</p>
-
+<br/>
 <%= form_for @delivery, :url => delivery_pack_path(@delivery), :method => :put do  %>
 <table>
   <thead>
     <tr>
-      <td>Category</td>
-      <td>Quantity</td>
-      <td>Unit</td>
-      <td>Include?</td>
+      <td class="column_c">Category</td>
+      <td class="column_q">Quantity</td>
+      <td class="column_d">Include?</td>
     </tr>
   </thead>
   <tbody>
@@ -19,14 +16,17 @@
       <tr>
         <td><%= @delivery.items[i].category %></td>
         <td><%= @delivery.items[i].quantity %></td>
-        <td><%= @delivery.items[i].unit %></td>
         <td><%= check_box_tag "items[#{i}][include]", true, true %></td>
         <%= hidden_field_tag "items[#{i}][id]", @delivery.items[i].id %>
       </tr>
     <% end %>
   </tbody>
 </table>
-Note: <%= text_area_tag :note %> 
-<%= submit_tag "Pack items" %>
+<br/>
+<h3>Add comment if any</h3>
+<%= text_area_tag :note, nil, :class => "form_text_area" %> 
+<br/>
+<br/>
+<%= submit_tag "Pack items", :class => "button" %>
 <% end %>
 

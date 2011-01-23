@@ -251,9 +251,6 @@ div#donation_pane ul{
   margin-left: 15px;
 }
 
-div#donation_pane li{
-}
-
 .pane_left {
   width: 25%;
   margin: 0 5px;
@@ -271,21 +268,18 @@ div#donation_pane li{
   margin: 20px 0 20px 40px;
   font-size: 10pt;
 }
+.pane_middle ol{
+  margin: 10px 20px;
+ }
+
+.pane_middle ol .donation_index_list{
+  font-size: 14pt;
+  margin: 2px 0;
+}
 
 .pane_right {
   width: 20%;
   float: left;
-}
-
-.pane_right li{
-  font-size: 14pt;
-  color: #4b4b4b;
-  margin: 5px 0;
-}
-
-.pane_right ul li{
-  list-style-type: none;
-  margin: 3px 0;
 }
 
 .pane_right ul{
@@ -293,13 +287,20 @@ div#donation_pane li{
   margin-left: 0px;
 }
 
-.pane_right ul li a {
+.pane_right ul li, div#admin_pane_left ul li{ 
+  list-style-type: none;
+  font-size: 14pt;
+  margin: 3px 0;
+}
+
+.pane_right ul li a, div#admin_pane_left ul li a{
   display: block;
+  color: #4b4b4b;
   padding: 5px 20px;
   width: 150px;
 }
 
-.pane_right ul li a:hover, .pane_right ul li a.side_active_link {
+.pane_right ul li a:hover, .pane_right ul li a.side_active_link, div#admin_pane_left ul li a:hover, div#admin_pane_left ul li a.admin_active_link {
   color: #222;
   font-weight: bold;
 }
@@ -363,6 +364,10 @@ div#donation_pane li{
 
 .column_q{
   width: 100px;
+}
+
+.column_d{
+  width: 200px;
 }
 
 .donation_item, .donation_image{
@@ -450,12 +455,26 @@ div#news_create_pane{
 
 div#admin_pane_left{
   float:left;
-  width:30%;
+  width:15%;
+  border-right: solid 1px #ddd;
 }
 
 div#admin_pane_right{
   float:left;
   width:65%;
+  margin-left: 20px;
+}
+div#admin_pane_left ul li a{
+  width:80px
+}
+
+div#admin_pane_right ol{
+  margin: 20px 0 0 30px;
+}
+
+div#admin_pane_right ol li{
+  font-size: 14pt;
+  margin: 5px 0;
 }
 
 #process_image

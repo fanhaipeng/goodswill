@@ -29,8 +29,8 @@ class PickUpController < ApplicationController
 
   def add_donation_note(donation_id, note_params)
     user = User.find_by_id(session[:user_id])
-    note_text = "Picked up by #{user.name} at #{Time.now.strftime("%m/%d/%Y %H:%M:%S")} | "
-    note_text << note_params[:note]
+    note_text = note_params[:note]
+    note_text << " (picked up by #{user.name} at #{Time.now.strftime("%m/%d/%Y %H:%M:%S")})"
     note = DonationNote.new(note_params)
     note.donation_id = donation_id
     note.user_id = session[:user_id]

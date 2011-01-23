@@ -19,10 +19,17 @@
     </p>
     <%= submit_tag "Add a comment", :class => "button" %>
   <% end %>
+
+  <% if @donation.notes and authenticated %>
+    <br/>
+    <h3>History of operation</h3>
+    <% for note in @donation.notes %>
+      <p><%= note.note %></p>
+    <% end %>
+  <% end %>
   
   <br/>
   <%= link_to image_tag("edit.png"), (edit_donation_path(@donation) if authenticated), :class => "image_link" %>
   <%= link_to image_tag("back.png"), (donations_path if authenticated), :class => "image_link" %>
 </div>
 <%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>
-<div class="clear" ></div>

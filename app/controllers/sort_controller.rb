@@ -35,8 +35,9 @@ class SortController < ApplicationController
 
   def add_donation_note(id, note_param)
     user = User.find_by_id(session[:user_id])
-    note_text = "Sorted by #{user.name} at #{Time.now.strftime("%m/%d/%Y %H:%M:%S")} | "
-    note_text << note_param if note_param
+    note_text = ""
+    note_text = note_param if note_param
+    note_text << " (sorted by #{user.name} at #{Time.now.strftime("%m/%d/%Y %H:%M:%S")})"
     note = DonationNote.create(:user_id => user.id, :donation_id => id, :note => note_text)
   end
 

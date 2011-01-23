@@ -6,7 +6,7 @@ module ApplicationHelper
       { :tab => :receiver, :url => receiver_page_path(:page => "who_we_are"), :text => "Who we are" },
       { :tab => :donations, :url => donation_page_path(:page => "process"), :text => "How you can help" },
       { :tab => :news, :url => news_index_path, :text => "News" },
-      { :tab => :admin, :url => deliveries_path, :text => "Admin" }
+      { :tab => :admin, :url => pick_up_index_path, :text => "Admin" }
     ].map do |v| 
       if (not session[:user_id]) and v[:tab] == :admin
         next;

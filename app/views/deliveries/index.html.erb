@@ -1,6 +1,10 @@
-<%= render :partial => "shared/admin_head", :locals => { :admin_page_title => get_index_page_title(params[:s]) } %>
-<ul>
-  <% for d in @deliveries %>
-    <li>Delivery to <%= d.receiver.name %> [<%= link_to "=>", delivery_path(:id => d.id) %>]</li>
-  <% end %>
-</ul>
+<%= render :partial => "shared/admin_pane_left", :locals => { :active_link => get_admin_step(params[:s].to_i)} %>
+
+<div id="admin_pane_right">
+  <h3><%= get_admin_title(params[:s].to_i) %></h3>
+  <ol>
+    <% for d in @deliveries %>
+      <li><%= link_to "Delivery to #{d.receiver.name}", delivery_path(:id => d.id) %></li>
+    <% end %>
+  </ol>
+</div>

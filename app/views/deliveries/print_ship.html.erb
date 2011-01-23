@@ -6,11 +6,10 @@
 <table>
   <thead>
     <tr>
-      <td>Category</td>
-      <td>Quantity</td>
-      <td>Unit</td>
-      <td>Donor(id)</td>
-      <td>Comment</td>
+      <td class="column_c">Category</td>
+      <td class="column_q">Quantity</td>
+      <td class="column_d">Donor(id)</td>
+      <td class="column_n">Comment</td>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +17,6 @@
     <tr>
       <td><%= i.category %></td>
       <td><%= i.quantity %></td>
-      <td><%= i.unit %></td>
       <td><%= i.donation.name%>(<%= i.donation_id %>)</td>
       <td></td>
     </tr>
@@ -26,17 +24,21 @@
   <tbody>
 </table>
 
-<hr/>
+<br/>
+<h3>Signatures:</h3>
+<br/>
+<div class="signature">
 <p>
 Shipper's Signature: __________________
 </p>
 <p>
-Date of delivery: __/__/____
+Date of delivery: ____/____/________
 </p>
-<hr/>
+<br/>
 <p>
 Receiver's Signature: ___________________
 </p>
 <p>
-Date of delivery: __/__/____
+Date of delivery: ____/____/________
 </p>
+</div>

@@ -39,7 +39,7 @@ class DeliveriesControllerTest < ActionController::TestCase
       put :pack, :id => deliveries(:delivery_six), :items => { "0" => { :id => "7", :include => true }, "1" => { :id => "8", :include => false }}, :note => 'one item does not meet quality bar'
     end
     assert 1, deliveries(:delivery_six).items.length
-    assert_redirected_to delivery_path(deliveries(:delivery_six))
+    assert_redirected_to deliveries_path
   end
 
   test "print ship should be ok" do
@@ -54,7 +54,7 @@ class DeliveriesControllerTest < ActionController::TestCase
     assert_difference("DeliveryNote.count") do
       put :update, :id => deliveries(:delivery_three), :delivery => {:status => Delivery::SHIPPED}
     end
-    assert_redirected_to delivery_path(deliveries(:delivery_three))
+    assert_redirected_to deliveries_path(:s => Delivery::PACKED)
   end
 
 end

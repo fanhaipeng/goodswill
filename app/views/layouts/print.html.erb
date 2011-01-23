@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Goodswill - Print</title>
+  <%= stylesheet_link_tag "print", :media => "print, screen" %>
+</head>
+<body>
+  <div id="page">
+    <%= yield %>
+  </div>
+</body>
+</html>

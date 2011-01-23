@@ -1,15 +1,15 @@
-<h2>Show a donation for sort</h2>
-
+<%= render :partial => "shared/admin_pane_left", :locals => { :active_link => :sort } %>
+<div id="admin_pane_right">
 <%= render :partial => "shared/donation" %>
 
+<h3>Donated items</h3>
 <%= form_for @donation, :url => sort_donation_path(@donation),:method => :put do %>
   <table>
     <thead>
       <tr>
-        <td>Category</td>
-        <td>Quantity</td>
-        <td>Unit</td>
-        <td>Destination</td>
+        <td class="column_c">Category</td>
+        <td class="column_q">Quantity</td>
+        <td class="column_d">Destination</td>
       </tr>
     </thead>
     <tbody>
@@ -18,15 +18,28 @@
         <%= hidden_field_tag "items[#{i}][id]", @donation.items[i].id %>
         <td><%= @donation.items[i].category %></td>
         <td><%= @donation.items[i].quantity %></td>
-        <td><%= @donation.items[i].unit %></td>
         <td><%= select_tag "items[#{i}][dest]", options_from_collection_for_select(@receivers, 'id', 'name')  %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
-  <%= text_area_tag :note %>
-  <%= submit_tag %>
+  
+  <br/>
+  <h3>Add comment if any</h3>
+  <%= text_area_tag :note, nil, :class => "form_text_area" %>
+  <br/>
+  <br/>
+  <%= submit_tag "Sort", :class => "button" %>
+<% end %>
+<br/>
+
+<% if not @donation_notes.empty? %>
+  <h3>History of operation</h3>
+  <% for note in @donation_notes %>
+    <p><%= note.note %></p>
+  <% end %>
 <% end %>
 
 <%= render :partial => "shared/donation_images" %>
 <%= render :partial => "shared/donation_comments" %>
+</div>

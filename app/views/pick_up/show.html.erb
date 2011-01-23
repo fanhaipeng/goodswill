@@ -1,5 +1,6 @@
-<div id="admin_pane">
-  <%= render :partial => "shared/admin_pane_left", :locals => { :active_link => :pick_up } %>
+<%= render :partial => "shared/admin_pane_left", :locals => { :active_link => :pick_up } %>
+
+<div id="admin_pane_right">
   <div id="donation_section">
   <%= render :partial => "shared/donation" %>
   <%= render :partial => "shared/donation_items" %>
@@ -7,8 +8,7 @@
   <%= render :partial => "shared/donation_comments" %>
   </div>
 
-  <h3>Pick up this donation</h3>
-
+  <h3>Add comments if any</h3>
   <% if flash[:error] %>
     <div class="error_explanation">
       <h3><%= flash[:error] %></h3>
@@ -18,13 +18,17 @@
   <%= form_for :donation, :url => pick_up_donation_path(@donation), :html => { :method => :put } do |f| %>
     <%= f.hidden_field :status, :value => Donation::PICKED %>
     <%= fields_for @donation.notes.build do |n| %>
-      <%= n.text_area :note %>
+      <%= n.text_area :note, :class => "form_text_area" %>
     <% end %>
+    <br/>
+    <br/>
     <%= submit_tag "Pick up", :class => "button" %>
   <% end %>
 
-  <h3>History of operation</h3>
-  <% for note in @donation_notes %>
-    <p><%= note.note %></p>
+  <% if not @donation_notes.empty? %>
+    <h3>History of operation</h3>
+    <% for note in @donation_notes %>
+      <p><%= note.note %></p>
+    <% end %>
   <% end %>
 </div>

@@ -1,7 +1,9 @@
-<%= render :partial => "shared/admin_head", :locals => { :admin_page_title => "Index of donations for sorting" } %>
-
-<ul>
-<% for d in @donations %>
-  <li>Donation by <%= d.name %> [<%= link_to "=>", sort_donation_path(d) %>]</li>
-<% end %>
-</ul>
+<%= render :partial => "shared/admin_pane_left", :locals => { :active_link => :sort } %>
+<div id="admin_pane_right">
+  <h3>Donations to sort</h3>
+  <ol>
+  <% for d in @donations %>
+    <li><%= link_to "Donation by #{d.name}", sort_donation_path(d) %></li>
+  <% end %>
+  </ol>
+</div>

@@ -3,9 +3,8 @@
 <table>
   <thead>
     <tr>
-      <td>Category</td>
-      <td>Quantity</td>
-      <td>Unit</td>
+      <td class="column_c">Category</td>
+      <td class="column_q">Quantity</td>
     </tr>
   </thead>
   <tbody>
@@ -13,12 +12,13 @@
       <tr>
         <td><%= i.category %></td>
         <td><%= i.quantity %></td>
-        <td><%= i.unit %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br/>
 
+<h3>Images of delivery</h3>
 <% for img in @delivery.images %>
   <img alt="image" src="<%= delivery_delivery_image_path(@delivery, img) %>"/>
   [<%= link_to "X", delivery_delivery_image_path(@delivery, img), :method => :delete, :confirm => "Are you sure?" %>]
@@ -31,8 +31,8 @@
 <% end %>
 
 <%= form_for [@delivery, @delivery.images.build], :html => {:multipart => true} do |f| %>
-  Image:<%= f.file_field :image_data %>
-  <p>
-  <%= submit_tag "Add a image" %>
-  </p>
+  <p>Add pictures for delivery confirmation</p>
+  <%= f.file_field :image_data, :class => "upload_file_select" %>
+  <%= submit_tag "Add a image", :class => "button" %>
 <% end %>
+<br/>
