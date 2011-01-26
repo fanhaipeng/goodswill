@@ -2,7 +2,7 @@
   <div id="home_introduction">
     <h2>Who we are</h2>
     <p>
-	Goodswill is a volunteer group of Microsoft employees who want to help individuals and organizations to donate spare goods to charities that need them. 
+	Goodswill is a platform to help individuals and organizations to donate spare goods to charities that need them. It's started by a group of Microsoft China employees who are passionate in making an impact to the communities. Find out <%= link_to "more", donation_query_path %>
     </p>
   </div>
   <div id="home_picture">
@@ -14,7 +14,7 @@
     <h3>How you can help</h3>
     <%= image_tag "home-donation.png", :alt => 'donation' %>
     <p>
-    Have you ever come across something at home you feel really pity to throw away, and wish someone who has a great use to it?  You don’t know who needs them; the charities you know of are too far for you to drop-it off or mail it; your items is too big to move around; you want to have a peace of mind that your donation really means something…  Guess what, you can help! <%= link_to "more", donation_query_path %>
+    Have you ever come across something at home you feel really pity to throw away, and wish someone who has a great use to it?  You don’t know who needs them; the charities you know of are too far for you to drop-it off or mail it; your items is too big to move around; you want to have a peace of mind that your donation really means something…  Guess what, you can <%= link_to "help", donation_query_path %>!
     </p>
     <div class="donation_button">
       <%= link_to "Donate now !", new_donation_path %>
@@ -24,14 +24,15 @@
     <h3>What we need</h3>
     <%= image_tag "home-receiver.png", :alt => 'receiver' %>
     <p>
-    Our primary goal is to be a bridge between you and the charity organizations. We don't take anything for ourselves. Everything that you donate will find its way to a charity. We accept high quality goods that include but not limited to:
+    Our goal is to be a bridge between you and the charity organizations. We don't take anything for ourselves. Everything that you donate will find its way to a charity. We accept high quality goods that include but not limited to:
     <ul>
       <li>Furnitures</li>
       <li>Computers</li>
       <li>Toys</li>
 	    <li>Clothes</li>
     </ul>
-	For a list of the charities that we partner with, click <%= link_to "here", receivers_path %>.
+	</p><p>
+	To see what we accept, click <%= link_to "here", receivers_path %>.
     </p>
   </div>
   <div id="home_news" class="home_vertical_pane">
