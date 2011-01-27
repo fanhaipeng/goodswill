@@ -1,7 +1,7 @@
 <div class="pane_right">
   <ul>
     <li><%= link_to "About us", receiver_page_path(:page => "who_we_are"), :class => ("side_active_link" if active_link == :who_we_are) %></li>
-    <li><%= link_to "Our partners", receiver_page_path(:page => "our_partners"), :class => ("side_active_link" if active_link == :our_partners) %></li>
+    <li><%= link_to "Our recipients", receiver_page_path(:page => "our_partners"), :class => ("side_active_link" if active_link == :our_partners) %></li>
     <li><%= link_to "Contact us", new_receiver_path, :class => ("side_active_link" if active_link == :contact_us) %></li>
     <li><%= link_to "Requests", receivers_path, :class => ("side_active_link" if active_link == :requests) if authenticated %></li>
   </ul>
