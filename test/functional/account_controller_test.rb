@@ -4,6 +4,7 @@ class AccountControllerTest < ActionController::TestCase
   test "show login page should be ok" do
     get :login
     assert_response :success 
+    assert assigns(:sub_title)
   end
 
   test "login should be ok" do

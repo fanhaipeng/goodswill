@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @sub_title = "Index of user"
   end
 
   def new
     @user = User.new(:role => User::ADMIN_USER)
+    @sub_title = "Create a user"
   end
 
   def create
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
     else
       @user = User.find_by_id(params[:id])
     end
+    @sub_title = "Edit a user"
   end
 
   def update
@@ -50,6 +53,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @sub_title = "User #{@user.name}"
   end
 
   def destroy

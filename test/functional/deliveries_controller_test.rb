@@ -10,6 +10,7 @@ class DeliveriesControllerTest < ActionController::TestCase
     for d in assigns(:deliveries)
       assert Delivery::OPEN, d.status
     end
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see index" do
@@ -23,6 +24,7 @@ class DeliveriesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal deliveries(:delivery_one).id, assigns(:delivery).id
     assert assigns(:delivery_notes)
+    assert assigns(:sub_title)
   end
 
   test "print pack should be ok" do 

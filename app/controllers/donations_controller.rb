@@ -4,16 +4,19 @@ class DonationsController < ApplicationController
 
   def page
     @page_name = params[:page]
+    @sub_title = @page_name.gsub(/_/, ' ') 
   end
 
   def index
     @donations = Donation.order("created_at desc")
+    @sub_title = "Index of all donations"
   end
 
   def new
     @donation = Donation.new
     1.upto(3) { @donation.items.build }
     @donation.images.build
+    @sub_title = "Create a new donation"
   end
 
   def create
@@ -31,6 +34,7 @@ class DonationsController < ApplicationController
 
   def edit
     @donation = Donation.find_by_id(params[:id])
+    @sub_title = "Edit donation"
   end
 
   def update
@@ -49,6 +53,8 @@ class DonationsController < ApplicationController
     @donation = Donation.find_by_id(params[:id])
     if not @donation
       render 'public/404.html', :status => 404
+    else
+      @sub_title = "Donation by #{@donation.name}"
     end
   end
 
@@ -67,10 +73,13 @@ class DonationsController < ApplicationController
   end
 
   def query
+    @sub_title = "Search donations"
   end
 
   def search
     @donations = Donation.where(:email => params[:email], :phone => params[:phone], :name => params[:name]).order("created_at desc")
+    @sub_title = "Donation search results"
+    flash[:error] = nil
     respond_to do |format|
       if @donations.length > 0
         format.html { render :action => :search }

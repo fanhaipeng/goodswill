@@ -6,6 +6,7 @@ class PickUpControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert assigns(:donations)
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see index" do
@@ -19,6 +20,7 @@ class PickUpControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:donation)
     assert assigns(:donation_notes)
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see show" do

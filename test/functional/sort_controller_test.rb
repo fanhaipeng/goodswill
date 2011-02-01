@@ -10,6 +10,7 @@ class SortControllerTest < ActionController::TestCase
     for d in assigns(:donations)
       assert Donation::PICKED, d.status
     end
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see index" do
@@ -23,6 +24,7 @@ class SortControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:donation)
     assert assigns(:receivers)
+    assert assigns(:sub_title)
   end
 
   test "anonymous user cant'see show" do
