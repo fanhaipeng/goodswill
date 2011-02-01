@@ -1,6 +1,6 @@
 <% if flash[:error] %>
   <div class="error_explanation">
-    <h3><%= flash[:error] %></h3>
+    <h4><%= raw flash[:error] %></h4>
   </div>
 <% end %>
 
@@ -20,7 +20,7 @@
 <% if authenticated %>
 <div>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
-    Image File: <%= f.file_field :image_data %>
+    Image File (&lt;512KB): <%= f.file_field :image_data %>
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>
