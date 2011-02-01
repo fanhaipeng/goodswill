@@ -107,7 +107,7 @@ div.error_explanation *{
 }
 
 div.error_explanation li{
-  list-style-type: none; 
+  font-size: 14pt;
 }
 
 #link_login {
@@ -467,6 +467,12 @@ div#admin_pane_right{
   width:65%;
   margin-left: 20px;
 }
+
+div#admin_pane_right img{
+  max-width: 750px;
+  border: solid 1px gray;
+}
+
 div#admin_pane_left ul li a{
   width:80px
 }
