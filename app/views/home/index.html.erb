@@ -2,7 +2,7 @@
   <div id="home_introduction">
     <h2>Who we are</h2>
     <p>
-	Goodswill is a platform to help individuals and organizations to donate spare goods to charities that need them. It's started by a group of Microsoft China employees who are passionate in making an impact to the communities. Find out <%= link_to "more", donation_query_path %>
+    Goodswill is a platform to help individuals and organizations to donate spare goods to charities that need them. It's started by a group of Microsoft China employees who are passionate in making an impact to the communities. Find out <%= link_to "more", receiver_page_path(:page => :who_we_are) %>
     </p>
   </div>
   <div id="home_picture">
@@ -14,7 +14,7 @@
     <h3>How you can help</h3>
     <%= image_tag "home-donation.png", :alt => 'donation' %>
     <p>
-    Have you ever come across something at home you feel really pity to throw away, and wish someone who has a great use to it?  You don’t know who needs them; the charities you know of are too far for you to drop-it off or mail it; your items is too big to move around; you want to have a peace of mind that your donation really means something…  Guess what, you can <%= link_to "help", donation_query_path %>!
+    Have you ever come across something at home you feel really pity to throw away, and wish someone who has a great use to it?  You don’t know who needs them; the charities you know of are too far for you to drop-it off or mail it; your items is too big to move around; you want to have a peace of mind that your donation really means something…  Guess what, you can <%= link_to "help", donation_page_path(:page => :process) %>!
     </p>
     <div class="donation_button">
       <%= link_to "Donate now !", new_donation_path %>
@@ -32,7 +32,7 @@
 	    <li>Clothes</li>
     </ul>
 	</p><p>
-	To see what we accept, click <%= link_to "here", receivers_path %>.
+  To see what we accept, click <%= link_to "here", donation_page_path(:page => :what_needed) %>.
     </p>
   </div>
   <div id="home_news" class="home_vertical_pane">
