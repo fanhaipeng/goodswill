@@ -96,11 +96,14 @@ div#content_pane_bottom{
 }
 
 div.error_explanation {
-  color: red;
   border: solid 2px red;
   padding: 10px 10px;
   margin-bottom: 15px;
-  background-color: pink;
+  background-color: #fcc;
+}
+
+div.error_explanation *{
+  color: black;
 }
 
 div.error_explanation li{

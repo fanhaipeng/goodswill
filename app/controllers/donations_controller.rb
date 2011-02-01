@@ -66,10 +66,10 @@ class DonationsController < ApplicationController
   def search
     @donations = Donation.where(:email => params[:email], :phone => params[:phone], :name => params[:name]).order("created_at desc")
     respond_to do |format|
-      if @donations
+      if @donations.length > 0
         format.html { render :action => :search }
       else
-        flash[:error] = "No donation found. Donation recored can only be found by exactly matching these fields."
+        flash[:error] = "No donation found. Donation record can only be found by exactly matching these fields."
         format.html { render :action => :query}
       end
     end

@@ -281,6 +281,7 @@ class DonationsControllerTest < ActionController::TestCase
   test "search not found should go back to query" do
     get :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
     assert_response :success
+    assert flash[:error]
   end
 
   test "show page from search should have back to search results link" do
