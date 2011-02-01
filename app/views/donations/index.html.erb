@@ -3,7 +3,7 @@
   <h3>Index of donations</h3>
   <ol>
   <% for donation in @donations %>
-    <li class="donation_index_list"><%= link_to "Donation by #{donation.name} at #{donation.created_at}", donation_path(donation) %></li>
+    <li class="donation_index_list"><%= link_to "Donation by #{donation.name} at #{format_time(donation.created_at)}", donation_path(donation) %></li>
   <% end %>
   </ol>
 </div>
