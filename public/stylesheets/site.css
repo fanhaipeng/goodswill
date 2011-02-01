@@ -271,7 +271,7 @@ div#donation_pane ul{
   margin: 20px 0 20px 40px;
   font-size: 10pt;
 }
-.pane_middle ol{
+.pane_middle ol, div#news_create_pane ol{
   margin: 10px 20px;
  }
 
