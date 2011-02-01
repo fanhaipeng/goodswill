@@ -27,8 +27,9 @@
   <% if @donation.notes and authenticated %>
     <br/>
     <h3>History of operation</h3>
-    <% for note in @donation.notes %>
+    <% for note in @donation.notes.reverse { |a, b| a.created_at <=> b.created_at } %>
       <p><%= note.note %></p>
+      <hr/>
     <% end %>
   <% end %>
   
