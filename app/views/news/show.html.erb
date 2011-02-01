@@ -1,3 +1,9 @@
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h3><%= flash[:error] %></h3>
+  </div>
+<% end %>
+
 <div id="news_section">
   <h3><%= @news.title %></h3> 
   <p><%= raw(@news.content) %></p>
@@ -13,11 +19,6 @@
 
 <% if authenticated %>
 <div>
-  <% if flash[:error] %>
-    <div class="error_explanation">
-      <h3><%= flash[:error] %></h3>
-    </div>
-  <% end %>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
     Image File: <%= f.file_field :image_data %>
     <%= submit_tag "Add an image" %>
@@ -28,4 +29,5 @@
 <br/>
 <%= link_to(image_tag("new.png"), new_news_path, :class => "image_link") if authenticated %>
 <%= link_to(image_tag("edit.png"), edit_news_path(@news), :class => "image_link")  if authenticated %>
+<%= link_to(image_tag("delete.png"), news_path(@news), :method => :delete, :confirm => "Are you sure?", :class => "image_link") if authenticated %>
 <%= link_to(image_tag("back.png"), news_index_path, :class => "image_link")  %>

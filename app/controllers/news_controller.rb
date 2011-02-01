@@ -49,7 +49,13 @@ class NewsController < ApplicationController
   def destroy
     @news = News.find_by_id(params[:id])
     respond_to do |format|
-      @news.destroy
+      begin
+        @news.images.each { |img| img.destroy }
+        @news.destroy
+      rescue
+        flash[:error] = "Fail to delete this news!"
+        format.html { render :action => :show }
+      end
       format.html { redirect_to news_index_path }
     end
   end

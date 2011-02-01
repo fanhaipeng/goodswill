@@ -98,7 +98,7 @@ div#content_pane_bottom{
 div.error_explanation {
   border: solid 2px red;
   padding: 10px 10px;
-  margin-bottom: 15px;
+  margin: 15px 0px;
   background-color: #fcc;
 }
 
@@ -435,7 +435,7 @@ div#news_pane_right{
   float: left;
 }
 
-div#news_pane h3{
+div#news_pane #news_section h3{
   text-align: center;
 }
 

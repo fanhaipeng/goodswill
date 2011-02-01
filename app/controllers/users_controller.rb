@@ -54,8 +54,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by_id(params[:id])
+    flash[:error] = nil
     respond_to do |format|
-      @user.destroy
+      begin 
+        @user.destroy
+      rescue 
+        flash[:error] = "Fail to delete user #{@user.name}"
+        format.html { render :action => :show }
+      end
       format.html { redirect_to users_path }
     end
   end

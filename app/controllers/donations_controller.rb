@@ -54,8 +54,14 @@ class DonationsController < ApplicationController
 
   def destroy
     @donation = Donation.find_by_id(params[:id])
-    @donation.destroy
+    flash[:error] = nil
     respond_to do |format|
+      begin
+        @donation.destroy
+      rescue
+        flash[:error] = "Fail to delete this donation recored!"
+        format.html{ render :action => :show }
+      end
       format.html { redirect_to donations_path }
     end
   end
