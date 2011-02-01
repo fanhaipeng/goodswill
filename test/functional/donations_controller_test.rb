@@ -273,13 +273,21 @@ class DonationsControllerTest < ActionController::TestCase
   end
 
   test "search donation should be ok" do
-    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'Haipeng Fan'
-    assert_redirected_to donation_path(donations(:donation_one))
+    get :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'Haipeng Fan'
+    assert_response :success
+    assert assigns(:donations)
   end
 
   test "search not found should go back to query" do
-    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
+    get :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
     assert_response :success
+  end
+
+  test "show page from search should have back to search results link" do
+    get :show, :id => donations(:donation_one), :mode => "search"
+    assert_response :success
+    assert assigns(:donation)
+    assert_select "h3 a", { :count => 1, :text => "&lt;&lt; Back to search results" }
   end
 
   private 

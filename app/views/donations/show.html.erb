@@ -1,6 +1,10 @@
 <%= render :partial => "pane_left" %>
 <div class="pane_middle">
   <div id="donation_section">
+  <% if params[:mode] == "search" %>
+    <h3><%= link_to "<< Back to search results", "javascript:history.go(-1)" %></h3>
+  <% end %>
+  <hr/>
   <%= render :partial => "shared/donation" %>
   <%= render :partial => "shared/donation_items" %>
   <%= render :partial => "shared/donation_images" %>

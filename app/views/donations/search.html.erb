@@ -1,0 +1,10 @@
+<%= render :partial => "pane_left" %>
+<div class="pane_middle">
+<h3>Search results</h3>
+  <ol>
+  <% for donation in @donations %>
+    <li class="donation_index_list"><%= link_to "Donation by #{donation.name} at #{donation.created_at}", donation_path(donation, :mode => :search) %></li>
+  <% end %>
+  </ol>
+</div>
+<%= render :partial => "pane_right", :locals => { :active_link => :check_donation} %>
