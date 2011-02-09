@@ -3,6 +3,7 @@ class AccountController < ApplicationController
   before_filter :logged_in, :only => :logout
 
   def login
+    @sub_title = "Login for administrators"
     if request.post?
       user = User.authenticate(params[:user][:email], params[:user][:password])
       flash[:notice] = nil

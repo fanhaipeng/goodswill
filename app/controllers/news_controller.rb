@@ -9,11 +9,13 @@ class NewsController < ApplicationController
     else
       @selected_news = @all_news[0]
     end
+    @sub_title = "News [#{@selected_news.title}]"
   end
 
   def new
     @news = News.new
     @news.images.build
+    @sub_title = "Create news"
   end
 
   def create
@@ -29,6 +31,7 @@ class NewsController < ApplicationController
 
   def edit
     @news = News.find_by_id(params[:id])
+    @sub_title = "Edit news"
   end
 
   def update
@@ -44,12 +47,19 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find_by_id(params[:id])
+    @sub_title = "News [#{@news.title}]"
   end
 
   def destroy
     @news = News.find_by_id(params[:id])
     respond_to do |format|
-      @news.destroy
+      begin
+        @news.images.each { |img| img.destroy }
+        @news.destroy
+      rescue
+        flash[:error] = "Fail to delete this news!"
+        format.html { render :action => :show }
+      end
       format.html { redirect_to news_index_path }
     end
   end

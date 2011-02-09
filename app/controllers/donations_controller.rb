@@ -4,16 +4,19 @@ class DonationsController < ApplicationController
 
   def page
     @page_name = params[:page]
+    @sub_title = @page_name.gsub(/_/, ' ') 
   end
 
   def index
     @donations = Donation.order("created_at desc")
+    @sub_title = "Index of all donations"
   end
 
   def new
     @donation = Donation.new
     1.upto(3) { @donation.items.build }
     @donation.images.build
+    @sub_title = "Create a new donation"
   end
 
   def create
@@ -31,6 +34,7 @@ class DonationsController < ApplicationController
 
   def edit
     @donation = Donation.find_by_id(params[:id])
+    @sub_title = "Edit donation"
   end
 
   def update
@@ -49,27 +53,38 @@ class DonationsController < ApplicationController
     @donation = Donation.find_by_id(params[:id])
     if not @donation
       render 'public/404.html', :status => 404
+    else
+      @sub_title = "Donation by #{@donation.name}"
     end
   end
 
   def destroy
     @donation = Donation.find_by_id(params[:id])
-    @donation.destroy
+    flash[:error] = nil
     respond_to do |format|
+      begin
+        @donation.destroy
+      rescue
+        flash[:error] = "Fail to delete this donation recored!"
+        format.html{ render :action => :show }
+      end
       format.html { redirect_to donations_path }
     end
   end
 
   def query
+    @sub_title = "Search donations"
   end
 
   def search
-    donation = Donation.where(:email => params[:email], :phone => params[:phone], :name => params[:name]).first
+    @donations = Donation.where(:email => params[:email], :phone => params[:phone], :name => params[:name]).order("created_at desc")
+    @sub_title = "Donation search results"
+    flash[:error] = nil
     respond_to do |format|
-      if donation
-        format.html { redirect_to donation_path(donation) }
+      if @donations.length > 0
+        format.html { render :action => :search }
       else
-        flash[:error] = "No donation found. Donation recored can only be found by exactly matching these fields."
+        flash[:error] = "No donation found. Donation record can only be found by exactly matching these fields."
         format.html { render :action => :query}
       end
     end

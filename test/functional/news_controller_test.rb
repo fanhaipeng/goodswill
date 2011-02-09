@@ -8,6 +8,7 @@ class NewsControllerTest < ActionController::TestCase
     get :index
     assert_response :success 
     assert assigns(:all_news)
+    assert assigns(:sub_title)
   end
 
   test "new of news should be ok" do
@@ -15,6 +16,7 @@ class NewsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert assigns(:news)
+    assert assigns(:sub_title)
   end
 
   test "create news should be ok" do
@@ -31,6 +33,7 @@ class NewsControllerTest < ActionController::TestCase
     get :edit, :id => news(:news_one)
     assert_response :success
     assert_equal news(:news_one), assigns(:news)
+    assert assigns(:sub_title)
   end
 
   test "update news should be ok" do
@@ -43,6 +46,7 @@ class NewsControllerTest < ActionController::TestCase
     get :show, :id => news(:news_one)
     assert_response :success
     assert_equal news(:news_one), assigns(:news)
+    assert assigns(:sub_title)
   end
 
   test "delete one piece of news should be ok" do

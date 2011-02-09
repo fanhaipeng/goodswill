@@ -4,12 +4,14 @@ class SortController < ApplicationController
 
   def index
     @donations = Donation.where(:status => Donation::PICKED)
+    @sub_title = "Donations to sort"
   end
 
   def show
     @donation = Donation.find_by_id(params[:id])
     @donation_notes = @donation.notes
     @receivers = Receiver.where( :approved => true )
+    @sub_title = "Donation by #{@donation.name} to sort"
   end
 
   def update

@@ -6,7 +6,8 @@ class NewsImagesController < ApplicationController
     @img.news_id = params[:news_id]
     respond_to do |format|
       if not @img.save
-        flash[:error] = "All fields of image can't be blank"
+        flash[:error] = ""
+        @img.errors.each {|k, v| flash[:error] << "#{k} #{v}<br/>"}
       end
       format.html { redirect_to news_path(params[:news_id]) }
     end

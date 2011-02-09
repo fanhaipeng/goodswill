@@ -4,12 +4,14 @@ class DeliveriesController < ApplicationController
   layout :choose_layout
 
   def index
+    @sub_title = "Deliveries for #{get_sub_title_per_status(params[:s].to_i)}"
     @deliveries = Delivery.where(:status => params[:s].to_i).order("updated_at desc")
   end
 
   def show
     @delivery = Delivery.find_by_id(params[:id])
     @delivery_notes = DeliveryNote.where(:delivery_id => @delivery.id)
+    @sub_title = "Delivery to #{@delivery.receiver.name} for #{get_sub_title_per_status(@delivery.status)}"
   end
 
   def update
@@ -30,7 +32,7 @@ class DeliveriesController < ApplicationController
   def pack
     user = User.find_by_id(session[:user_id])
     note_text = ""
-    note_text << "<p>#{params[:note]}.</p>" if params[:note]
+    note_text << "<p>#{params[:note]}</p>" if params[:note]
     note_text << "<p>packed by #{user.name} at #{get_timestamp}.</p>"
     for item_param in params[:items]
       dispose_item item_param[1][:id], note_text unless item_param[1][:include]
@@ -82,6 +84,15 @@ class DeliveriesController < ApplicationController
       'print'
     else
       'application'
+    end
+  end
+
+  def get_sub_title_per_status status
+    case status
+    when Delivery::OPEN then "Packing"
+    when Delivery::PACKED then "Shipping"
+    when Delivery::SHIPPED then "Confirmation"
+    when Delivery::CONFIRMED then "Summary"
     end
   end
 end

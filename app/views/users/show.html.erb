@@ -1,5 +1,12 @@
 <div id="user_pane">
   <h2>User profile</h2>
+
+  <% if flash[:error] %>
+  <div class="error_explanation">
+    <h4><%= flash[:error] %></h4>
+  </div>
+  <% end %>
+
   <p>
     <label class="form_label">Email</label><br/>
     <%= @user.email %>

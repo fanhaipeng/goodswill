@@ -4,14 +4,17 @@ class ReceiversController < ApplicationController
 
   def page
     @page_name = params[:page]
+    @sub_title = @page_name.gsub(/_/, ' ')
   end
 
   def index
     @receivers = Receiver.all
+    @sub_title = "Index of receivers"
   end
 
   def new
     @receiver = Receiver.new
+    @sub_title = "Request to become a receiver"
   end
 
   def create
@@ -27,6 +30,7 @@ class ReceiversController < ApplicationController
 
   def edit
     @receiver = Receiver.find_by_id(params[:id])
+    @sub_title = "Edit a receiver"
   end
 
   def update
@@ -44,6 +48,8 @@ class ReceiversController < ApplicationController
     @receiver = Receiver.find_by_id(params[:id])
     if not @receiver
       render 'public/404.html', :status => 404
+    else
+      @sub_title = "Receiver #{@receiver.name}"
     end
   end
 

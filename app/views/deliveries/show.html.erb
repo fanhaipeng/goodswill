@@ -15,7 +15,7 @@
 
   <% if not @delivery_notes.empty? %>
     <h3>History of operations</h3>
-    <% for n in @delivery_notes %>
+    <% for n in @delivery_notes.reverse {|a,b| a.created_at <=> b.created_at} %>
       <%= raw n.note %>
       <hr/>
     <% end %>

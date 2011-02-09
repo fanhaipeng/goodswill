@@ -5,11 +5,11 @@
 
   <% if flash[:error] %>
     <div class="error_explanation">
-      <h3><%= flash[:error] %></h3>
+      <h4><%= flash[:error] %></h4>
     </div>
   <% end %>
 
-  <%= form_tag donation_search_path do %>
+  <%= form_tag donation_search_path, :method => :get do %>
     <p>
       <label class="form_label">Name</label><br/>
       <%= text_field_tag :name, nil, :class => "form_text_field" %>

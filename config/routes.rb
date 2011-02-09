@@ -57,7 +57,7 @@ Goodswill::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   
   match 'donations/query' => 'donations#query', :via => :get, :as => 'donation_query'
-  match 'donations/search' => 'donations#search', :via => :post, :as => 'donation_search'
+  match 'donations/search' => 'donations#search', :via => :get, :as => 'donation_search'
   match 'donations/page/:page' => 'donations#page', :as => 'donation_page'
   resources :donations
   resources :donations do

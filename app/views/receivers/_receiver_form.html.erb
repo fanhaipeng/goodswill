@@ -2,13 +2,13 @@
 
 <% if @receiver.errors.any? %>
   <div class="error_explanation">
-    <h3><%= pluralize(@receiver.errors.count, " error") %> 
-      prohibited this receiver from being saved:</h3> 
-    <ul> 
+    <h4><%= pluralize(@receiver.errors.count, " error") %> 
+      prohibited this receiver from being saved:</h4> 
+    <ol> 
       <%  @receiver.errors.full_messages.each do |msg|  %> 
       <li><%= msg %></li> 
       <%  end %> 
-    </ul> 
+    </ol> 
   </div>
 <% end %>
 

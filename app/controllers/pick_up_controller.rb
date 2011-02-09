@@ -4,11 +4,13 @@ class PickUpController < ApplicationController
 
   def index
     @donations = Donation.where(:status => Donation::INITIAL)
+    @sub_title = "Donations to pick up"
   end
 
   def show
     @donation = Donation.find_by_id(params[:id])
     @donation_notes = DonationNote.where(:donation_id => params[:id])
+    @sub_title = "Donation by #{@donation.name} to pick up"
   end
 
   def update

@@ -1,12 +1,12 @@
 <% if @news.errors.any? %>
   <div class="error_explanation">
-    <h3><%= pluralize(@news.errors.count, " error") %> 
-      prohibited this news from being saved:</h3> 
-    <ul> 
+    <h4><%= pluralize(@news.errors.count, " error") %> 
+      prohibited this news from being saved:</h4> 
+    <ol> 
       <%  @news.errors.full_messages.each do |msg|  %> 
       <li><%= msg  %></li> 
       <%  end %> 
-    </ul> 
+    </ol> 
   </div>
 <% end %>
 
@@ -15,7 +15,7 @@
     <label class="form_label">Title</label><br/>
     <%= f.text_field :title, :class => "form_news_title" %>
   </p>
-  <p><label class="form_label">Content (html tags are allowed)</label><br/>
+  <p><label class="form_label">Content (only is &lt;p&gt; allowed in content)</label><br/>
   <%= f.text_area :content, :class => "form_news_content" %></p>
   <br/>
   <%= submit_tag submit_label, :class => "button" %>

@@ -15,8 +15,8 @@
 <div id="news_pane_right">
   <div id="news_title">
     <h3><%= @selected_news.title %></h3>
-    <span class="comment_tag"><%= "posted at #{@selected_news.created_at}" %></span>
-    <%= link_to(image_tag("edit.png"), edit_news_path(@selected_news), :class => "image_link") if authenticated %>
+    <span class="comment_tag"><%= "posted at #{format_time(@selected_news.created_at)}" %></span>
+    <%= link_to(image_tag("view.png"), news_path(@selected_news), :class => "image_link") if authenticated %>
   </div>
   <div id="news_content">
     <%= raw(@selected_news.content) %>

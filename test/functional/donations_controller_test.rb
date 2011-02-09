@@ -9,6 +9,7 @@ class DonationsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert assigns(:donations)
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see index" do
@@ -20,6 +21,7 @@ class DonationsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert assigns(:donation)
+    assert assigns(:sub_title)
   end
 
   test "create donation should be ok" do
@@ -42,6 +44,7 @@ class DonationsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:donation)
     assert_equal donations(:donation_two).id, assigns(:donation).id
+    assert assigns(:sub_title)
   end
   
   test "update donation should be ok" do
@@ -55,6 +58,7 @@ class DonationsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:donation)
     assert_equal 2, assigns(:donation).items.length
+    assert assigns(:sub_title)
   end
 
   test "404 should return when donation is not found" do
@@ -270,16 +274,28 @@ class DonationsControllerTest < ActionController::TestCase
   test "query donation should be ok" do
     get :query
     assert_response :success
+    assert assigns(:sub_title)
   end
 
   test "search donation should be ok" do
-    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'Haipeng Fan'
-    assert_redirected_to donation_path(donations(:donation_one))
+    get :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'Haipeng Fan'
+    assert_response :success
+    assert assigns(:donations)
+    assert assigns(:sub_title)
   end
 
   test "search not found should go back to query" do
-    post :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
+    get :search, :email => 'goodswill@live.com', :phone => '010-58963532', :name => 'wrong name'
     assert_response :success
+    assert flash[:error]
+    assert assigns(:sub_title)
+  end
+
+  test "show page from search should have back to search results link" do
+    get :show, :id => donations(:donation_one), :mode => "search"
+    assert_response :success
+    assert assigns(:donation)
+    assert_select "h3 a", { :count => 1, :text => "&lt;&lt; Back to search results" }
   end
 
   private 
