@@ -12,15 +12,23 @@
 <div id="news_images_section">
   <h3>Images of this news</h3>
   <% for img in @news.images %>
+    <p>
     <img alt="image" src="<%= news_news_image_path(@news, img) %>" />
     <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete, :confirm => "Are you sure?" if authenticated %>
+    <br/>Caption: <span class="image_caption"><%= img.description %></span></p>
+    <br/>
   <% end %>
 </div>
 
 <% if authenticated %>
 <div>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
-    Image File (&lt;512KB): <%= f.file_field :image_data %>
+    <p>
+      Image File (&lt;512KB): <%= f.file_field :image_data %>
+    </p>
+    <p>
+      Image Description(Optional): <%= f.text_field :description, :class => "form_text_field" %>
+    </p>
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>

@@ -490,3 +490,8 @@ div#admin_pane_right ol li{
 {
   max-width: 480px
 }
+
+.image_caption{
+  font-size: 12pt;
+  font-style: italic;
+}

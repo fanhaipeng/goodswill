@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110110190421) do
+ActiveRecord::Schema.define(:version => 20110210010121) do
 
   create_table "comments", :force => true do |t|
     t.integer  "donation_id",                :null => false
@@ -108,10 +108,11 @@ ActiveRecord::Schema.define(:version => 20110110190421) do
 
   create_table "news_images", :force => true do |t|
     t.integer  "news_id"
-    t.string   "image_type", :limit => 20,       :null => false
-    t.binary   "data",       :limit => 16777215, :null => false
+    t.string   "image_type",  :limit => 20,       :null => false
+    t.binary   "data",        :limit => 16777215, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description", :limit => 200
   end
 
   add_index "news_images", ["news_id"], :name => "news_image_news_foreign_key"
