@@ -1,15 +1,12 @@
-<h2>Ship slip</h2>
+<h2>Goodswill Donation Receipt</h2>
 
-<h3>Time: </h3><span><%= Time.now.strftime("%m/%d/%Y %H:%M:%S") %></span>
-<h3>To: </h3><span><%= @delivery.receiver.name %> (id = <%= @delivery.receiver_id %>)</span>
-<h3>Items: </h3>
+<h3>To: </h3><span><%= @delivery.receiver.name %></span><br/><br/>
 <table>
   <thead>
     <tr>
       <td class="column_c">Category</td>
       <td class="column_q">Quantity</td>
-      <td class="column_d">Donor(id)</td>
-      <td class="column_n">Comment</td>
+      <td class="column_n">Note</td>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +14,6 @@
     <tr>
       <td><%= i.category %></td>
       <td><%= i.quantity %></td>
-      <td><%= i.donation.name%>(<%= i.donation_id %>)</td>
       <td></td>
     </tr>
   <% end %>
@@ -25,20 +21,17 @@
 </table>
 
 <br/>
-<h3>Signatures:</h3>
+<br/>
+<br/>
 <br/>
 <div class="signature">
 <p>
-Shipper's Signature: __________________
-</p>
-<p>
-Date of delivery: ____/____/________
+<span>Goodswill Signature & Date:</span>
+<span class="signature_right">Recipient Signature & Date:</span>
 </p>
 <br/>
 <p>
-Receiver's Signature: ___________________
-</p>
-<p>
-Date of delivery: ____/____/________
+<span>______________________</span>
+<span class="signature_right">______________________</span>
 </p>
 </div>
