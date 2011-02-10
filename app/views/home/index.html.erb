@@ -41,7 +41,7 @@
     <% for one_news in @latest_news %>
       <li><%= link_to one_news.title, news_index_path(:id => one_news.id) %></li>
       <p>
-      <%= truncate(one_news.content, :length => 200) %>
+      <%= truncate(one_news.content.gsub(/<\w+>|<\/\w+>/, ''), :length => 200) %>
       </p>
     <% end %>
     </ul>
