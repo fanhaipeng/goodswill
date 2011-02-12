@@ -12,7 +12,7 @@
 <div id="home_bottom">
   <div id="home_donation" class="home_vertical_pane">
     <h3>How you can help</h3>
-    <%= image_tag "home-donation.png", :alt => 'donation' %>
+    <%= image_tag "home-donation.jpg", :alt => 'donation' %>
     <p>
     Have you ever come across something at home you feel really pity to throw away, and wish someone who has a great use to it?  You don’t know who needs them; the charities you know of are too far for you to drop-it off or mail it; your items is too big to move around; you want to have a peace of mind that your donation really means something…  Guess what, you can <%= link_to "help", donation_page_path(:page => :process) %>!
     </p>
@@ -22,7 +22,7 @@
   </div>
   <div id="home_receiver" class="home_vertical_pane">
     <h3>What we need</h3>
-    <%= image_tag "home-receiver.png", :alt => 'receiver' %>
+    <%= image_tag "home-receiver.jpg", :alt => 'receiver' %>
     <p>
     Our goal is to be a bridge between you and the charity organizations. We don't take anything for ourselves. Everything that you donate will find its way to a charity. We accept high quality goods that include but not limited to:
     <ul>
@@ -45,6 +45,7 @@
       </p>
     <% end %>
     </ul>
+    <p><%= link_to "more", news_index_path %></p>
   </div>
   <div class="clear"></div>
 </div>
