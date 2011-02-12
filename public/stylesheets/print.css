@@ -10,9 +10,11 @@ thead{
   font-weight: bold;
 }
 
+h3{
+  display: inline;
+}
+
 td{
-  border: solid 1px black;
-  height: 40px;
 }
 
 td.column_c{
@@ -28,7 +30,7 @@ td.column_n{
   width: 400px;
 }
 
-.signature{
-  font-size: 14pt;
+.signature_right{
+  margin-left: 200px;
 }
 

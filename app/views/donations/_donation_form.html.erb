@@ -1,13 +1,13 @@
 <div>
   <% if @donation.errors.any? %> 
     <div class="error_explanation"> 
-    <h3><%= pluralize(@donation.errors.count, " error") %> 
-      prohibited this donation from being saved:</h3> 
-    <ul> 
+    <h4><%= pluralize(@donation.errors.count, " error") %> 
+      prohibited this donation from being saved:</h4> 
+    <ol> 
       <%  @donation.errors.full_messages.each do |msg|  %> 
       <li><%= msg  %></li> 
       <%  end %> 
-    </ul> 
+    </ol> 
     </div> 
   <%  end %> 
 
@@ -29,7 +29,7 @@
     <br/>
     
     <h3>Additional information</h3>
-    <label class="form_label">Pictures of the items (optional)</label>
+    <label class="form_label">Pictures of the items (optional, &lt;512KB)</label>
       <%= add_image_link image_tag("new.png"), f %>
     <div id="donation_images">
       <%= f.fields_for :images do |i| %>
@@ -63,7 +63,7 @@
     <%= f.email_field :email, :class => "form_text_field" %> <br/>
     </p>
     <p>
-    <label class="form_label">Phone</label><br/>
+    <label class="form_label">Phone (ex: 010-55558888 or 13812345678)</label><br/>
     <%= f.text_field :phone, :class => "form_text_field" %> <br/>
     </p>
     <p>

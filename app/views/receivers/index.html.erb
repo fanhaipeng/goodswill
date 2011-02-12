@@ -5,7 +5,7 @@
     <% next unless receiver.approved or authenticated %>
     <div class="item_section">
       <%= link_to(raw("<h4>#{receiver.name}</h4>"), receiver_path(receiver)) %>
-      <span class="comment_tag"><%= "posted at #{receiver.created_at}"%></span>
+      <span class="comment_tag"><%= "posted at #{format_time(receiver.created_at)}"%></span>
       <p>
         <%= receiver.introduction %>
       </p>

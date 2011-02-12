@@ -39,4 +39,8 @@ module ApplicationHelper
     end
     raw out
   end
+
+  def format_time time
+    time.localtime.strftime("%Y/%m/%d %H:%M:%S %A")
+  end
 end

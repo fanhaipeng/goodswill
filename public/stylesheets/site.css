@@ -96,15 +96,18 @@ div#content_pane_bottom{
 }
 
 div.error_explanation {
-  color: red;
   border: solid 2px red;
   padding: 10px 10px;
-  margin-bottom: 15px;
-  background-color: pink;
+  margin: 15px 0px;
+  background-color: #fcc;
+}
+
+div.error_explanation *{
+  color: black;
 }
 
 div.error_explanation li{
-  list-style-type: none; 
+  font-size: 14pt;
 }
 
 #link_login {
@@ -268,7 +271,7 @@ div#donation_pane ul{
   margin: 20px 0 20px 40px;
   font-size: 10pt;
 }
-.pane_middle ol{
+.pane_middle ol, div#news_create_pane ol{
   margin: 10px 20px;
  }
 
@@ -432,7 +435,7 @@ div#news_pane_right{
   float: left;
 }
 
-div#news_pane h3{
+div#news_pane #news_section h3{
   text-align: center;
 }
 
@@ -464,6 +467,12 @@ div#admin_pane_right{
   width:65%;
   margin-left: 20px;
 }
+
+div#admin_pane_right img{
+  max-width: 750px;
+  border: solid 1px gray;
+}
+
 div#admin_pane_left ul li a{
   width:80px
 }
@@ -480,4 +489,9 @@ div#admin_pane_right ol li{
 #process_image
 {
   max-width: 480px
+}
+
+.image_caption{
+  font-size: 12pt;
+  font-style: italic;
 }

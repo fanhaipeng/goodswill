@@ -1,4 +1,4 @@
-<h3>Summary of delivery</h3>
+<h3>Summary of delivery to <%= @delivery.receiver.name %></h3>
 
 <table>
   <thead>
@@ -26,12 +26,12 @@
 
 <% if flash[:error] %>
   <div class="error_explanation">
-    <h3><%= flash[:error] %></h3>
+    <h4><%= raw flash[:error] %></h4>
   </div>
 <% end %>
 
 <%= form_for [@delivery, @delivery.images.build], :html => {:multipart => true} do |f| %>
-  <p>Add pictures for delivery confirmation</p>
+  <p>Add pictures for delivery confirmation (&lt;512KB)</p>
   <%= f.file_field :image_data, :class => "upload_file_select" %>
   <%= submit_tag "Add a image", :class => "button" %>
 <% end %>

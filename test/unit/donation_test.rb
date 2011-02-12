@@ -22,7 +22,7 @@ class DonationTest < ActiveSupport::TestCase
       :email => 'name@example.com',
       :name => 'Tom White')
     
-    err_msg = "the phone number is invalid"
+    err_msg = "format is invalid"
 
     # cell phone number, start with 1 & has 11 digits
     donation.phone = '1381234567'
@@ -78,7 +78,7 @@ class DonationTest < ActiveSupport::TestCase
       :phone => '010-59173532',
       :name => 'Tom White')
 
-    err_msg = "email address is invalid"
+    err_msg = "format is invalid"
 
     donation.email = 'abcd'
     assert !donation.valid?

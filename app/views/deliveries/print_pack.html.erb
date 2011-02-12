@@ -1,7 +1,7 @@
 <h2>Pack slip</h2>
 
-<h3>Time: </h3><span><%= Time.now.strftime("%m/%d/%Y %H:%M:%S") %></span>
-<h3>To: </h3><span><%= @delivery.receiver.name%> (id = <%= @delivery.receiver_id %>)</span>
+<h3>Time: </h3><span><%= Time.now.strftime("%m/%d/%Y %H:%M:%S") %></span>&nbsp;&nbsp;
+<h3>To: </h3><span><%= @delivery.receiver.name%> (id = <%= @delivery.receiver_id %>)</span><br/><br/>
 <h3>Items: </h3>
 <table>
   <thead>

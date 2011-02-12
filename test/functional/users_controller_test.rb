@@ -8,6 +8,7 @@ class UsersControllerTest < ActionController::TestCase
     assert assigns(:users)
     assert assigns(:current_user)
     assert users(:user_one).id, assigns(:current_user).id
+    assert assigns(:sub_title)
   end
 
   test "non super user can't see index" do
@@ -21,6 +22,7 @@ class UsersControllerTest < ActionController::TestCase
     assert assigns(:user)
     assert assigns(:current_user)
     assert users(:user_one).id, assigns(:current_user).id
+    assert assigns(:sub_title)
 
   end
 
@@ -63,6 +65,7 @@ class UsersControllerTest < ActionController::TestCase
     assert assigns(:user).id, users(:user_one).id
     assert assigns(:current_user)
     assert assigns(:user).id, users(:user_two).id
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see show page" do
@@ -112,6 +115,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:user)
     assert_equal users(:user_two).id, assigns(:user).id
+    assert assigns(:sub_title)
   end
 
   test "anonymous user can't see edit page" do

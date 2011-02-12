@@ -1,6 +1,10 @@
 <%= render :partial => "pane_left" %>
 <div class="pane_middle">
   <div id="donation_section">
+  <% if params[:mode] == "search" %>
+    <h3><%= link_to "<< Back to search results", "javascript:history.go(-1)" %></h3>
+    <hr/>
+  <% end %>
   <%= render :partial => "shared/donation" %>
   <%= render :partial => "shared/donation_items" %>
   <%= render :partial => "shared/donation_images" %>
@@ -23,13 +27,14 @@
   <% if @donation.notes and authenticated %>
     <br/>
     <h3>History of operation</h3>
-    <% for note in @donation.notes %>
+    <% for note in @donation.notes.reverse { |a, b| a.created_at <=> b.created_at } %>
       <p><%= note.note %></p>
+      <hr/>
     <% end %>
   <% end %>
   
   <br/>
-  <%= link_to image_tag("edit.png"), (edit_donation_path(@donation) if authenticated), :class => "image_link" %>
-  <%= link_to image_tag("back.png"), (donations_path if authenticated), :class => "image_link" %>
+  <%= link_to(image_tag("edit.png"), edit_donation_path(@donation), :class => "image_link") if authenticated%>
+  <%= link_to(image_tag("back.png"), donations_path, :class => "image_link") if authenticated%>
 </div>
 <%= render :partial => "pane_right", :locals => { :active_link => :donate_now} %>

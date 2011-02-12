@@ -8,18 +8,21 @@ class ReceiversControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert assigns(:receivers)
+    assert assigns(:sub_title)
   end
 
   test "page of receivers should be ok" do
     get :page, :page => "who_we_are"
     assert_response :success
     assert assigns(:page_name)
+    assert assigns(:sub_title)
   end
 
   test "new page of receiver should be ok" do
     get :new
     assert_response :success
     assert assigns(:receiver)
+    assert assigns(:sub_title)
   end
 
   test "create a receiver should be ok" do
@@ -58,6 +61,7 @@ class ReceiversControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:receiver)
     assert_equal receivers(:receiver_one), assigns(:receiver)
+    assert assigns(:sub_title)
   end
 
   test "update receiver should be ok" do
@@ -75,6 +79,7 @@ class ReceiversControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:receiver)
     assert_equal receivers(:receiver_two), assigns(:receiver)
+    assert assigns(:sub_title)
   end
 
   test "delete receiver should be ok" do

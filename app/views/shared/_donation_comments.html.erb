@@ -8,7 +8,7 @@
         [<%= link_to('X', donation_comment_path(@donation, comment), :method => :delete, :confirm => "Are you sure?") %>]
       <% end %>
       <br/>
-      <span class="comment_tag"><%= "posted at #{comment.created_at.to_s}" %></span>
+      <span class="comment_tag"><%= "posted at #{format_time(comment.created_at)}" %></span>
     </p>
   <% end %>
 </div>

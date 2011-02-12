@@ -1,3 +1,9 @@
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h4><%= raw flash[:error] %></h4>
+  </div>
+<% end %>
+
 <div id="news_section">
   <h3><%= @news.title %></h3> 
   <p><%= raw(@news.content) %></p>
@@ -6,20 +12,23 @@
 <div id="news_images_section">
   <h3>Images of this news</h3>
   <% for img in @news.images %>
+    <p>
     <img alt="image" src="<%= news_news_image_path(@news, img) %>" />
     <%= link_to "[X]", news_news_image_path(@news, img), :method => :delete, :confirm => "Are you sure?" if authenticated %>
+    <br/>Caption: <span class="image_caption"><%= img.description %></span></p>
+    <br/>
   <% end %>
 </div>
 
 <% if authenticated %>
 <div>
-  <% if flash[:error] %>
-    <div class="error_explanation">
-      <h3><%= flash[:error] %></h3>
-    </div>
-  <% end %>
   <%= form_for([@news, @news.images.build], :html => { :multipart => true }) do |f| %>
-    Image File: <%= f.file_field :image_data %>
+    <p>
+      Image File (&lt;512KB): <%= f.file_field :image_data %>
+    </p>
+    <p>
+      Image Description(Optional): <%= f.text_field :description, :class => "form_text_field" %>
+    </p>
     <%= submit_tag "Add an image" %>
   <% end %>
 </div>
@@ -28,4 +37,5 @@
 <br/>
 <%= link_to(image_tag("new.png"), new_news_path, :class => "image_link") if authenticated %>
 <%= link_to(image_tag("edit.png"), edit_news_path(@news), :class => "image_link")  if authenticated %>
+<%= link_to(image_tag("delete.png"), news_path(@news), :method => :delete, :confirm => "Are you sure?", :class => "image_link") if authenticated %>
 <%= link_to(image_tag("back.png"), news_index_path, :class => "image_link")  %>

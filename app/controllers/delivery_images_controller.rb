@@ -7,7 +7,8 @@ class DeliveryImagesController < ApplicationController
     @img.delivery_id = params[:delivery_id]
     respond_to do |format|
       if not @img.save
-        flash[:error] = "All fields of the image can't be blank"
+        flash[:error] = ""
+        @img.errors.each {|k,v| flash[:error] << "#{k} #{v}<br/>"}
       end
       format.html { redirect_to delivery_path(params[:delivery_id]) }
     end
