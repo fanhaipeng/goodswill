@@ -5,7 +5,6 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert assigns(:latest_news)
-    assert assigns(:latest_items)
     assert assigns(:sub_title)
   end
 end
