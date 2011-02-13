@@ -1,0 +1,26 @@
+echo "-> Extract files from installation packages ..."
+mkdir $1
+tar xzf archives/goodswill$1.tar.gz -C $1
+
+echo "-> Copy environment files to the new install ..."
+cp -f common/restart.txt $1/tmp/ 
+cp -f common/database.yml $1/config/
+echo "PassengerEnabled ON" > $1/public/.htaccess
+echo "PassengerAppRoot /home/goodswil/goodswill/"$1 >> $1/public/.htaccess
+
+echo "-> Create symbol link for active  folder ..."
+rm -f active
+ln -s $1 active
+
+echo "-> ROR bundle install ..."
+cd $1
+bundle install mysql2
+bundle check
+cd ..
+
+echo "-> Point public_html to the new installation directory ..."
+cd ..
+rm -f public_html
+ln -s goodswill/$1/public public_html
+cd goodswill
+

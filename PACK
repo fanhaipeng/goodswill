@@ -20,5 +20,3 @@ END_SCRIPT
 
 echo "-> Clean up ..."
 rm -f goodswill$1.tar.gz
-
-exit 0
