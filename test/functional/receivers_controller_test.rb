@@ -5,6 +5,7 @@ class ReceiversControllerTest < ActionController::TestCase
   fixtures :receivers
 
   test "index of receivers should be ok" do
+    session[:user_id] = users(:user_two)
     get :index
     assert_response :success
     assert assigns(:receivers)
@@ -94,6 +95,11 @@ class ReceiversControllerTest < ActionController::TestCase
   test "404 should be returned if no receiver is found" do
     get :show, :id => 9999
     assert_response :missing
+  end
+
+  test "anonymous user can't see index page" do
+    get :index
+    assert_redirected_to account_login_path
   end
 
   test "anonymous user can't see edit page" do

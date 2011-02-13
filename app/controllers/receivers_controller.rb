@@ -1,6 +1,6 @@
 class ReceiversController < ApplicationController
 
-  before_filter :admin_user_required, :only => [:edit, :update, :destroy]
+  before_filter :admin_user_required, :only => [:index, :edit, :update, :destroy]
 
   def page
     @page_name = params[:page]

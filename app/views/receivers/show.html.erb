@@ -41,7 +41,7 @@
 
   <%= link_to(image_tag("edit.png"), edit_receiver_path(@receiver), :class => "image_link") if authenticated %>
   <%= link_to(image_tag("delete.png"), receiver_path(@receiver), :method => :delete, :class => "image_link", :confirm => "Are you sure?") if authenticated %>
-  <%= link_to image_tag("back.png"), receivers_path, :class => "image_link" %>
+  <%= link_to(image_tag("back.png"), receivers_path, :class => "image_link") if authenticated %>
 </div>
 <%= render :partial => "pane_right", :locals => { :active_link => nil } %>
 <div class="clear"></div>
