@@ -1,14 +1,20 @@
 <%= render :partial => "pane_left" %>
 <div class="pane_middle">
   <div id="donation_section">
-  <% if params[:mode] == "search" %>
-    <h3><%= link_to "<< Back to search results", "javascript:history.go(-1)" %></h3>
-    <hr/>
-  <% end %>
-  <%= render :partial => "shared/donation" %>
-  <%= render :partial => "shared/donation_items" %>
-  <%= render :partial => "shared/donation_images" %>
-  <%= render :partial => "shared/donation_comments" %>
+    <% if flash[:notice] %>
+      <div class="success_message">
+        <h4><%= flash[:notice] %></h4>
+      </div>
+    <% end %>
+
+    <% if params[:mode] == "search" %>
+      <h3><%= link_to "<< Back to search results", "javascript:history.go(-1)" %></h3>
+      <hr/>
+    <% end %>
+    <%= render :partial => "shared/donation" %>
+    <%= render :partial => "shared/donation_items" %>
+    <%= render :partial => "shared/donation_images" %>
+    <%= render :partial => "shared/donation_comments" %>
   </div>
 
   <h3>Add new comment:</h3>

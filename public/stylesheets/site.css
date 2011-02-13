@@ -495,3 +495,15 @@ div#admin_pane_right ol li{
   font-size: 12pt;
   font-style: italic;
 }
+
+.success_message{
+  border: solid 1px #5a5;
+  background: #dfd;
+  color: #888;
+  padding: 5px 10px;
+}
+
+.success_message h4{
+  color: #222;
+  font-weight: bold;
+}

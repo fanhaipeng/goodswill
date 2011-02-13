@@ -38,6 +38,7 @@ class ReceiversControllerTest < ActionController::TestCase
     end
     assert assigns(:receiver)
     assert_redirected_to receiver_path(assigns(:receiver).id)
+    assert flash[:notice]
   end
 
   test "invalid reciever model fails creation" do

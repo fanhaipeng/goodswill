@@ -19,8 +19,10 @@ class ReceiversController < ApplicationController
 
   def create
     @receiver = Receiver.new(params[:receiver])
+    flash[:notice] = nil
     respond_to do |format|
       if @receiver.save
+        flash[:notice] = "Your request has been submitted, we'll contact you later."
         format.html { redirect_to receiver_path(@receiver)}
       else
         format.html { render :action => :new }

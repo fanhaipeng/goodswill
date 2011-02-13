@@ -1,5 +1,11 @@
 <%= render :partial => "pane_left" %>
 <div class="pane_middle">
+  <% if flash[:notice] %>
+    <div class="success_message">
+      <h4><%= flash[:notice] %></h4>
+    </div>
+  <% end %>
+
   <% if flash[:error] %>
     <div class="error_explanation">
       <h3><%= flash[:error] %></h3>

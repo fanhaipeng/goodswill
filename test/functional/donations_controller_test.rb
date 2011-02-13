@@ -36,6 +36,7 @@ class DonationsControllerTest < ActionController::TestCase
     end
     assert assigns(:donation)
     assert_redirected_to donation_path(assigns(:donation).id)
+    assert flash[:notice]
   end
 
   test "edit donation should be ok" do
