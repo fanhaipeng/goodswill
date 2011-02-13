@@ -1,0 +1,24 @@
+echo "-> Empty log files to reduce size ..."
+echo "" > log/development.log
+echo "" > log/test.log
+
+echo "-> Create installation package ..."
+tar czf goodswill$1.tar.gz *
+
+echo "-> Upload installation package via ftp ..."
+HOST=goodswill.info
+USER=goodswil
+PASSWD=wuwei1234
+FILE=goodswill$1.tar.gz
+ftp -n $HOST <<END_SCRIPT
+quote USER $USER
+quote PASS $PASSWD
+bin
+cd goodswill/archives
+put $FILE
+END_SCRIPT
+
+echo "-> Clean up ..."
+rm -f goodswill$1.tar.gz
+
+exit 0
