@@ -24,7 +24,7 @@ class DonationsController < ApplicationController
     flash[:notice] = nil
     respond_to do |format|
       if @donation.save
-        flash[:notice] = "Your donation form has been submitted successfully, thank you for your kindness!"
+        flash[:notice] = "Thank you for your donation. Your tracking number is #{@donation.id}. Please note it down and attach it to your goods."
         format.html { redirect_to donation_path(@donation) }
       else
         1.upto(3) { @donation.items.build } if @donation.items.length ==0
